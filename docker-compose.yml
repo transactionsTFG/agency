@@ -4,7 +4,6 @@ services:
   mysql-v5: #Base de datos de Agencia
     image: mysql:5.5 # Imagen no oficial de MySQL 5.5
     container_name: sgbdr-mysql-v5
-    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password #Definimos password porque sino nos genera uno automatico y no sabremos cual es
       MYSQL_DATABASE: agency
@@ -25,8 +24,9 @@ services:
       - mysql_v5_7_data:/var/lib/mysql
 
   mysql-v8: #Base de datos de Aerolinea
-    image: mysql/mysql-server:8.0 # Imagen MySQL 8.0 con más soporte
+    image: mysql:8.0 # Imagen MySQL 8.0 con más soporte
     container_name: sgbdr-mysql-v8
+    restart: always
     environment:
       MYSQL_DATABASE: airline
       MYSQL_ROOT_PASSWORD: password
