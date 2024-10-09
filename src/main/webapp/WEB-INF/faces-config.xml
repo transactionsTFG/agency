@@ -8,17 +8,64 @@
  	<from-view-id>/index.xhtml</from-view-id>
  	<navigation-case>
  		<from-outcome>alojamiento</from-outcome>
- 		<to-view-id>/public/alojamientos.xhtml</to-view-id>
+ 		<to-view-id>public/alojamientos.xhtml</to-view-id>
  	</navigation-case>
  	<navigation-case>
  		<from-outcome>vuelo</from-outcome>
- 		<to-view-id>/public/vuelos.xhtml</to-view-id>
+ 		<to-view-id>public/vuelos.xhtml</to-view-id>
  	</navigation-case>
  	<navigation-case>
  		<from-outcome>vuelo-y-hotel</from-outcome>
- 		<to-view-id>/public/vuelo-y-hotel.xhtml</to-view-id>
+ 		<to-view-id>public/vuelo-y-hotel.xhtml</to-view-id>
  	</navigation-case>
- 	
+ </navigation-rule>
+ 
+ <navigation-rule>
+ 	<from-view-id>public/alojamientos.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+
+ <navigation-rule>
+ 	<from-view-id>public/vuelos.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+ 	<from-view-id>public/vuelo-y-hotel.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
  </navigation-rule>
 
 </faces-config>
