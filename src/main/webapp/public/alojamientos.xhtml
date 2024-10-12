@@ -40,7 +40,7 @@
     <h:form id="busqueda" class="d-flex justify-content-center">
         <div id="destino" class="d-flex justify-content-center align-items-center border border-warning border-3 border-end-0">
         	<h:outputLabel for="destino-input" value="Destino"/>
-            <h:inputText id="destino-input" p:placeholder="¿A dónde quieres ir?" class="border border-0"/>
+            <h:inputText id="destino-input" value="#{busquedaBean.busqueda}" p:placeholder="¿A dónde quieres ir?" class="border border-0"/>
         </div>
     
         <div id="fecha-entrada-salida" class="d-flex justify-content-center align-items-center border border-warning border-3 border-end-0">
@@ -59,8 +59,10 @@
             <h:inputText id="num-habitaciones" accept="number" type="number" value="#{busquedaBean.numeroHabitaciones}" min="1"/>
         </div>
     
-        <h:commandButton value="Buscar" actionListener="#{busquedaBean.buscar}" class="btn btn-primary border border-warning border-3"/>
-        <h:outputText value="#{busquedaBean.busqueda}"></h:outputText>
+        <h:commandButton value="Buscar" action="#{busquedaBean.buscar}" class="btn btn-primary border border-warning border-3">
+        	<f:ajax execute="@form" render=":busqueda"/>
+        </h:commandButton>
+        <h:outputText id="busqueda" value="#{busquedaBean.busqueda}"></h:outputText>
     </h:form>
     <!-- 
     <div id="busqueda" class="d-flex justify-content-center">

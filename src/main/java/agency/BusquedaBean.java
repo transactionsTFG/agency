@@ -8,23 +8,37 @@ import java.util.Date;
 @Named
 public class BusquedaBean {
     
-    private String busqueda;
+    private String destino;
     private String fechaEntrada;
     private String fechaSalida;
     private int numeroAdultos;
     private int numeroHabitaciones;
     
     private String success;
-    public String buscar() {
-        this.success = "Busqueda realizada: " + busqueda + " " + fechaEntrada + " " + fechaSalida + " " + numeroAdultos + " " + numeroHabitaciones;
-        return "/index";
+    public void buscar() {
+        this.success = "Busqueda realizada: " + destino + " " + fechaEntrada + " " + fechaSalida + " " + numeroAdultos + " " + numeroHabitaciones;
+//        return "/index";
+    }
+
+    public String busqueda() {
+    	if (destino.isBlank()) return "No se ha seleccionado un destino";
+    	if (fechaEntrada.isBlank()) return "No se ha seleccionado una fecha de entrada";
+    	if (fechaSalida.isBlank()) return "No se ha seleccionado una fecha de salida";    	
+    	if (numeroAdultos == 0) numeroAdultos++;
+    	if (numeroHabitaciones == 0) numeroHabitaciones++;
+    	return success;
+//    	return "Destino: " + busqueda +
+//    			"\n Fecha de entrada: " + fechaEntrada +
+//    			"\n Fecha de salida: " + fechaSalida +
+//    			"\n Numero de adultos: " + numeroAdultos +
+//    			"\n Numero de habitaciones: " + numeroHabitaciones;
     }
 
     public String getBusqueda() {
-        return busqueda;
+        return destino;
     }
     public void setBusqueda(String busqueda) {
-        this.busqueda = busqueda;
+        this.destino = busqueda;
     }
 
     public String getFechaEntrada() {
@@ -58,5 +72,6 @@ public class BusquedaBean {
     public void setNumeroHabitaciones(int numeroHabitaciones) {
         this.numeroHabitaciones = numeroHabitaciones;
     }
+    
 
 }
