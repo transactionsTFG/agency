@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://java.sun.com/jsf/html">
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:f="http://xmlns.jcp.org/jsf/core"
+ xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+ xmlns:jsf="http://xmlns.jcp.org/jsf">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -21,23 +24,12 @@
         <ul class="list-unstyled list-inline fw-bold">
             <h:form>
                 <li class="list-inline-item">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
-                    </svg> -->
                     <h:commandButton value="Alojamientos" action="alojamientos"></h:commandButton>
                 </li>
                 <li class="list-inline-item">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-airplane" viewBox="0 0 16 16">
-                        <path d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849m.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1s-.458.158-.678.599"/>
-                    </svg> -->
                     <h:commandButton value="Vuelos" action="vuelos"></h:commandButton>
                 </li>
                 <li class="list-inline-item">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-globe-americas" viewBox="0 0 16 16">
-                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484q-.121.12-.242.234c-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z"/>
-                    </svg>Vuelo + <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suitcase-lg" viewBox="0 0 16 16">
-                        <path d="M5 2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2h3.5A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5H14a.5.5 0 0 1-1 0H3a.5.5 0 0 1-1 0h-.5A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2zm1 0h4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1M1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5H3V3zM15 12.5v-9a.5.5 0 0 0-.5-.5H13v10h1.5a.5.5 0 0 0 .5-.5m-3 .5V3H4v10z"/>
-                    </svg>Hotel -->
                     <h:commandButton value="Vuelo + Hotel" action="vuelo-y-hotel"></h:commandButton>
                 </li>
             </h:form>
@@ -45,12 +37,13 @@
         <h1 class="fw-bold">Agencia UCM</h1>
     </div>
     
-    <h:form>
-        <div id="destino" class="d-flex justify-content-center align-items-center">
-            <h:inputText id="destino-input" value="#{busquedaBean.busqueda}" placeholder="¿A dónde quieres ir?" class="border border-0"/>
+    <h:form id="busqueda" class="d-flex justify-content-center">
+        <div id="destino" class="d-flex justify-content-center align-items-center border border-warning border-3 border-end-0">
+        	<h:outputLabel for="destino-input" value="Destino"/>
+            <h:inputText id="destino-input" p:placeholder="¿A dónde quieres ir?" class="border border-0"/>
         </div>
     
-        <div id="fecha-entrada-salida" class="d-flex justify-content-center align-items-center">
+        <div id="fecha-entrada-salida" class="d-flex justify-content-center align-items-center border border-warning border-3 border-end-0">
             <h:outputLabel for="fecha-entrada" value="Fecha de entrada"/>
             <h:inputText id="fecha-entrada" type="date" value="#{busquedaBean.fechaEntrada}"/>
             
@@ -58,15 +51,15 @@
             <h:inputText id="fecha-salida" type="date" value="#{busquedaBean.fechaSalida}"/>
         </div>
     
-        <div id="ocupantes" class="d-flex justify-content-center align-items-center">
+        <div id="ocupantes" class="d-flex justify-content-center align-items-center border border-warning border-3 border-end-0">
             <h:outputLabel for="num-adultos" value="Adultos"/>
-            <h:inputText id="num-adultos" type="number" value="#{busquedaBean.numeroAdultos}" min="1"/>
+            <h:inputText id="num-adultos" accept="number" type="number" value="#{busquedaBean.numeroAdultos}" converterMessage="Please enter digits only."/>
             
             <h:outputLabel for="num-habitaciones" value="Habitaciones"/>
-            <h:inputText id="num-habitaciones" type="number" value="#{busquedaBean.numeroHabitaciones}" min="1"/>
+            <h:inputText id="num-habitaciones" accept="number" type="number" value="#{busquedaBean.numeroHabitaciones}" min="1"/>
         </div>
     
-        <h:commandButton value="Buscar" actionListener="#{busquedaBean.buscar()}" class="btn btn-primary border border-warning border-3"/>
+        <h:commandButton value="Buscar" actionListener="#{busquedaBean.buscar}" class="btn btn-primary border border-warning border-3"/>
         <h:outputText value="#{busquedaBean.busqueda}"></h:outputText>
     </h:form>
     <!-- 
