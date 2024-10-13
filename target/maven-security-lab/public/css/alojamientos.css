@@ -1,0 +1,16 @@
+:root {
+    --bg-ucm: rgb(162, 17, 17);
+    --bg-ucm-light: rgb(200, 50, 50);
+}
+
+#alojamientos {
+    border: 1px solid white;
+    border-radius: 100px;
+    padding: 0.5rem;
+    background-color: var(--bg-ucm-light);
+}
+
+ul a {
+    text-decoration: none;
+    color: white;
+}

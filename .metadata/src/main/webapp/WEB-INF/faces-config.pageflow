@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf17287207686030" configfile="/agency/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="946" id="pf17287207831751" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf17287207831752 pf17287207831753 pf17287207831754" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="public/alojamientos.xhtml" x="338" y="562" id="pf17287207831755" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf17287207831756 pf17287207831757 pf17287207831758" inlinks="pf17287207831752 pf17287207831759" path="public/alojamientos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="public/vuelos.xhtml" x="338" y="946" id="pf172872078317510" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf172872078317511 pf172872078317512 pf172872078317513" inlinks="pf17287207831753" path="public/vuelos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="public/vuelo-y-hotel.xhtml" x="338" y="1330" id="pf172872078317514" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf172872078317515 pf172872078317516 pf172872078317517" inlinks="pf17287207831754" path="public/vuelo-y-hotel.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="alojamientos.xhtml" x="554" y="562" id="pf172872078317518" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf17287207831756 pf172872078317511 pf172872078317515" path="alojamientos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="vuelos.xhtml" x="554" y="946" id="pf172872078317519" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" inlinks="pf17287207831757 pf172872078317512 pf172872078317516" path="vuelos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="vuelo-y-hotel.xhtml" x="554" y="1330" id="pf172872078317520" referenceLink="//@navigationRule.4/@navigationCase.2/@toViewId|" inlinks="pf17287207831758 pf172872078317513 pf172872078317517" path="vuelo-y-hotel.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" id="pf172872078317521" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf17287207831759" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="122" y="562" id="pf17287207831751" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf17287207831752 pf17287207831753 pf17287207831754" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/alojamientos.xhtml" x="338" y="178" id="pf17287207831755" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf17287207831756 pf17287207831757 pf17287207831758" inlinks="pf17287207831752" path="public/alojamientos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/vuelos.xhtml" x="338" y="562" id="pf172872078317510" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf172872078317511 pf172872078317512 pf172872078317513" inlinks="pf17287207831753" path="public/vuelos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/vuelo-y-hotel.xhtml" x="338" y="946" id="pf172872078317514" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf172872078317515 pf172872078317516 pf172872078317517" inlinks="pf17287207831754" path="public/vuelo-y-hotel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="alojamientos.xhtml" x="554" y="178" id="pf172872078317518" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf17287207831756 pf172872078317511 pf172872078317515" path="alojamientos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="vuelos.xhtml" x="554" y="562" id="pf172872078317519" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" inlinks="pf17287207831757 pf172872078317512 pf172872078317516" path="vuelos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="vuelo-y-hotel.xhtml" x="554" y="946" id="pf172872078317520" referenceLink="//@navigationRule.4/@navigationCase.2/@toViewId|" inlinks="pf17287207831758 pf172872078317513 pf172872078317517" path="vuelo-y-hotel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="error.xhtml" x="122" y="1330" id="pf172872078317521" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf172880884396637" path="/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="public/alojamientos.xhtml" x="338" y="1330" id="pf172880884396638" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf172880884396637" path="/public/alojamientos.xhtml"/>
   <links id="pf17287207831752" target="pf17287207831755" source="pf17287207831751" outcome="alojamiento"/>
   <links id="pf17287207831753" target="pf172872078317510" source="pf17287207831751" outcome="vuelo"/>
   <links id="pf17287207831754" target="pf172872078317514" source="pf17287207831751" outcome="vuelo-y-hotel"/>
@@ -20,5 +21,5 @@
   <links id="pf172872078317515" target="pf172872078317518" source="pf172872078317514" outcome="alojamientos"/>
   <links id="pf172872078317516" target="pf172872078317519" source="pf172872078317514" outcome="vuelos"/>
   <links id="pf172872078317517" target="pf172872078317520" source="pf172872078317514" outcome="vuelo-y-hotel"/>
-  <links id="pf17287207831759" target="pf17287207831755" source="pf172872078317521" outcome="index"/>
+  <links id="pf172880884396637" target="pf172880884396638" source="pf172872078317521" outcome="index"/>
 </pageflow:Pageflow>

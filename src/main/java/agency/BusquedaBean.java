@@ -20,7 +20,7 @@ public class BusquedaBean {
 //        return "/index";
     }
 
-    public String busqueda() {
+    public String destino() {
     	if (destino.isBlank()) return "No se ha seleccionado un destino";
     	if (fechaEntrada.isBlank()) return "No se ha seleccionado una fecha de entrada";
     	if (fechaSalida.isBlank()) return "No se ha seleccionado una fecha de salida";    	
@@ -71,6 +71,10 @@ public class BusquedaBean {
 
     public void setNumeroHabitaciones(int numeroHabitaciones) {
         this.numeroHabitaciones = numeroHabitaciones;
+    }
+    
+    public String resultado() {
+    	return "Probando managed beans";
     }
     
 

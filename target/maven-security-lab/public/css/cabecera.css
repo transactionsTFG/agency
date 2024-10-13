@@ -1,0 +1,29 @@
+:root {
+    --bg-ucm: rgb(162, 17, 17);
+    --bg-ucm-light: rgb(200, 50, 50);
+}
+
+#cabecera {
+    background-color: var(--bg-ucm);
+}
+
+#cabecera h1 {
+    color: white;
+    margin: auto 1rem auto auto;
+}
+
+#cabecera ul {
+    margin: auto auto 0 auto;
+    color: white;
+    font-size: 1.3rem;
+}
+
+#cabecera ul li {
+    margin: 0 1rem 0 0;
+}
+
+#cabecera ul li:hover {
+    cursor: pointer;
+    scale: 1.2;
+    transition: 0.5s;
+}
