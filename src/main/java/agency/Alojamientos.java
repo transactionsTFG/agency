@@ -1,5 +1,8 @@
 package agency;
 
+import java.util.ArrayList;
+
+import antlr.collections.List;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
@@ -9,25 +12,37 @@ public class Alojamientos {
 	
 	private String destino, fechaEntrada, fechaSalida, resultado;
 	private int numAdultos, numHabitaciones;
+	private ArrayList<TAlojamiento> listaResultados = new ArrayList<TAlojamiento>();
 	
 	public void buscar() {
-		this.resultado = "Destino 1: Albacete\n" +
-						  "Fecha de entrada: 01/01/2025\n" +
-						  "Fecha de salida: 01/02/2025\n" +
-						  "Numero de adultos: 1\n" +
-						  "Numero de habitaciones: 1\n" +
-						  "Destino 2: Peñafría\n" +
-				 		  "Fecha de entrada: 01/01/2025\n" +
-				 		  "Fecha de salida: 01/02/2025\n" +
-				 		  "Numero de adultos: 1\n" +
-				 		  "Numero de habitaciones: 1\n" +
-				 		  "Destino 3: Zamora\n" +
-						  "Fecha de entrada: 01/01/2025\n" +
-						  "Fecha de salida: 01/02/2025\n" +
-						  "Numero de adultos: 1\n" +
-						  "Numero de habitaciones: 1\n";
+		this.listaResultados.add(new TAlojamiento("Albacete", "01/01/2025", "01/02/2025", 1, 1));
+		this.listaResultados.add(new TAlojamiento("Peñafría", "01/01/2025", "01/02/2025", 1, 1));
+		this.listaResultados.add(new TAlojamiento("Zamora", "01/01/2025", "01/02/2025", 1, 1));
+//		this.resultado = "Destino 1: Albacete\n" +
+//						  "Fecha de entrada: 01/01/2025\n" +
+//						  "Fecha de salida: 01/02/2025\n" +
+//						  "Numero de adultos: 1\n" +
+//						  "Numero de habitaciones: 1\n" +
+//						  "Destino 2: Peñafría\n" +
+//				 		  "Fecha de entrada: 01/01/2025\n" +
+//				 		  "Fecha de salida: 01/02/2025\n" +
+//				 		  "Numero de adultos: 1\n" +
+//				 		  "Numero de habitaciones: 1\n" +
+//				 		  "Destino 3: Zamora\n" +
+//						  "Fecha de entrada: 01/01/2025\n" +
+//						  "Fecha de salida: 01/02/2025\n" +
+//						  "Numero de adultos: 1\n" +
+//						  "Numero de habitaciones: 1\n";
 	}
 	
+	public ArrayList<TAlojamiento> getListaResultados() {
+		return listaResultados;
+	}
+
+	public void setListaResultados(ArrayList<TAlojamiento> listaResultados) {
+		this.listaResultados = listaResultados;
+	}
+
 	public String getDestino() {
 		return destino;
 	}
