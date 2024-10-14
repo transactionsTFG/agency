@@ -1,5 +1,7 @@
 package agency;
 
+import java.util.ArrayList;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
