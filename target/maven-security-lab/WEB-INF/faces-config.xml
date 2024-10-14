@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding='UTF-8'?>
+  <faces-config
+      xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+      version="2.2">
+  	<managed-bean>
+  		<managed-bean-name>busquedaBean</managed-bean-name>
+  		<managed-bean-class>agency.BusquedaBean</managed-bean-class>
+  		<managed-bean-scope>application</managed-bean-scope>
+  		<managed-property>
+  			<property-name>busqueda</property-name>
+  			<property-class>java.lang.String</property-class>
+  			<value>Albacete</value>
+  		</managed-property>
+  		<managed-property>
+  			<property-name>fechaEntrada</property-name>
+  			<property-class>java.lang.String</property-class>
+  			<value>01/01/2025</value>
+  		</managed-property>
+  		<managed-property>
+  			<property-name>fechaSalida</property-name>
+  			<property-class>java.lang.String</property-class>
+  			<value>01/02/2025</value>
+  		</managed-property>
+  		<managed-property>
+  			<property-name>numeroAdultos</property-name>
+  			<property-class>int</property-class>
+  			<value>1</value>
+  		</managed-property>
+  		<managed-property>
+  			<property-name>numeroHabitaciones</property-name>
+  			<property-class>int</property-class>
+  			<value>1</value>
+  		</managed-property>
+  	</managed-bean>
+  	<managed-bean>
+  		<managed-bean-name>prueba</managed-bean-name>
+  		<managed-bean-class>agency.Prueba</managed-bean-class>
+  		<managed-bean-scope>request</managed-bean-scope>
+  		<managed-property>
+  			<property-name>name</property-name>
+  			<property-class>java.lang.String</property-class>
+  			<value>Prueba managed beans</value>
+  		</managed-property>
+  	</managed-bean>
+ 
+ <!-- Rules pages error -->
+ <navigation-rule>
+	<from-view-id>/error.xhtml</from-view-id>
+	<navigation-case>
+		<from-outcome>index</from-outcome>
+		<to-view-id>/public/alojamientos.xhtml</to-view-id>
+	</navigation-case>
+ </navigation-rule>
+
+ <navigation-rule>
+ 	<from-view-id>/index.xhtml</from-view-id>
+ 	<navigation-case>
+ 		<from-outcome>alojamiento</from-outcome>
+ 		<to-view-id>public/alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelo</from-outcome>
+ 		<to-view-id>public/vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>public/vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+ 	<from-view-id>public/alojamientos.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+
+ <navigation-rule>
+ 	<from-view-id>public/vuelos.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+ 
+ <navigation-rule>
+ 	<from-view-id>public/vuelo-y-hotel.xhtml</from-view-id>
+  	<navigation-case>
+ 		<from-outcome>alojamientos</from-outcome>
+ 		<to-view-id>alojamientos.xhtml</to-view-id>
+ 	</navigation-case>
+ 	<navigation-case>
+ 		<from-outcome>vuelos</from-outcome>
+ 		<to-view-id>vuelos.xhtml</to-view-id>
+ 	</navigation-case>
+  	<navigation-case>
+ 		<from-outcome>vuelo-y-hotel</from-outcome>
+ 		<to-view-id>vuelo-y-hotel.xhtml</to-view-id>
+ 	</navigation-case>
+ </navigation-rule>
+
+</faces-config>
