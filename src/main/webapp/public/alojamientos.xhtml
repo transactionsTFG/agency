@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html 	lang="es" xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:f="jakarta.faces.core"
+		xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 		xmlns:h="jakarta.faces.html"
 		xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
 		xmlns:ui="http://java.sun.com/jsf/facelets">
@@ -17,7 +18,7 @@
 	</head>
 	<body>
 		<ui:insert name="header">
-			<ui:include src="/template/header.xhtml" />
+			<ui:include src="/templates/header.xhtml" />
 		</ui:insert>
 	    
 	    <h:form id="busqueda" class="d-flex justify-content-center">
@@ -43,10 +44,13 @@
 	        </div>
 	    
 	        <h:commandButton value="Buscar" action="#{alojamientos.buscar}" class="btn btn-primary border border-warning border-3">
-	        	<f:ajax execute="@form" render=":resultado"/>
+	        	<f:ajax execute="@form" render=":listaResultados"/>
 	        </h:commandButton>
 	    </h:form>
-	    <h:outputText id="resultado" value="#{alojamientos.resultado}" />
+	    <c:forEach items="${alojamientos.listaResultados}" var="resultado">
+	    	<h:outputText value="${resultado.toString()}" />
+	    </c:forEach>
+	    <h:outputText id="listaResultados" value="#{alojamientos.listaResultados.toString()}" />
 	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	</body>
 </html>
