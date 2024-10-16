@@ -15,6 +15,7 @@
 	    <link rel="stylesheet" href="css/alojamientos.css"/>
 	    <link rel="stylesheet" href="css/cabecera.css"/>
 	    <link rel="stylesheet" href="css/busqueda.css"/>
+	    <link rel="stylesheet" href="css/checkout.css"/>
 
 	</head>
 	<body>
@@ -23,100 +24,111 @@
 			<ui:include src="../templates/header.xhtml" />
 		</ui:insert>
 		
-		<h:form>
-			<div id="datos">
-				<h1>Introduce tus datos</h1>
-				<h:outputLabel for="nombre" value="Nombre *" />
-				<h:inputText id="nombre" p:placeholder="Introduce tu nombre" />
-				
-				<h:outputLabel for="apellido" value="Apellido *" />
-				<h:inputText id="apellido" p:placeholder="Introduce tu apellido" />
-				
-				<h:outputLabel for="email" value="E-mail *" />
-				<h:inputText id="email" p:placeholder="Introduce tu e-mail" accept="e-mail" />
-			</div>
+		<h:form class="container">
+			<fieldset><legend>Introduce tus datos</legend>
+				<div id="datos">
+					<div class="form-group">
+						<h:outputLabel for="nombre" value="Nombre *" />
+						<h:inputText id="nombre" p:placeholder="Introduce tu nombre" />
+					
+						<h:outputLabel for="apellido" value="Apellido *" />
+						<h:inputText id="apellido" p:placeholder="Introduce tu apellido" />
+						
+						<h:outputLabel for="email" value="E-mail *" />
+						<h:inputText id="email" p:placeholder="Introduce tu e-mail" accept="e-mail" />
+					</div>
+				</div>
+			</fieldset>
 			
-			<div id="direccion">
-				<h3>Tu dirección</h3>
-				<h:outputLabel for="direccion" value="Dirección *" />
-				<h:inputText id="direccion" p:placeholder="Introduce tu dirección" />
+			<fieldset><legend>Tu dirección</legend>
+				<div id="direccion">
+					<h:outputLabel for="direccion" value="Dirección *" />
+					<h:inputText id="direccion" p:placeholder="Introduce tu dirección" />
+	
+					<h:outputLabel for="ciudad" value="Ciudad *" />
+					<h:inputText id="ciudad" p:placeholder="Introduce tu ciudad" />
+	
+					<h:outputLabel for="codigo-postal" value="Codigo postal (opcional)" />
+					<h:inputText id="codigo-postal" />
+	
+					dropdown
+					<h:outputLabel for="pais-region" value="País/región *" />
+					
+					prefijo(dropdown) + inputtext
+					<h:outputLabel for="num-tlf" value="Número de teléfono *" />
+					<h:inputText id="num-tlf" p:placeholder="Introduce tu número de teléfono" />
+					
+					input type="checkbox" -> quiero recibir información digital gratis(recomendado)
+												te enviaremos un SMS para descargar la app
+					
+				</div>
+				<div id="info-reserva">
+					Para quién es la reserva(opcional)
+					input type="radio"
+					
+					viajas por trabajo(opcional)
+					input type="radio"
+				</div>
+			</fieldset>
+			
+			
+			<fieldset><legend>Información útil</legend>
+				<div id="info-util">
+					tendras la casa entera para ti/o la compartirás con más gente
+				</div>
+			</fieldset>
+			
+			<fieldset><legend>Casa de x dormitorios</legend>
+				<div id="info-alojamiento">
+					<p>¿Reembolsable?</p>
+					<p>Personas ocupantes</p>
+					lista de características de la casa
+					
+					nombre completo del cliente(opcional)
+					<h:outputLabel for="nombre-completo" value="Nombre completo del cliente" />
+					<h:inputText id="nombre-completo" p:placeholder="Nombre, Apellido" />
+					
+					preferencia de planta
+					dropdown
+				</div>
+			</fieldset>
+			
+			<fieldset><legend>Opciones para añadir a tu reserva</legend>
+				<div id="reservas-extra">
+					alquiler de coche
+					input type="checkbox"
+	
+					reserva taxi/servicio de traslado con antelacion
+					input type="checkbox"
+				</div>
+			</fieldset>
 
-				<h:outputLabel for="ciudad" value="Ciudad *" />
-				<h:inputText id="ciudad" p:placeholder="Introduce tu ciudad" />
+			<fieldset><legend>Peticiones especiales</legend>
+				<div id="peticiones-especiales">
+					textarea
+				</div>
+			</fieldset>			
 
-				<h:outputLabel for="codigo-postal" value="Codigo postal (opcional)" />
-				<h:inputText id="codigo-postal" />
-
-				dropdown
-				<h:outputLabel for="pais-region" value="País/región *" />
-				
-				prefijo(dropdown) + inputtext
-				<h:outputLabel for="num-tlf" value="Número de teléfono *" />
-				<h:inputText id="num-tlf" p:placeholder="Introduce tu número de teléfono" />
-				
-				input type="checkbox" -> quiero recibir información digital gratis(recomendado)
-											te enviaremos un SMS para descargar la app
-				
-			</div>
+			<fieldset><legend>Tu hora de llegada</legend>
+				<div id="hora-llegada">
+					<p>se puede hacer check-in entre las YY y las ZZ</p>
+					indicar hora
+					DROPDOWN con las horas
+				</div>
+			</fieldset>			
 			
-			<div id="info-reserva">
-				Para quién es la reserva(opcional)
-				input type="radio"
-				
-				viajas por trabajo(opcional)
-				input type="radio"
-			</div>
+			<fieldset><legend>Cunas y camas supletorias</legend>
+				<div id="cunas-campas-supletorias">
+				</div>
+			</fieldset>
 			
-			<div id="info-util">
-				<h1>Información útil</h1>
-				tendras la casa entera para ti/o la compartirás con más gente
-			</div>
+			<fieldset><legend>Revisa las normas de la casa</legend>
+				<div id="normas de la casa">
+					lista de normas
+				</div>
+			</fieldset>
 			
-			<div id="info-alojamiento">
-				<h1>Casa de x dormitorios</h1>
-				<p>¿Reembolsable?</p>
-				<p>Personas ocupantes</p>
-				lista de características de la casa
-				
-				nombre completo del cliente(opcional)
-				<h:outputLabel for="nombre-completo" value="Nombre completo del cliente" />
-				<h:inputText id="nombre-completo" p:placeholder="Nombre, Apellido" />
-				
-				preferencia de planta
-				dropdown
-			</div>
-			
-			<div id="reservas-extra">
-				<h1>Opciones para añadir a tu reserva</h1>
-				alquiler de coche
-				input type="checkbox"
-
-				reserva taxi/servicio de traslado con antelacion
-				input type="checkbox"
-			</div>
-			
-			<div id="peticiones-especiales">
-				<h1>Peticiones especiales</h1>
-				textarea
-			</div>
-			
-			<div id="hora-llegada">
-				<h1>Tu hora de llegada</h1>
-				<p>se puede hacer check-in entre las YY y las ZZ</p>
-				indicar hora
-				DROPDOWN con las horas
-			</div>
-			
-			<div id="cunas-campas-supletorias">
-				<h1>Cunas y camas supletorias</h1>
-			</div>
-			
-			<div id="normas de la casa">
-				<h1>Revisar normas de la casa</h1>
-				lista de normas
-			</div>
-			
-			<h:commandButton>Siguiente: últimos datos</h:commandButton>
+			<h:commandButton value="Siguiente: últimos datos"></h:commandButton>
 			
 		</h:form>
 	</body>
