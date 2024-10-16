@@ -11,9 +11,10 @@ public class Alojamientos {
 	
 	private String destino, fechaEntrada, fechaSalida, resultado;
 	private int numAdultos, numHabitaciones;
-	private ArrayList<TAlojamiento> listaResultados = new ArrayList<TAlojamiento>();
+	private ArrayList<TAlojamiento> listaResultados;
 	
 	public void buscar() {
+		this.listaResultados = new ArrayList<TAlojamiento>();
 		this.listaResultados.add(new TAlojamiento("Albacete", "01/01/2025", "01/02/2025", 1, 1));
 		this.listaResultados.add(new TAlojamiento("Peñafría", "01/01/2025", "01/02/2025", 1, 1));
 		this.listaResultados.add(new TAlojamiento("Zamora", "01/01/2025", "01/02/2025", 1, 1));
