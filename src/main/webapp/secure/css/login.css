@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.form-group {
+    margin: 1% auto;
+}
+
+input[type="email"], input[type="password"] {
+    width: auto;
+}
+
+.button {
+    margin: 1%;
+}
+
+.button:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
