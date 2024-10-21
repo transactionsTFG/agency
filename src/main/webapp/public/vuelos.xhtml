@@ -29,11 +29,11 @@
         </h2>
         <p>Descubre tu proximo destino de ensueno</p>
         <ul class="list-inline">
-            <li class="list-inline-item"><input type="radio" id="ida-y-vuelta" name="info-vuelo" checked="true"/><label for="ida-y-vuelta">Ida y vuelta</label></li>
-            <li class="list-inline-item"><input type="radio" id="solo-ida" name="info-vuelo"/><label for="solo-ida">Solo ida</label></li>
+            <li class="list-inline-item"><input type="radio" id="ida-y-vuelta" name="info-vuelo" checked="true" onclick="opcionIdaYVuelta()"/><label for="ida-y-vuelta">Ida y vuelta</label></li>
+            <li class="list-inline-item"><input type="radio" id="solo-ida" name="info-vuelo" onclick="opcionSoloIda()"/><label for="solo-ida">Solo ida</label></li>
             <li class="list-inline-item"><input type="radio" id="multiples-destinos" name="info-vuelo"/><label for="multiples-destinos">Multiples destinos</label></li>
             <li class="list-inline-item">
-                <select name="clase-vuelo" id="clase-vuelo">
+                <select class="bg-white border border-0" name="clase-vuelo" id="clase-vuelo">
                     <option value="turista">Turista</option>
                     <option value="primera">Primera</option>
                 </select>
@@ -47,29 +47,45 @@
     <h:form id="busqueda" class="d-flex justify-content-center">
         <div id="origen" class="border border-warning border-3 d-flex justify-content-center align-items-center">
             <h:outputLabel for="origen-input" value="Origen"/>
+            <!--  
             <h:inputText id="origen-input" p:placeholder="¿De dónde?" class="border border-0"/>
+            -->
+            <input type="text" id="origen-input" placeholder="¿De dónde?" class="border border-0" />
         </div>
         
-        <button data-bs-toggle="tooltip" title="Intercambiar origen y destino"><i class="fa fa-refresh"></i></button>
+        <button type="button" data-bs-toggle="tooltip" title="Intercambiar origen y destino" onclick="intercambiarOrigenDestino()"><i class="fa fa-refresh"></i></button>
         
         <div id="destino" class="border border-warning border-3 border-end-0 d-flex justify-content-center align-items-center">
             <h:outputLabel for="destino-input" value="Destino"/>
+            <input type="text" id="destino-input" placeholder="¿A dónde?" class="border border-0" />
+            <!--  
             <h:inputText id="destino-input" p:placeholder="¿A dónde?" class="border border-0"/>
+            -->
         </div>
         
         <div id="fecha-entrada-salida" class="border border-warning border-3 border-end-0 d-flex justify-content-center align-items-center">
             <h:outputLabel for="fecha-entrada" value="Fecha de entrada"/>
+            <input type="date" id="fecha-entrada" />
+            <!--  
             <h:inputText id="fecha-entrada" type="date" />
+            -->
             
-            <h:outputLabel for="fecha-salida" value="Fecha de salida"/>
+            <label for="fecha-salida" id="label-fecha-salida">Fecha de salida</label>
+            <input type="date" id="fecha-salida" />
+            <!--  
+            <h:outputLabel for="fecha-salida" id="label-fecha-salida" value="Fecha de salida"/>
             <h:inputText id="fecha-salida" type="date" />
+            -->
         </div>
         <div id="ocupantes" class="dropdown border border-warning border-3 border-end-0">
 	            <h:outputLabel for="num-adultos" value="Adultos"/>
+	            <input type="number" min="1" id="num-adultos" value="1" accept="number" />
+	            <!--  
 	            <h:inputText id="num-adultos" accept="number" type="number" />
+	            -->
         </div>
        
-        <h:commandButton value="Buscar" action="#{vuelos.buscar}" class="btn btn-primary border border-warning border-3">
+        <h:commandButton value="Buscar" onclick="checkInput()" action="#{vuelos.buscar}" class="btn btn-primary border border-warning border-3">
         	<f:ajax execute="@form" render=":listaResultados"/>
         </h:commandButton>
     </h:form>
@@ -77,5 +93,6 @@
 
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/vuelos.js"></script>
   </body>
 </html>
