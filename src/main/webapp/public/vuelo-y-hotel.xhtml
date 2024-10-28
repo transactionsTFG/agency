@@ -75,31 +75,16 @@
 				<h:inputText id="num-habitaciones" accept="number" type="number" value="1" />
 				-->
 				<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" type="button">x viajeros, y habitaciones, Cualquier clase</button>
+				<button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" type="button">1 viajero, 1 habitación, Cualquier clase</button>
 				  <ul id="dropdown-habitaciones" class="dropdown-menu">
 				  <li>
-				    <div><button id="anyadir-habitacion" onclick="anyadirHabitacion()" type="button">Añadir habitación</button></div>
-				    <div><button id="eliminar-habitacion" onclick="eliminarHabitacion()" type="button">Eliminar habitación</button></div>
+				    <div><button class="btn btn-success" id="anyadir-habitacion" type="button">Añadir habitación</button></div>
+				    <div><button class="btn btn-danger" id="eliminar-habitacion" type="button">Eliminar habitación</button></div>
 				  </li>
 				    <li>
 			    	<div class="card" style="width: 18rem;">
 					  <div class="card-body">
-					    <h5 class="card-title">Habitación Z</h5>
-					    <div id="info-ocupantes">
-					    	<div>Adultos</div>
-					    	<div>
-					    		<button type="button">-</button>
-					    		<span>1</span>
-					    		<button type="button">+</button>
-					    	</div>
-					    </div>
-					  </div>
-					</div>
-				    </li>
-				    <li>
-			    	<div class="card" style="width: 18rem;">
-					  <div class="card-body">
-					    <h5 class="card-title">Habitación Z</h5>
+					    <h5 class="card-title">Habitación 1</h5>
 					    <div id="info-ocupantes">
 					    	<div>Adultos</div>
 					    	<div>
@@ -121,7 +106,7 @@
 	    </h:form>
 	    <h:outputText id="listaResultados" value="#{vuelosHoteles.listaResultados}" />
     	
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     	<script src="js/vuelo-y-hotel.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	</body>
 </html>
