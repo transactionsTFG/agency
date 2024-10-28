@@ -8,7 +8,7 @@ var listaDropdownHabitaciones = document.getElementById("dropdown-habitaciones")
 
 
 function anyadirHabitacion() {
-	alert("Boton añadir habitación pulsado");
+	/*alert(`Hay ${listaDropdownHabitaciones.children.length} habitaciones`);*/
 	if (listaDropdownHabitaciones.children.length < 7) {
 		listaDropdownHabitaciones.appendChild(
 			"<li>" + 
@@ -26,18 +26,10 @@ function anyadirHabitacion() {
     			  "</div>" +
 				"</div>" +
 		    "</li>");
-		botonEliminarHabitacion.setAttribute("disabled", "false");
 	} else {
-		botonAnyadirHabitacion.setAttribute("disabled", "true");
 		
 	}
 }
 
 function eliminarHabitacion() {
-	if (listaDropdownHabitaciones.children.length > 2) {
-		
-		botonAnyadirHabitacion.setAttribute("disabled", "false");
-	} else {
-		botonEliminarHabitacion.setAttribute("disabled", "true");
-	}
 }
