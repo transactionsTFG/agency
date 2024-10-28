@@ -1,5 +1,5 @@
 const maxHabitaciones = 6;
-const minHabitaciones = 2;
+const minHabitaciones = 3;
 const maxPasajerosPorHabitacion = 2;
 const minPasajerosPorHabitacion = 1;
 
@@ -11,16 +11,22 @@ var botonAnyadirHabitacion = document.getElementById("anyadir-habitacion");
 var botonEliminarHabitacion = document.getElementById("eliminar-habitacion");
 var listaDropdownHabitaciones = document.getElementById("dropdown-habitaciones");
 var botonInfoPasajerosHabitaciones = document.getElementById("btn-info-pasajeros-habitaciones");
+var inputTurista = document.getElementById("turista");
+var inputPrimera = document.getElementById("primera");
 
 var contadorPasajeros = 1;
 var contadorHabitaciones = 1;
-var clase = "Primera";
+var clase = "Turista";
+
+function actualizarClase() {
+	botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajeros, ${contadorHabitaciones} habitaciones, ${clase}`;
+}
 
 function anyadirHabitacion() {
 	if (listaDropdownHabitaciones.children.length <= maxHabitaciones) {
 		++contadorHabitaciones;
 		++contadorPasajeros;
-		botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajeros, ${contadorHabitaciones} habitaciones, ${clase}`;
+		actualizarClase();
 		var li = document.createElement("li");
 		li.innerHTML = `
 				<div class='card' style='width: 18rem;'> 
@@ -36,19 +42,23 @@ function anyadirHabitacion() {
 				    </div> 
 				  </div> 
 				</div>`;
-			listaDropdownHabitaciones.appendChild(li);
+		listaDropdownHabitaciones.appendChild(li);
 	}
 	
 }
 
 function eliminarHabitacion() {
-	if (listaDropdownHabitaciones.children.length > minHabitaciones + 1) {
+	if (listaDropdownHabitaciones.children.length > minHabitaciones) {
 		--contadorHabitaciones;
 		--contadorPasajeros;
 		botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajeros, ${contadorHabitaciones} habitaciones, ${clase}`;
 		listaDropdownHabitaciones.removeChild(listaDropdownHabitaciones.lastElementChild);
 	}
+	if (listaDropdownHabitaciones.children.length == minHabitaciones) {
+		botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajero, ${contadorHabitaciones} habitación, ${clase}`;
+	}
 }
+
 
 function primera() {
 	clase = "Primera";
@@ -59,9 +69,8 @@ function turista() {
 	actualizarClase();
 }
 
-function actualizarClase() {
-	botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajeros, ${contadorHabitaciones} habitaciones, ${clase}`;
-}
 
 botonAnyadirHabitacion.addEventListener("click", anyadirHabitacion);
 botonEliminarHabitacion.addEventListener("click", eliminarHabitacion);
+inputPrimera.addEventListener("click", primera);
+inputTurista.addEventListener("click", turista);
