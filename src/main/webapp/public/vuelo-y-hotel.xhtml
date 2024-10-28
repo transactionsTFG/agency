@@ -75,8 +75,15 @@
 				<h:inputText id="num-habitaciones" accept="number" type="number" value="1" />
 				-->
 				<div class="dropdown">
-				<button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" type="button">1 viajero, 1 habitación, Cualquier clase</button>
+				<button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" type="button">1 viajero, 1 habitación, Turista</button>
+				  <div>
 				  <ul id="dropdown-habitaciones" class="dropdown-menu">
+				  <li>
+				  	<ul class="list-inline">
+						<li class="list-inline-item"><input type="radio" id="turista" name="info-vuelo" checked="true" onclick="turista()"/><label for="turista">Turista</label></li>
+						<li class="list-inline-item"><input type="radio" id="primera" name="info-vuelo" onclick="primera()"/><label for="primera">Primera</label></li>
+				  	</ul>
+				  </li>
 				  <li>
 				    <div><button class="btn btn-success" id="anyadir-habitacion" type="button">Añadir habitación</button></div>
 				    <div><button class="btn btn-danger" id="eliminar-habitacion" type="button">Eliminar habitación</button></div>
@@ -97,6 +104,12 @@
 					</div>
 				    </li>
 				  </ul>
+<!-- 				  <div id="clase-vuelo">
+				  	<ul class="list-inline">
+				  	<li class="list-inline-item"><button></button></li>
+				  	</ul>
+				  </div> -->
+				  </div>
 				</div>
 	        </div>
 	    
