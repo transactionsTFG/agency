@@ -61,8 +61,8 @@
 	        <h:commandButton value="Buscar" action="#{alojamientos.buscar}" 
 	        				 class="btn btn-primary border border-warning border-3"
 	        				 onclick="checkInput()">
-	        	<f:ajax execute="@form" render=":listaResultados"/>
-	        </h:commandButton>
+        		<f:ajax execute="@form" render=":listaResultados"/>
+        	</h:commandButton>
 	    </h:form>
 	    <c:forEach items="${alojamientos.listaResultados}" var="resultado">
 	    	<h:outputText value="${resultado.toString()}" />

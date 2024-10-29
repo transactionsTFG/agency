@@ -75,49 +75,48 @@
 				<h:inputText id="num-habitaciones" accept="number" type="number" value="1" />
 				-->
 				<div class="dropdown">
-				<button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle" data-display="static" data-bs-toggle="dropdown" type="button">1 pasajero, 1 habitación, Turista</button>
-				  <div>
-				  <ul id="dropdown-habitaciones" class="dropdown-menu">
-				  <li>
-				  	<ul class="list-inline"> 
-						<li class="list-inline-item"><input type="radio" id="turista" name="info-vuelo" checked="true"/><label for="turista">Turista</label></li>
-						<li class="list-inline-item"><input type="radio" id="primera" name="info-vuelo"/><label for="primera">Primera</label></li>
-				  	</ul>
-				  </li>
-				  <li>
-				    <div><button class="btn btn-success" id="anyadir-habitacion" type="button">Añadir habitación</button></div>
-				    <div><button class="btn btn-danger" id="eliminar-habitacion" type="button">Eliminar habitación</button></div>
-				  </li>
-				    <li>
-			    	<div class="card" style="width: 18rem;">
-					  <div class="card-body">
-					    <h5 class="card-title">Habitación 1</h5>
-					    <div id="info-ocupantes">
-					    	<div>Adultos</div>
-					    	<div>
-					    		<button type="button">-</button>
-					    		<span>1</span>
-					    		<button type="button">+</button>
-					    	</div>
-					    </div>
-					  </div>
+					<button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle" data-display="static" data-bs-toggle="dropdown" type="button">1 pasajero, 1 habitación, Turista</button>
+				  	<div>
+				  		<ul id="dropdown-habitaciones" class="dropdown-menu">
+				  			<li>
+							  	<ul class="list-inline"> 
+									<li class="list-inline-item"><input type="radio" id="turista" name="info-vuelo" checked="true"/><label for="turista">Turista</label></li>
+									<li class="list-inline-item"><input type="radio" id="primera" name="info-vuelo"/><label for="primera">Primera</label></li>
+							  	</ul>
+				  			</li>
+				  			<li>
+							    <div><button class="btn btn-success" id="anyadir-habitacion" type="button">Añadir habitación</button></div>
+							    <div><button class="btn btn-danger" id="eliminar-habitacion" type="button">Eliminar habitación</button></div>
+							</li>
+						    <li>
+						    	<div class="card" style="width: 18rem;">
+									<div class="card-body">
+										<h5 class="card-title">Habitación 1</h5>
+										<div id="info-ocupantes">
+									    	<div>Adultos</div>
+									    	<div>
+									    		<button type="button">-</button>
+									    		<span>1</span>
+									    		<button type="button">+</button>
+									    	</div>
+									    </div>
+									</div>
+								</div>
+							</li>
+						</ul>
 					</div>
-				    </li>
-				  </ul>
-<!-- 				  <div id="clase-vuelo">
-				  	<ul class="list-inline">
-				  	<li class="list-inline-item"><button></button></li>
-				  	</ul>
-				  </div> -->
-				  </div>
 				</div>
-	        </div>
+			</div>
 	    
 	        <h:commandButton value="Buscar" action="#{vuelosHoteles.buscar}" class="btn btn-primary border border-warning border-3">
 	        	<f:ajax execute="@form" render=":listaResultados"/>
 	        </h:commandButton>
 	    </h:form>
 	    <h:outputText id="listaResultados" value="#{vuelosHoteles.listaResultados}" />
+	    
+     	<ui:insert name="footer">
+			<ui:include src="/templates/footer.xhtml" />
+		</ui:insert>
     	
     	<script src="js/vuelo-y-hotel.js"></script>
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
