@@ -19,7 +19,16 @@ var contadorHabitaciones = 1;
 var clase = "Turista";
 
 function actualizarClase() {
-	botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} pasajeros, ${contadorHabitaciones} habitaciones, ${clase}`;
+	var hab, pas;
+	if (contadorHabitaciones == 1) 
+		hab = "habitación";
+	else 
+		hab = "habitaciones";
+	if (contadorPasajeros == 1)
+		pas = "pasajero";
+	else 
+		pas = "pasajeros";
+	botonInfoPasajerosHabitaciones.innerHTML = `${contadorPasajeros} ${pas}, ${contadorHabitaciones} ${hab}, ${clase}`;
 }
 
 function anyadirHabitacion() {
