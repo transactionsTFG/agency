@@ -2,6 +2,20 @@ const maxHabitaciones = 6;
 const minHabitaciones = 3;
 const maxPasajerosPorHabitacion = 2;
 const minPasajerosPorHabitacion = 1;
+const card = `
+<div class='card' style='width: 18rem;'> 
+	<div class='card-body'> 
+		<h5 class='card-title'>Habitación ${contadorHabitaciones}</h5> 
+		<div id='info-ocupantes'> 
+			<div>Adultos</div> 
+			<div class="input">
+				<button class="minus" aria-label="Decrease by one" disabled>-</button>
+				<div class="number dim">0</div>
+				<button class="plus" aria-label="Increase by one">+</button>
+			</div>
+		</div> 
+	</div>
+</div>`;
 
 var origenInput = document.getElementById("origen-input");
 var destinoInput = document.getElementById("destino-input");
@@ -13,10 +27,47 @@ var listaDropdownHabitaciones = document.getElementById("dropdown-habitaciones")
 var botonInfoPasajerosHabitaciones = document.getElementById("btn-info-pasajeros-habitaciones");
 var inputTurista = document.getElementById("turista");
 var inputPrimera = document.getElementById("primera");
+var botones = document.querySelectorAll("button");
 
 var contadorPasajeros = 1;
 var contadorHabitaciones = 1;
 var clase = "Turista";
+
+botones.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    // 1. Get the clicked element
+    const element = event.currentTarget;
+    // 2. Get the parent
+    const parent = element.parentNode;
+    // 3. Get the number (within the parent)
+    const numberContainer = parent.querySelector(".number");
+    const number = parseFloat(numberContainer.textContent);
+    // 4. Get the minus and plus buttons
+    const increment = parent.querySelector(".plus");
+    const decrement = parent.querySelector(".minus");
+    // 5. Change the number based on click (either plus or minus)
+    const newNumber = element.classList.contains("plus")
+      ? number + 1
+      : number - 1;
+    numberContainer.textContent = newNumber;
+    console.log(newNumber);
+    // 6. Disable and enable buttons based on number value (and undim number)
+    if (newNumber === minValue) {
+      decrement.disabled = true;
+      numberContainer.classList.add("dim");
+      // Make sure the button won't get stuck in active state (Safari)
+      element.blur();
+    } else if (newNumber > minValue && newNumber < maxValue) {
+      decrement.disabled = false;
+      increment.disabled = false;
+      numberContainer.classList.remove("dim");
+    } else if (newNumber === maxValue) {
+      increment.disabled = true;
+      numberContainer.textContent = `${newNumber}+`;
+      element.blur();
+    }
+  });
+});
 
 function actualizarClase() {
 	var hab, pas;
@@ -37,20 +88,7 @@ function anyadirHabitacion() {
 		++contadorPasajeros;
 		actualizarClase();
 		var li = document.createElement("li");
-		li.innerHTML = `
-				<div class='card' style='width: 18rem;'> 
-				  <div class='card-body'> 
-				    <h5 class='card-title'>Habitación ${contadorHabitaciones}</h5> 
-				    <div id='info-ocupantes'> 
-			    		<div>Adultos</div> 
-			        	<div> 
-				    		<button type='button'>-</button> 
-				    		<span>1</span> 
-				    		<button type='button'>+</button> 
-				    	</div> 
-				    </div> 
-				  </div> 
-				</div>`;
+		li.innerHTML = card;
 		listaDropdownHabitaciones.appendChild(li);
 	}
 	
@@ -77,6 +115,9 @@ function turista() {
 	clase = "Turista";
 	actualizarClase();
 }
+
+
+
 
 
 botonAnyadirHabitacion.addEventListener("click", anyadirHabitacion);
