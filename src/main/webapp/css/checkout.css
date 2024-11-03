@@ -13,3 +13,20 @@ legend {
     text-align: center;
     margin: 0 auto;
 }
+
+label {
+    margin-left: 1%;
+}
+
+input[type="text"], input[type="email"], .form-select, #prefijo {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.obligatorio {
+    color: red;
+}
+
+.opcional {
+    color: gray;
+}
