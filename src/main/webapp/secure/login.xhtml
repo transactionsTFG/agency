@@ -24,16 +24,16 @@
 	    <div class="container">
 	        <h2 class="fw-bold d-flex justify-content-center">Inicio de sesión</h2>
 	        <form method="post" action="j_security_check">
-	            <table class="d-flex justify-content-center" role="presentation">
+	            <table class="justify-content-center ms-auto me-auto" role="presentation">
 	                <tr>
 	                    <td>Introduce tu email: </td>
-	                    <td><input type="text" name="j_username"
-	                               size="20"/></td>
+	                    <td><input class="ms-2" type="text" name="j_username"
+	                               size="20" required="true" /></td>
 	                </tr>
 	                <tr>
 	                    <td>Introduce tu contraseña: </td>
-	                    <td><input type="password" name="j_password"
-	                               size="20"/></td>
+	                    <td><input class="ms-2" type="password" name="j_password"
+	                               size="20" required="true" /></td>
 	                </tr>
 	            </table>
 	            <div class="d-flex justify-content-center">
