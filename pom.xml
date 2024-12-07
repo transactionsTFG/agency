@@ -16,8 +16,24 @@
 	</properties>
 
 	<dependencies>
+		 <dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>4.0.3</version>
+    	</dependency>
 
-
+		 <dependency>
+            <groupId>org.glassfish.metro</groupId>
+            <artifactId>webservices-rt</artifactId>
+            <version>4.0.4</version>
+        </dependency>
+		
+		 <dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<type>jar</type>
+   	 	</dependency>
 		<!-- Hibernate Core Proveedor -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -39,12 +55,7 @@
 			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
-    <dependency>
-      <groupId>jakarta.platform</groupId>
-      <artifactId>jakarta.jakartaee-api</artifactId>
-      <version>9.0.0</version>
-      <scope>provided</scope>
-    </dependency>
+    
 	</dependencies>
 
 	<build>
@@ -91,6 +102,28 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>3.1.2</version>
 				</plugin>
+				  <plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxws-maven-plugin</artifactId>
+					<version>2.6</version>
+					<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+					</executions>
+					<configuration>
+						<sourceDestDir>src/main/java</sourceDestDir>
+						<wsdlUrls>
+                    		<wsdlUrl>http://localhost:8080/airlineMTA/ReservationWS?wsdl</wsdlUrl>
+							<!-- <wsdlUrl>http://localhost:8080/airlineMTA/FlightWS?wsdl</wsdlUrl> -->
+						</wsdlUrls>
+						<keep>true</keep>
+						<packageName>soapclient.airline.reservation</packageName>
+						<!-- Lo genera uno por uno por que no hay manera de generarlo en multiples paquetes en fin-->
+					</configuration>
+         		</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
