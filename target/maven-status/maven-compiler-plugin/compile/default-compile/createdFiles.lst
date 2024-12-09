@@ -1,6 +1,3 @@
-agency\Alojamientos.class
-agency\TVuelo.class
-agency\VuelosHoteles.class
-agency\Vuelos.class
-agency\TAlojamiento.class
-agency\TVueloHotel.class
+common\dto\airlinemta\CustomerDTO$CustomerDTOBuilder.class
+common\dto\airlinemta\ReservationLineDTO$ReservationLineDTOBuilder.class
+common\dto\airlinemta\FlightDTO$FlightDTOBuilder.class

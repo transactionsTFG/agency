@@ -22,7 +22,7 @@ public class Result<T> {
     public static <T> Result<T> failure(String errorMessage) {
         return new Result<>(false, null, errorMessage);
     }
-    
+  
     public boolean isSuccess() {
         return this.success;
     }

@@ -1,5 +1,6 @@
 package business.businessdelegate;
 
+import common.dto.airlinemta.FlightDTO;
 import common.enums.TypeService;
 import common.result.Result;
 
@@ -11,7 +12,7 @@ public class BusinessDelegate {
         this.typeService = typeService;
     }
 
-    public Result<Object> getFlight(long idFlight) {
+    public Result<FlightDTO> getFlight(long idFlight) {
         return this.lookupService.getAirlineService(this.typeService).getFlight(idFlight);
     }
     

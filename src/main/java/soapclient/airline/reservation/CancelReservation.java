@@ -16,7 +16,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="idFlight" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="idReservation" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="idFlightInstance" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -28,28 +28,28 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "cancelReservation", propOrder = {
-    "idFlight",
+    "idReservation",
     "idFlightInstance"
 })
 public class CancelReservation {
 
-    protected long idFlight;
+    protected long idReservation;
     protected long idFlightInstance;
 
     /**
-     * Obtiene el valor de la propiedad idFlight.
+     * Obtiene el valor de la propiedad idReservation.
      * 
      */
-    public long getIdFlight() {
-        return idFlight;
+    public long getIdReservation() {
+        return idReservation;
     }
 
     /**
-     * Define el valor de la propiedad idFlight.
+     * Define el valor de la propiedad idReservation.
      * 
      */
-    public void setIdFlight(long value) {
-        this.idFlight = value;
+    public void setIdReservation(long value) {
+        this.idReservation = value;
     }
 
     /**

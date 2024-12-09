@@ -41,7 +41,7 @@ public interface ReservationWS {
 
     /**
      * 
-     * @param idFlight
+     * @param idReservation
      * @param idFlightInstance
      * @return
      *     returns soapclient.airline.reservation.SoapResponse
@@ -52,8 +52,8 @@ public interface ReservationWS {
     @ResponseWrapper(localName = "cancelReservationResponse", targetNamespace = "http://soap/", className = "soapclient.airline.reservation.CancelReservationResponse")
     @Action(input = "http://soap/ReservationWS/cancelReservationRequest", output = "http://soap/ReservationWS/cancelReservationResponse")
     public SoapResponse cancelReservation(
-        @WebParam(name = "idFlight", targetNamespace = "")
-        long idFlight,
+        @WebParam(name = "idReservation", targetNamespace = "")
+        long idReservation,
         @WebParam(name = "idFlightInstance", targetNamespace = "")
         long idFlightInstance);
 
