@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelo y hotel</title>
+    <div th:replace="~{/fragments/head :: links}"></div>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+    <nav th:replace="~{/fragments/navbar :: navbar}"></nav>
+    <div class="container">
+        <form action="/vuelos" method="get" id="busqueda"
+            class="row border border-danger border-3 border-rounded mt-3 mb-3">
+            <div class="mb-3 col-auto">
+                <label for="origen" class="form-label">Origen</label>
+                <input type="text" class="form-control" id="origen" name="origen"
+                    placeholder="¿Desde dónde quieres salir?">
+            </div>
+            <div class="mb-3 col-auto">
+                <label for="destino" class="form-label">Destino</label>
+                <input type="text" class="form-control" id="destino" name="destino" placeholder="¿A dónde quieres ir?">
+            </div>
+            <div class="mb-3 col-auto">
+                <label for="fecha-entrada" class="form-label">Fecha de entrada</label>
+                <input type="date" id="fecha-entrada" name="fecha-entrada" class="form-control">
+            </div>
+            <div class="mb-3 col-auto">
+                <label for="fecha-salida" class="form-label">Fecha de salida</label>
+                <input type="date" id="fecha-salida" name="fecha-salida" class="form-control">
+            </div>
+            <div class="mb-3 col-auto">
+
+                <div class="dropdown">
+                    <button id="btn-info-pasajeros-habitaciones" class="btn btn-secondary dropdown-toggle"
+                        data-display="static" data-bs-toggle="dropdown" type="button">1 pasajero, 1 habitación,
+                        Turista</button>
+                    <div>
+                        <ul id="dropdown-habitaciones" class="dropdown-menu">
+                            <li>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><input type="radio" id="turista" name="info-vuelo"
+                                            checked="true" /><label for="turista">Turista</label></li>
+                                    <li class="list-inline-item"><input type="radio" id="primera"
+                                            name="info-vuelo" /><label for="primera">Primera</label></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div><button class="btn btn-success" id="anyadir-habitacion" type="button">Añadir
+                                        habitación</button></div>
+                                <div><button class="btn btn-danger" id="eliminar-habitacion" type="button">Eliminar
+                                        habitación</button></div>
+                            </li>
+                            <li>
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Habitación 1</h5>
+                                        <div class="input-row d-flex" id="info-ocupantes">
+                                            <div class="title">
+                                                <h4 class="label">Adultos</h4>
+                                            </div>
+                                            <div class="input d-flex ms-auto me-auto">
+                                                <button class="minus" aria-label="Decrease by one"><i
+                                                        class="bi bi-dash"></i></button>
+                                                <div class="number dim ms-2 me-2">1</div>
+                                                <button class="plus" aria-label="Increase by one"><i
+                                                        class="bi bi-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3 col-auto d-flex align-items-end">
+                <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+            </div>
+        </form>
+
+        <img th:insert="~{/fragments/background-img :: background-img}">
+
+    </div>
+
+    <div th:replace="~{/fragments/scripts :: scripts}"></div>
+    <!-- <script th:src="@{/js/vuelo-y-hotel.js}"></script> -->
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+</body>
+
+</html>
