@@ -8,7 +8,7 @@ public class RootController {
 
     @GetMapping("/")
     public String index() {
-        return "alojamientos";
+        return "index";
     }
 
     @GetMapping("/alojamientos")
@@ -24,6 +24,30 @@ public class RootController {
     @GetMapping("/vuelo_y_hotel")
     public String vueloYHotel() {
         return "vuelo_y_hotel";
+    }
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+    @GetMapping("/blog")
+    public String blog() {
+        return "blog";
+    }
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+    @GetMapping("/elements")
+    public String elements() {
+        return "elements";
+    }
+    @GetMapping("/offers")
+    public String offers() {
+        return "offers";
+    }
+    @GetMapping("/single_listing")
+    public String single_listing() {
+        return "single_listing";
     }
 
 }

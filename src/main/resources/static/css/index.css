@@ -1,0 +1,12 @@
+.home_slider_background {
+    background-image: url('../img/home_slider.jpg');
+}
+#intro_item_background_1 {
+    background-image: url('../img/intro_1.jpg');
+}
+#intro_item_background_2 {
+    background-image: url('../img/intro_2.jpg');
+}
+#intro_item_background_3 {
+    background-image: url('../img/intro_3.jpg');
+}
