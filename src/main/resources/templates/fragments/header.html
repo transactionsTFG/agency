@@ -1,0 +1,66 @@
+<header th:fragment="header" class="header">
+
+    <!-- Top Bar -->
+
+    <div class="top_bar">
+        <div class="container">
+            <div class="row">
+                <div class="col d-flex flex-row">
+                    <div class="phone">91 394 7502</div>
+                    <div class="social">
+                        <ul class="social_list">
+                            <li class="social_list_item"><a target="_blank" href="https://www.youtube.com/user/finformaticaucm"><i class="fa fa-youtube"
+                                        aria-hidden="true"></i></a></li>
+                            <!-- <li class="social_list_item"><a th:href="@{#}"><i class="fa fa-facebook"
+                                        aria-hidden="true"></i></a></li> -->
+                            <li class="social_list_item"><a target="_blank" href="https://twitter.com/informaticaucm"><i class="fa fa-twitter"
+                                        aria-hidden="true"></i></a></li>
+                            <!-- <li class="social_list_item"><a th:href="@{#}"><i class="fa fa-dribbble"
+                                        aria-hidden="true"></i></a></li> -->
+                            <li class="social_list_item"><a target="_blank" href="https://www.instagram.com/informaticaucm/"><i class="fa fa-instagram"
+                                        aria-hidden="true"></i></a></li>
+                            <li class="social_list_item"><a target="_blank" href="https://www.linkedin.com/in/facultad-de-inform%C3%A1tica-9080a29b/"><i class="fa fa-linkedin"
+                                        aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="user_box ml-auto">
+                        <div class="user_box_login user_box_link"><a th:href="@{/login}">login</a></div>
+                        <div class="user_box_register user_box_link"><a th:href="@{/register}">registro</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+
+    <nav class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+                    <div class="logo_container">
+                        <div class="logo"><a th:href="@{#}"><img loading="lazy" th:src="@{img/logo.png}"
+                                    alt="">agencia ucm</a></div>
+                    </div>
+                    <div class="main_nav_container ml-auto">
+                        <ul class="main_nav_list">
+                            <li class="main_nav_item"><a th:href="@{/index}">indice</a></li>
+                            <li class="main_nav_item"><a th:href="@{/about}">sobre nosotros</a></li>
+                            <li class="main_nav_item"><a th:href="@{/offers}">ofertas</a></li>
+                            <li class="main_nav_item"><a th:href="@{/contact}">contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <form id="search_form" class="search_form bez_1">
+                        <input type="search" class="search_content_input bez_1">
+                    </form>
+
+                    <div class="hamburger">
+                        <i class="fa fa-bars trans_200"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</header>
