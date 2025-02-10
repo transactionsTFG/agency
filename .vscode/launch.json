@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-AgencyApplication<agency>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ucm.tfg.agency.AgencyApplication",
+            "projectName": "agency",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
