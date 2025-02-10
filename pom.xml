@@ -92,8 +92,28 @@
                     </excludes>
                 </configuration>
             </plugin>
-
+            <!-- Comando: mvn jaxws:wsimport -->
+			<!-- Se comenta porque genera de mas paquetes
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlUrls>
+                         <wsdlUrl>http://localhost:9001/agencyMTA/RoomWSB?wsdl</wsdlUrl>  
+                    </wsdlUrls>
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <packageName>soapclient.agency.flight</packageName>
+                </configuration>
+            </plugin>
+			-->
         </plugins>
     </build>
-
 </project>
