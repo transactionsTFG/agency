@@ -10,6 +10,10 @@ public class RootController {
     public String index() {
         return "index";
     }
+    @GetMapping("/index")
+    public String indexTemplate() {
+        return "index";
+    }
 
     @GetMapping("/alojamientos")
     public String alojamientos() {
