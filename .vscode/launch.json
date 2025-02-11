@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "ucm.tfg.agency.business.businessdelegate.user.Main",
+            "projectName": "agency"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-AgencyApplication<agency>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

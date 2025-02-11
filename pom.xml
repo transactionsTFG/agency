@@ -63,7 +63,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>4.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -93,7 +97,7 @@
                 </configuration>
             </plugin>
             <!-- Comando: mvn jaxws:wsimport -->
-			<!-- Se comenta porque genera de mas paquetes
+            <!-- Se comenta 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -107,13 +111,13 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                         <wsdlUrl>http://localhost:9001/agencyMTA/RoomWSB?wsdl</wsdlUrl>  
+                         <wsdlUrl>http://localhost:9001/agencyMTA/UserWS?wsdl</wsdlUrl>  
                     </wsdlUrls>
                     <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>soapclient.agency.flight</packageName>
+                    <packageName>ucm.tfg.agency.soapclient.agency.user</packageName>
                 </configuration>
             </plugin>
-			-->
+            -->
         </plugins>
     </build>
 </project>
