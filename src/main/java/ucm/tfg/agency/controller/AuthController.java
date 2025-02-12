@@ -27,7 +27,7 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping
+    @PostMapping("/login")
     public String loginForm(@ModelAttribute LoginUserDTO userDTO, Model model) {
         Result<ReponseUserDTO> response = this.authService.login(userDTO);
         if (response.isSuccess())

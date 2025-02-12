@@ -23,6 +23,11 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Result<Long> create(RegisterUserDTO registerUserDTO) {
         registerUserDTO.setTypeUser(TypeUser.CLIENT);
+        final Result<Long> response = this.businessDelegate.createUser(registerUserDTO);
+        if (!response.isSuccess()) 
+            return response;
+        
+        
         return this.businessDelegate.createUser(registerUserDTO);
     }
     

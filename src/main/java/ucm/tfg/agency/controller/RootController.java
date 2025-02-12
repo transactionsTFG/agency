@@ -53,13 +53,5 @@ public class RootController {
     public String single_listing() {
         return "single_listing";
     }
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
 
 }
