@@ -6,18 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:insert="~{fragments/head :: head}"></th:block>
-    <link rel="stylesheet" type="text/css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{fonts/iconic/css/material-design-iconic-font.min.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/login-util.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/main_styles.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{css/responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login-util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
 </head>
 
 <body class="bg-light">
 
     <!-- Header -->
     <th:block th:insert="~{fragments/header :: header}"></th:block>
+    <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
 
     <div class="limiter">
         <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
@@ -35,7 +36,8 @@
 
                     <div class="wrap-input100 validate-input m-b-23">
                         <span class="label-input100">Apellidos</span>
-                        <input class="input100" type="text" name="surname" placeholder="Introduce tus apellidos" required>
+                        <input class="input100" type="text" name="surname" placeholder="Introduce tus apellidos"
+                            required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 
@@ -47,7 +49,8 @@
 
                     <div class="wrap-input100 validate-input m-b-23">
                         <span class="label-input100">Pasaporte</span>
-                        <input class="input100" type="text" name="passport" placeholder="Introduce tu pasaporte" required>
+                        <input class="input100" type="text" name="passport" placeholder="Introduce tu pasaporte"
+                            required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
 
@@ -84,6 +87,7 @@
     <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
     <!-- Scripts -->
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
+    <script th:src="@{/js/custom.js}"></script>
 </body>
 
 </html>

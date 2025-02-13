@@ -19,15 +19,18 @@
     <!-- Header -->
 
     <th:block th:insert="~{fragments/header :: header}"></th:block>
+    <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
+
+
 
     <div class="limiter">
-        <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
+        <div class="container-login100" style="background-image: url('../../img/bg-01.jpg');">
             <div class="wrap-login100 m-t-200 p-l-55 p-r-55 p-t-100 p-b-54">
                 <form class="login100-form validate-form" method="post" th:action="@{/auth}">
                     <span class="login100-form-title p-b-49">
                         Login
                     </span>
-                    
+
                     <div th:if="${session.SPRING_SECURITY_LAST_EXCEPTION}" class="alert alert-danger">
                         <p th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
                     </div>
@@ -64,6 +67,10 @@
 
     <!-- Copyright -->
     <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
+
+    <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
+    <script th:src="@{js/custom.js}"></script>
+
 </body>
 
 </html>
