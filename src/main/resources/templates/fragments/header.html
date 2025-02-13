@@ -23,9 +23,13 @@
                                         aria-hidden="true"></i></a></li>
                         </ul>
                     </div>
-                    <div class="user_box ml-auto">
+                    <div class="user_box ml-auto" sec:authorize="isAnonymous()">
                         <div class="user_box_login user_box_link"><a th:href="@{/auth}">login</a></div>
                         <div class="user_box_register user_box_link"><a th:href="@{/auth/register}">registro</a></div>
+                    </div>
+                    <div class="user_box ml-auto" sec:authorize="isAuthenticated()">
+                        <div class="user_box_login user_box_link"><a th:href="@{/profile}">Bienvenido <span sec:authentication="principal.name"></span></a></div>
+                        <div class="user_box_register user_box_link"><a th:href="@{/logout}">Cerrar sesion</a></div>
                     </div>
                 </div>
             </div>
