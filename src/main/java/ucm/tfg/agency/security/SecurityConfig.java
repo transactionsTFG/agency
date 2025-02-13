@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.auth.AuthService;
@@ -41,7 +42,8 @@ public class SecurityConfig {
             .defaultSuccessUrl("/index", true)
             .permitAll()
         ).logout(logut -> logut
-            .logoutUrl("/logout")
+            //.logoutUrl("/logout")
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
             .logoutSuccessUrl("/index")
             .permitAll()
         );
