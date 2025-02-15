@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title>Login</title>
+    <title th:text="#{app.login.title}"></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:insert="~{fragments/head :: head}"></th:block>
@@ -15,62 +15,46 @@
 </head>
 
 <body class="bg-light">
-
-    <!-- Header -->
-
     <th:block th:insert="~{fragments/header :: header}"></th:block>
     <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
-
-
-
+    
     <div class="limiter">
         <div class="container-login100" style="background-image: url('../../img/bg-01.jpg');">
             <div class="wrap-login100 m-t-200 p-l-55 p-r-55 p-t-100 p-b-54">
                 <form class="login100-form validate-form" method="post" th:action="@{/auth}">
-                    <span class="login100-form-title p-b-49">
-                        Login
-                    </span>
-
+                    <span class="login100-form-title p-b-49" th:text="#{app.login.title}">Login</span>
+    
                     <div th:if="${session.SPRING_SECURITY_LAST_EXCEPTION}" class="alert alert-danger">
                         <p th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}"></p>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Email</span>
-                        <input class="input100" type="text" name="email" placeholder="Email" required>
+                        <span class="label-input100" th:text="#{app.login.email}">Email</span>
+                        <input class="input100" type="text" name="email" th:placeholder="#{app.login.email_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input">
-                        <span class="label-input100">Contraseña</span>
-                        <input class="input100" type="password" name="password" placeholder="Contraseña" required>
+                        <span class="label-input100" th:text="#{app.login.password}">Contraseña</span>
+                        <input class="input100" type="password" name="password" th:placeholder="#{app.login.password_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
-
+    
                     <div class="text-right p-t-8 p-b-31"></div>
-
+    
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
-                                Login
-                            </button>
+                            <button class="login100-form-btn" th:text="#{app.login.submit}">Login</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    <!-- Footer -->
-
+    </div>    
     <th:block th:insert="~{fragments/footer :: footer}"></th:block>
-
-    <!-- Copyright -->
     <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
-
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
     <script th:src="@{js/custom.js}"></script>
-
 </body>
-
 </html>

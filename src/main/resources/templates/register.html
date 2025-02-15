@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title>Registro</title>
+    <title th:text="#{app.register.title}"></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <th:block th:insert="~{fragments/head :: head}"></th:block>
@@ -24,70 +24,60 @@
         <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
             <div class="wrap-login100 m-t-200 p-t-100 p-l-55 p-r-55 p-b-54">
                 <form class="login100-form validate-form" action="auth/register" method="post">
-                    <span class="login100-form-title p-b-49">
-                        Registro
-                    </span>
-
+                    <span class="login100-form-title p-b-49" th:text="#{app.register.title}">Registro</span>
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Nombre de usuario</span>
-                        <input class="input100" type="text" name="name" placeholder="Introduce tu nombre" required>
+                        <span class="label-input100" th:text="#{app.register.username}">Nombre de usuario</span>
+                        <input class="input100" type="text" name="name" th:placeholder="#{app.register.username_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Apellidos</span>
-                        <input class="input100" type="text" name="surname" placeholder="Introduce tus apellidos"
-                            required>
+                        <span class="label-input100" th:text="#{app.register.surname}">Apellidos</span>
+                        <input class="input100" type="text" name="surname" th:placeholder="#{app.register.surname_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Email</span>
-                        <input class="input100" type="email" name="email" placeholder="agency@gmail.com" required>
+                        <span class="label-input100" th:text="#{app.register.email}">Email</span>
+                        <input class="input100" type="email" name="email" th:placeholder="#{app.register.email_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Pasaporte</span>
-                        <input class="input100" type="text" name="passport" placeholder="Introduce tu pasaporte"
-                            required>
+                        <span class="label-input100" th:text="#{app.register.passport}">Pasaporte</span>
+                        <input class="input100" type="text" name="passport" th:placeholder="#{app.register.passport_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
-
+    
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100">Fecha de Nacimiemto</span>
+                        <span class="label-input100" th:text="#{app.register.birthdate}">Fecha de Nacimiento</span>
                         <input class="input100" type="date" name="born" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
+    
                     <div class="wrap-input100 validate-input">
-                        <span class="label-input100">Contraseña</span>
-                        <input class="input100" type="password" name="password" placeholder="Contraseña" required>
+                        <span class="label-input100" th:text="#{app.register.password}">Contraseña</span>
+                        <input class="input100" type="password" name="password" th:placeholder="#{app.register.password_placeholder}" required>
                         <span class="focus-input100" data-symbol="&#xf190;"></span>
                     </div>
-
+    
                     <div class="text-right p-t-8 p-b-31"></div>
-
+    
                     <div class="container-login100-form-btn">
                         <div class="wrap-login100-form-btn">
                             <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
-                                registrarse
-                            </button>
+                            <button class="login100-form-btn" th:text="#{app.register.submit}">registrarse</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-
+    
     <th:block th:insert="~{fragments/footer :: footer}"></th:block>
-
-    <!-- Copyright -->
     <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
-    <!-- Scripts -->
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
     <script th:src="@{/js/custom.js}"></script>
 </body>
-
 </html>

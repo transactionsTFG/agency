@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <title>Sobre nosotros</title>
+    <title th:text="#{app.about.title}">Sobre nosotros</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Travelix Project">
@@ -13,21 +13,17 @@
 </head>
 
 <body>
-
     <div class="super_container">
-
         <!-- Header -->
-
         <th:block th:insert="~{fragments/header :: header}"></th:block>
         <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
-
+        
         <!-- Home -->
-
         <div class="home">
             <div class="home_background parallax-window" data-parallax="scroll"
                 data-image-src="img/about_background.jpg"></div>
             <div class="home_content">
-                <div class="home_title">about us</div>
+                <div class="home_title" th:text="#{app.about.heading}">about us</div>
             </div>
         </div>
 
@@ -41,18 +37,10 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="intro_content">
-                            <div class="intro_title">we have the best tours</div>
-                            <p class="intro_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis
-                                vulputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer elementum orci eu
-                                vehicula pretium. Donec bibendum tristique condimentum. Aenean in lacus ligula.
-                                Phasellus euismod gravida eros. Aenean nec ipsum aliquet, pharetra magna id, interdum
-                                sapien. Etiam id lorem eu nisl pellentesque semper. Nullam tincidunt metus placerat,
-                                suscipit leo ut, tempus nulla. Fusce at eleifend tellus. Ut eleifend dui nunc, non
-                                fermentum quam placerat non. Etiam venenatis nibh augue, sed eleifend justo tristique eu
-                            </p>
+                            <div class="intro_title" th:text="#{app.about.best_tours}">we have the best tours</div>
+                            <p class="intro_text" th:text="#{app.about.intro_text}">Nuestra agencia se dedica a ofrecer experiencias únicas de viaje, llevando a nuestros clientes a destinos inolvidables con total confianza y seguridad. Detrás de este proyecto, hay un equipo apasionado de desarrolladores que combinan tecnología y creatividad para brindarte la mejor plataforma de viajes.</p>
                             <div class="button intro_button">
-                                <div class="button_bcg"></div><a th:href="@{#}">explore
-                                    now<span></span><span></span><span></span></a>
+                                <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.about.explore} + '<span></span><span></span><span></span>'">explore now</a>
                             </div>
                         </div>
                     </div>
@@ -92,8 +80,8 @@
                     <div class="col-lg-3 milestone_col">
                         <div class="milestone text-center">
                             <div class="milestone_icon"><img th:src="@{img/milestone_1.png}" alt=""></div>
-                            <div class="milestone_counter" data-end-value="255">0</div>
-                            <div class="milestone_text">Clients</div>
+                            <div class="milestone_counter" data-end-value="100">0</div>
+                            <div class="milestone_text" th:text="#{app.about.milestone_clients}">Clients</div>
                         </div>
                     </div>
 
@@ -101,8 +89,8 @@
                     <div class="col-lg-3 milestone_col">
                         <div class="milestone text-center">
                             <div class="milestone_icon"><img th:src="@{img/milestone_2.png}" alt=""></div>
-                            <div class="milestone_counter" data-end-value="1176">0</div>
-                            <div class="milestone_text">Projects</div>
+                            <div class="milestone_counter" data-end-value="12">0</div>
+                            <div class="milestone_text" th:text="#{app.about.milestone_projects}">Projects</div>
                         </div>
                     </div>
 
@@ -110,8 +98,8 @@
                     <div class="col-lg-3 milestone_col">
                         <div class="milestone text-center">
                             <div class="milestone_icon"><img th:src="@{img/milestone_3.png}" alt=""></div>
-                            <div class="milestone_counter" data-end-value="39">0</div>
-                            <div class="milestone_text">Countries</div>
+                            <div class="milestone_counter" data-end-value="15">0</div>
+                            <div class="milestone_text" th:text="#{app.about.milestone_countries}">Countries</div>
                         </div>
                     </div>
 
@@ -119,22 +107,15 @@
                     <div class="col-lg-3 milestone_col">
                         <div class="milestone text-center">
                             <div class="milestone_icon"><img th:src="@{img/milestone_4.png}" alt=""></div>
-                            <div class="milestone_counter" data-end-value="127">0</div>
-                            <div class="milestone_text">Coffees</div>
+                            <div class="milestone_counter" data-end-value="140">0</div>
+                            <div class="milestone_text" th:text="#{app.about.milestone_coffees}">Coffees</div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-
         <th:block th:insert="~{fragments/footer :: footer}"></th:block>
-      
-        <!-- Copyright -->
         <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
-
     </div>
 
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
