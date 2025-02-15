@@ -20,22 +20,19 @@
         <div class="home">
             <!-- Home Slider -->
             <div class="home_slider_container">
-
                 <div class="owl-carousel owl-theme home_slider">
-
                     <!-- Slider Item -->
                     <div class="owl-item home_slider_item">
                         <!-- Image by https://unsplash.com/@anikindimitry -->
                         <div class="home_slider_background" style="background-image:url(img/home_slider.jpg)"></div>
-
                         <div class="home_slider_content text-center">
                             <div class="home_slider_content_inner" data-animation-in="flipInX"
                                 data-animation-out="animate-out fadeOut">
-                                <h1>discover</h1>
-                                <h1>the world</h1>
+                                <h1 th:text="#{app.index.discover}"></h1>
+                                <h1 th:text="#{app.index.world}"></h1>
                                 <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">explore
-                                        now<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div>
+                                    <a th:href="@{#}" th:utext="#{app.index.explore} + '<span></span><span></span><span></span>'"><span></span><span></span><span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -48,11 +45,11 @@
                         <div class="home_slider_content text-center">
                             <div class="home_slider_content_inner" data-animation-in="flipInX"
                                 data-animation-out="animate-out fadeOut">
-                                <h1>discover</h1>
-                                <h1>the world</h1>
+                                <h1 th:text="#{app.index.discover}"></h1>
+                                <h1 th:text="#{app.index.world}"></h1>
                                 <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">explore
-                                        now<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div>
+                                    <a th:href="@{#}" th:utext="#{app.index.explore} + '<span></span><span></span><span></span>'"><span></span><span></span><span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -65,11 +62,11 @@
                         <div class="home_slider_content text-center">
                             <div class="home_slider_content_inner" data-animation-in="flipInX"
                                 data-animation-out="animate-out fadeOut">
-                                <h1>discover</h1>
-                                <h1>the world</h1>
+                                <h1 th:text="#{app.index.discover}"></h1>
+                                <h1 th:text="#{app.index.world}"></h1>
                                 <div class="button home_slider_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">explore
-                                        now<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div>
+                                    <a th:href="@{#}" th:utext="#{app.index.explore} + '<span></span><span></span><span></span>'"><span></span><span></span><span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -136,39 +133,34 @@
         </div>
 
         <!-- Search -->
-
         <div class="search">
-
-
             <!-- Search Contents -->
-
             <div class="container fill_height">
                 <div class="row fill_height">
                     <div class="col fill_height">
-
                         <!-- Search Tabs -->
-
                         <div class="search_tabs_container">
                             <div
                                 class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                                 <div
                                     class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-                                    <img loading="lazy" th:src="@{img/suitcase.png}" alt=""><span>hotels</span>
+                                    <img loading="lazy" th:src="@{img/suitcase.png}" alt="">
+                                    <span th:text="#{app.index.hotels}"></span>
                                 </div>
                                 <div
                                 class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
-                                    <img loading="lazy" th:src="@{img/departure.png}" alt="">flights
+                                    <img loading="lazy" th:src="@{img/departure.png}" alt="">
+                                    <span th:text="#{app.index.flights}"></span>
                                 </div>
                                 <div
                                     class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start">
                                     <img loading="lazy" th:src="@{img/departure.png}" alt="">
-                                    <img loading="lazy" th:src="@{img/suitcase.png}" alt="">vuelo + hotel
+                                    <img loading="lazy" th:src="@{img/suitcase.png}" alt="">
+                                    <span th:text="#{app.index.flight_hotel}"></span>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Search Panel -->
-
+                        <!-- Search Panel Hotel-->
                         <div class="search_panel active">
                             <form action="#" id="search_form_1"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -205,8 +197,7 @@
                             </form>
                         </div>
 
-                        <!-- Search Panel -->
-
+                        <!-- Search Panel Flight-->
                         <div class="search_panel">
                             <form action="#" id="search_form_2"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -243,8 +234,7 @@
                             </form>
                         </div>
 
-                        <!-- Search Panel -->
-
+                        <!-- Search Panel Flight + Hotel -->
                         <div class="search_panel">
                             <form action="#" id="search_form_3"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
@@ -280,139 +270,23 @@
                                     class="button search_button">search<span></span><span></span><span></span></button>
                             </form>
                         </div>
-
-                        <!-- Search Panel -->
-
-                        <div class="search_panel">
-                            <form action="#" id="search_form_4"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_4" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_4" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
-
-                        <!-- Search Panel -->
-
-                        <div class="search_panel">
-                            <form action="#" id="search_form_5"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_5" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_5" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
-
-                        <!-- Search Panel -->
-
-                        <div class="search_panel">
-                            <form action="#" id="search_form_6"
-                                class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-                                <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
-                                </div>
-                                <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_6" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_6" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Intro -->
-
         <div class="intro">
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h2 class="intro_title text-center">We have the best tours</h2>
+                        <h2 class="intro_title text-center" th:text="#{app.index.best_tours}"></h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="intro_text text-center">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.
-                                Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. </p>
+                            <p th:text="#{app.index.description_tours}"></p>
                         </div>
                     </div>
                 </div>
@@ -429,8 +303,7 @@
                                 class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                                 <div class="intro_date">May 25th - June 01st</div>
                                 <div class="button intro_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">see
-                                        more<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.show_more} + '<span></span><span></span><span></span>'"></a>
                                 </div>
                                 <div class="intro_center text-center">
                                     <h1>Mauritius</h1>
@@ -458,8 +331,7 @@
                                 class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                                 <div class="intro_date">May 25th - June 01st</div>
                                 <div class="button intro_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">see
-                                        more<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.show_more} + '<span></span><span></span><span></span>'"></a>
                                 </div>
                                 <div class="intro_center text-center">
                                     <h1>Greece</h1>
@@ -487,8 +359,7 @@
                                 class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                                 <div class="intro_date">May 25th - June 01st</div>
                                 <div class="button intro_button">
-                                    <div class="button_bcg"></div><a th:href="@{#}">see
-                                        more<span></span><span></span><span></span></a>
+                                    <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.show_more} + '<span></span><span></span><span></span>'"></a>
                                 </div>
                                 <div class="intro_center text-center">
                                     <h1>Scotland</h1>
@@ -514,13 +385,10 @@
         <div class="cta">
             <!-- Image by https://unsplash.com/@thanni -->
             <div class="cta_background" style="background-image:url(img/cta.jpg)"></div>
-
             <div class="container">
                 <div class="row">
                     <div class="col">
-
                         <!-- CTA Slider -->
-
                         <div class="cta_slider_container">
                             <div class="owl-carousel owl-theme cta_slider">
 
@@ -539,8 +407,7 @@
                                         mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor
                                         augue gravida lectus, et efficitur enim justo vel ligula.</p>
                                     <div class="button cta_button">
-                                        <div class="button_bcg"></div><a th:href="@{#}">book
-                                            now<span></span><span></span><span></span></a>
+                                        <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.book_now} + '<span></span><span></span><span></span>'"></a>
                                     </div>
                                 </div>
 
@@ -559,8 +426,7 @@
                                         mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor
                                         augue gravida lectus, et efficitur enim justo vel ligula.</p>
                                     <div class="button cta_button">
-                                        <div class="button_bcg"></div><a th:href="@{#}">book
-                                            now<span></span><span></span><span></span></a>
+                                        <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.book_now} + '<span></span><span></span><span></span>'"></a>
                                     </div>
                                 </div>
 
@@ -579,8 +445,7 @@
                                         mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor
                                         augue gravida lectus, et efficitur enim justo vel ligula.</p>
                                     <div class="button cta_button">
-                                        <div class="button_bcg"></div><a th:href="@{#}">book
-                                            now<span></span><span></span><span></span></a>
+                                        <div class="button_bcg"></div><a th:href="@{#}" th:utext="#{app.index.book_now} + '<span></span><span></span><span></span>'"></a>
                                     </div>
                                 </div>
 
@@ -640,7 +505,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 class="section_title">the best offers with rooms</h2>
+                        <h2 class="section_title" th:text="#{app.index.best_offers}"></h2>
                     </div>
                 </div>
                 <div class="row offers_items">
@@ -832,14 +697,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 class="section_title">what our clients say about us</h2>
+                        <h2 class="section_title" th:text="#{app.index.client_testimonials}"></h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-
                         <!-- Testimonials Slider -->
-
                         <div class="test_slider_container">
                             <div class="owl-carousel owl-theme test_slider">
 
@@ -1012,7 +875,6 @@
                             </div>
 
                         </div>
-
                     </div>
                 </div>
 
@@ -1022,47 +884,40 @@
      
         <div class="contact">
             <div class="contact_background" style="background-image:url(img/contact.png)"></div>
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
-                        <div class="contact_image">
-
-                        </div>
+                        <div class="contact_image"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="contact_form_container">
-                            <div class="contact_title">get in touch</div>
+                            <div class="contact_title" th:text="#{app.index.contact_title}">get in touch</div>
                             <form action="#" id="contact_form" class="contact_form">
                                 <input type="text" id="contact_form_name" class="contact_form_name input_field"
-                                    placeholder="Name" required="required" data-error="Name is required.">
+                                    th:placeholder="#{app.index.contact_name}" required="required" 
+                                    th:attr="data-error=#{app.index.contact_name_required}">
                                 <input type="text" id="contact_form_email" class="contact_form_email input_field"
-                                    placeholder="E-mail" required="required" data-error="Email is required.">
+                                    th:placeholder="#{app.index.contact_email}" required="required" 
+                                    th:attr="data-error=#{app.index.contact_email_required}">
                                 <input type="text" id="contact_form_subject" class="contact_form_subject input_field"
-                                    placeholder="Subject" required="required" data-error="Subject is required.">
+                                    th:placeholder="#{app.index.contact_subject}" required="required" 
+                                    th:attr="data-error=#{app.index.contact_subject_required}">
                                 <textarea id="contact_form_message" class="text_field contact_form_message"
-                                    name="message" rows="4" placeholder="Message" required="required"
-                                    data-error="Please, write us a message."></textarea>
-                                <button type="submit" id="form_submit_button" class="form_submit_button button">send
-                                    message<span></span><span></span><span></span></button>
+                                    name="message" rows="4" th:placeholder="#{app.index.contact_message}"
+                                    required="required" th:attr="data-error=#{app.index.contact_message_required}"></textarea>
+                                <button type="submit" id="form_submit_button" class="form_submit_button button"
+                                    th:utext="#{app.index.contact_send} + '<span></span><span></span><span></span>'"></button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-
+      <!-- Footer -->
       <th:block th:insert="~{fragments/footer :: footer}"></th:block>
-      
       <!-- Copyright -->
       <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
-
-
-
     </div>
-
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
     <script th:src="@{js/custom.js}"></script>
 </body>
