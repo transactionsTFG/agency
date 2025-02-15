@@ -1,14 +1,16 @@
 <div th:fragment="copyright" class="copyright">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 order-lg-1 order-2  ">
+            <div class="col-lg-3 order-lg-1 order-2">
                 <div class="copyright_content d-flex flex-row align-items-center">
-                    <div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This
-                        template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div>
+                        <span th:text="#{app.copyright.text}">Copyright &copy;</span>
+                        <script>document.write(new Date().getFullYear());</script>
+                        <span th:text="#{app.copyright.all_rights}">All rights reserved</span> |
+                        <span th:text="#{app.copyright.made_with}">This template is made with</span>
+                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        <span th:text="#{app.copyright.by}">by</span>
+                        <a href="https://colorlib.com" target="_blank" th:text="#{app.copyright.colorlib}">Colorlib</a>
                     </div>
                 </div>
             </div>
@@ -16,10 +18,10 @@
                 <div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
                     <div class="footer_nav">
                         <ul class="footer_nav_list">
-                            <li class="footer_nav_item"><a th:href="@{#}">home</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/about}">about us</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/offers}">offers</a></li>
-                            <li class="footer_nav_item"><a th:href="@{/contact}">contact</a></li>
+                            <li class="footer_nav_item"><a th:href="@{#}" th:text="#{app.copyright.home}">home</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/about}" th:text="#{app.copyright.about}">about us</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/offers}" th:text="#{app.copyright.offers}">offers</a></li>
+                            <li class="footer_nav_item"><a th:href="@{/contact}" th:text="#{app.copyright.contact}">contact</a></li>
                         </ul>
                     </div>
                 </div>
