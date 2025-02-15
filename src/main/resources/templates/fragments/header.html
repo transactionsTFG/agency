@@ -51,7 +51,6 @@
                             <li class="main_nav_item"><a th:href="@{/index}" th:text="#{app.header.index}">índice</a></li>
                             <li class="main_nav_item"><a th:href="@{/about}" th:text="#{app.header.about}">sobre nosotros</a></li>
                             <li class="main_nav_item"><a th:href="@{/offers}" th:text="#{app.header.offers}">ofertas</a></li>
-                            <li class="main_nav_item"><a th:href="@{/contact}" th:text="#{app.header.contact}">contacto</a></li>
                         </ul>
                     </div>
 
@@ -80,7 +79,6 @@
             <li class="menu_item"><a th:href="@{/index}" th:text="#{app.header.index}">home</a></li>
             <li class="menu_item"><a th:href="@{/about}" th:text="#{app.header.about}">about us</a></li>
             <li class="menu_item"><a th:href="@{/offers}" th:text="#{app.header.offers}">offers</a></li>
-            <li class="menu_item"><a th:href="@{/contact}" th:text="#{app.header.contact}">contact</a></li>
             <li class="menu_item" sec:authorize="isAnonymous()"><a th:href="@{/auth}" th:text="#{app.header.login}">login</a></li>
             <li class="menu_item" sec:authorize="isAnonymous()"><a th:href="@{/auth/register}" th:text="#{app.header.register}">register</a></li>
             <li class="menu_item" sec:authorize="isAuthenticated()"><a th:href="@{/profile}" th:text="#{app.header.profile}">perfil</a></li>

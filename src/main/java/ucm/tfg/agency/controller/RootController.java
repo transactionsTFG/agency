@@ -37,10 +37,7 @@ public class RootController {
     public String blog() {
         return "blog";
     }
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact";
-    }
+
     @GetMapping("/elements")
     public String elements() {
         return "elements";
