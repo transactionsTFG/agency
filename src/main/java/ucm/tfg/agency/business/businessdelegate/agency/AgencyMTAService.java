@@ -11,6 +11,8 @@ import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
 import ucm.tfg.agency.common.mapper.GatewayAgencyMapper;
 import ucm.tfg.agency.soapclient.gatewayagency.GatewayAgencyWS;
 import ucm.tfg.agency.soapclient.gatewayagency.GatewayAgencyWS_Service;
@@ -27,48 +29,72 @@ public class AgencyMTAService implements AgencyService {
     }
 
     @Override
-    public Map<String, ListFlightHotelDTO> getFlightsAndHotels(String hotelName, String countryOrigin, String countryDestination,
+    public Result<Map<String, ListFlightHotelDTO>> getFlightsAndHotels(String hotelName, String countryOrigin, String countryDestination,
             String cityOrigin, String cityDestination, String dateFrom) {
-        SearchAirlineHotelRequestSOAP searchAirlineHotelRequestSOAP = new SearchAirlineHotelRequestSOAP();
-        searchAirlineHotelRequestSOAP.setHotelName(hotelName);
-        searchAirlineHotelRequestSOAP.setCountryOrigin(countryOrigin);
-        searchAirlineHotelRequestSOAP.setCountryDestination(countryDestination);
-        searchAirlineHotelRequestSOAP.setCityOrigin(cityOrigin);
-        searchAirlineHotelRequestSOAP.setCityDestination(cityDestination);
-        searchAirlineHotelRequestSOAP.setDateFrom(dateFrom);
-        return this.mapperAgency.mapListFlightHotelDTO(this.portAgencyWS.searchFlightHotel(searchAirlineHotelRequestSOAP));
+        try {
+            SearchAirlineHotelRequestSOAP searchAirlineHotelRequestSOAP = new SearchAirlineHotelRequestSOAP();
+            searchAirlineHotelRequestSOAP.setHotelName(hotelName);
+            searchAirlineHotelRequestSOAP.setCountryOrigin(countryOrigin);
+            searchAirlineHotelRequestSOAP.setCountryDestination(countryDestination);
+            searchAirlineHotelRequestSOAP.setCityOrigin(cityOrigin);
+            searchAirlineHotelRequestSOAP.setCityDestination(cityDestination);
+            searchAirlineHotelRequestSOAP.setDateFrom(dateFrom);
+            return Result.success(this.mapperAgency.mapListFlightHotelDTO(this.portAgencyWS.searchFlightHotel(searchAirlineHotelRequestSOAP)));
+        } catch(Exception e){
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public TravelDTO getTravelById(long travelId) {
-        return this.mapperAgency.travelSOAPtoDTO(this.portAgencyWS.searchTravel(travelId));
+    public Result<TravelDTO> getTravelById(long travelId) {
+        try {
+            return Result.success(this.mapperAgency.travelSOAPtoDTO(this.portAgencyWS.searchTravel(travelId)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
-        return this.mapperAgency.flightAndHotelSOAPtoDTO(this.portAgencyWS.getFlightHotelReservation(hotelReservationId, flightReservationId));
+    public Result<FlightHotelDTO> getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+        try {
+            return Result.success(this.mapperAgency.flightAndHotelSOAPtoDTO(this.portAgencyWS.getFlightHotelReservation(hotelReservationId, flightReservationId)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public SuccessReservationAgencyDTO makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO){
-        return this.mapperAgency.successReservationSOAPtoDTO(
-                        this.portAgencyWS.makeFlightHotelReservation(
-                            this.mapperAgency.makeBookingReservationDTOtoSOAP(hotelReservationDTO), 
-                            this.mapperAgency.makeFlightReservationDTOtoSOAP(flightReservationDTO)
-                        )
-                );
+    public Result<SuccessReservationAgencyDTO> makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO){
+        try {
+            return Result.success(this.mapperAgency.successReservationSOAPtoDTO(
+                this.portAgencyWS.makeFlightHotelReservation(
+                    this.mapperAgency.makeBookingReservationDTOtoSOAP(hotelReservationDTO), 
+                    this.mapperAgency.makeFlightReservationDTOtoSOAP(flightReservationDTO)
+                )
+        ));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public UpdateReservationDTO modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
-        return this.mapperAgency.updateReservationSOAPtoDTO(this.portAgencyWS.modFlightHotelReservation(
+    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
+        try {
+            return Result.success(this.mapperAgency.updateReservationSOAPtoDTO(this.portAgencyWS.modFlightHotelReservation(
                 this.mapperAgency.modifyBookingReservationDTOtoSOAP(updateBookingReservationDTO), 
-                this.mapperAgency.modifyAirlineRequestionDTOtoSOAP(updateAirlineReservationDTO)));
+                this.mapperAgency.modifyAirlineRequestionDTOtoSOAP(updateAirlineReservationDTO))));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
-        return this.portAgencyWS.delFlightHotelReservation(hotelReservationId, flightReservationId);
+    public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+        try {
+            return Result.success(this.portAgencyWS.delFlightHotelReservation(hotelReservationId, flightReservationId));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
     
 }

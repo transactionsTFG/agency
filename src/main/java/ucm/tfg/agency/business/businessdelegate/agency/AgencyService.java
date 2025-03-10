@@ -11,12 +11,13 @@ import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.patternresult.Result;
 
 public interface AgencyService {
-        Map<String, ListFlightHotelDTO> getFlightsAndHotels(final String hotelName, final String countryOrigin, final String countryDestination, final String cityOrigin, final String cityDestination, final String dateFrom);
-        TravelDTO getTravelById(long travelId);
-        FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
-        SuccessReservationAgencyDTO makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO);
-        UpdateReservationDTO modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
-        double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
+        Result<Map<String, ListFlightHotelDTO>> getFlightsAndHotels(final String hotelName, final String countryOrigin, final String countryDestination, final String cityOrigin, final String cityDestination, final String dateFrom);
+        Result<TravelDTO> getTravelById(long travelId);
+        Result<FlightHotelDTO> getFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
+        Result<SuccessReservationAgencyDTO> makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO);
+        Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
+        Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
 }

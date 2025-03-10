@@ -37,28 +37,28 @@ public class BusinessDelegate {
         this.typeService = typeService;
     }
 
-    public Map<String, ListFlightHotelDTO> getFlightsAndHotels(String hotelName, String countryOrigin, String countryDestination,
+    public Result<Map<String, ListFlightHotelDTO>> getFlightsAndHotels(String hotelName, String countryOrigin, String countryDestination,
             String cityOrigin, String cityDestination, String dateFrom) {
         return this.lookupService.getAgencyService(this.typeService).getFlightsAndHotels(hotelName, countryOrigin, countryDestination, cityOrigin, cityDestination, dateFrom);
     }
 
-    public TravelDTO getTravelById(long travelId) {
+    public Result<TravelDTO> getTravelById(long travelId) {
         return this.lookupService.getAgencyService(this.typeService).getTravelById(travelId);
     }
 
-    public FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+    public Result<FlightHotelDTO> getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
         return this.lookupService.getAgencyService(this.typeService).getFlightAndHotelReservation(flightReservationId, hotelReservationId);
     }
 
-    public SuccessReservationAgencyDTO makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO){
+    public Result<SuccessReservationAgencyDTO> makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO){
         return this.lookupService.getAgencyService(this.typeService).makeFlightAndHotelReservation(flightReservationDTO, hotelReservationDTO);
     }
 
-    public double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+    public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
         return this.lookupService.getAgencyService(this.typeService).cancelFlightAndHotelReservation(flightReservationId, hotelReservationId);
     }
 
-    public UpdateReservationDTO modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
+    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
         return this.lookupService.getAgencyService(this.typeService).modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
     }
 
