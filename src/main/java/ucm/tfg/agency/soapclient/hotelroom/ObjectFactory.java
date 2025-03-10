@@ -1,0 +1,139 @@
+
+package ucm.tfg.agency.soapclient.hotelroom;
+
+import javax.xml.namespace.QName;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.annotation.XmlElementDecl;
+import jakarta.xml.bind.annotation.XmlRegistry;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the ucm.tfg.agency.soapclient.hotelroom package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _SearchRoom_QNAME = new QName("http://soap/", "searchRoom");
+    private final static QName _SearchRoomResponse_QNAME = new QName("http://soap/", "searchRoomResponse");
+    private final static QName _SearchRooms_QNAME = new QName("http://soap/", "searchRooms");
+    private final static QName _SearchRoomsResponse_QNAME = new QName("http://soap/", "searchRoomsResponse");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ucm.tfg.agency.soapclient.hotelroom
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link SearchRoom }
+     * 
+     */
+    public SearchRoom createSearchRoom() {
+        return new SearchRoom();
+    }
+
+    /**
+     * Create an instance of {@link SearchRoomResponse }
+     * 
+     */
+    public SearchRoomResponse createSearchRoomResponse() {
+        return new SearchRoomResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchRooms }
+     * 
+     */
+    public SearchRooms createSearchRooms() {
+        return new SearchRooms();
+    }
+
+    /**
+     * Create an instance of {@link SearchRoomsResponse }
+     * 
+     */
+    public SearchRoomsResponse createSearchRoomsResponse() {
+        return new SearchRoomsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RoomListDTO }
+     * 
+     */
+    public RoomListDTO createRoomListDTO() {
+        return new RoomListDTO();
+    }
+
+    /**
+     * Create an instance of {@link RoomDTO }
+     * 
+     */
+    public RoomDTO createRoomDTO() {
+        return new RoomDTO();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchRoom }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchRoom }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchRoom")
+    public JAXBElement<SearchRoom> createSearchRoom(SearchRoom value) {
+        return new JAXBElement<SearchRoom>(_SearchRoom_QNAME, SearchRoom.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchRoomResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchRoomResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchRoomResponse")
+    public JAXBElement<SearchRoomResponse> createSearchRoomResponse(SearchRoomResponse value) {
+        return new JAXBElement<SearchRoomResponse>(_SearchRoomResponse_QNAME, SearchRoomResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchRooms }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchRooms }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchRooms")
+    public JAXBElement<SearchRooms> createSearchRooms(SearchRooms value) {
+        return new JAXBElement<SearchRooms>(_SearchRooms_QNAME, SearchRooms.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchRoomsResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchRoomsResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchRoomsResponse")
+    public JAXBElement<SearchRoomsResponse> createSearchRoomsResponse(SearchRoomsResponse value) {
+        return new JAXBElement<SearchRoomsResponse>(_SearchRoomsResponse_QNAME, SearchRoomsResponse.class, null, value);
+    }
+
+}

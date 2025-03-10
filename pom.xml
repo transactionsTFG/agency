@@ -112,11 +112,11 @@
                 </configuration>
             </plugin>
             <!-- Comando: mvn jaxws:wsimport -->
-            <!-- Se comenta 
+            <!--
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.6</version>
+                <version>4.0.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -126,10 +126,10 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                         <wsdlUrl>http://localhost:9001/agencyMTA/UserWS?wsdl</wsdlUrl>  
+                         <wsdlUrl>http://localhost:9001/agencyMTA/GatewayAgencyWS?wsdl</wsdlUrl>  
                     </wsdlUrls>
                     <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>ucm.tfg.agency.soapclient.agency.user</packageName>
+                    <packageName>ucm.tfg.agency.soapclient.gatewayagency</packageName>
                 </configuration>
             </plugin>
             -->

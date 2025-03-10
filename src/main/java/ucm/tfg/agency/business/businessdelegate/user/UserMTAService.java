@@ -5,11 +5,11 @@ import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
 import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
 import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
-import ucm.tfg.agency.soapclient.agency.user.UserDTO;
-import ucm.tfg.agency.soapclient.agency.user.UserLoginSOAP;
-import ucm.tfg.agency.soapclient.agency.user.UserRegisterSOAP;
-import ucm.tfg.agency.soapclient.agency.user.UserWS;
-import ucm.tfg.agency.soapclient.agency.user.UserWS_Service;
+import ucm.tfg.agency.soapclient.user.UserDTO;
+import ucm.tfg.agency.soapclient.user.UserLoginSOAP;
+import ucm.tfg.agency.soapclient.user.UserRegisterSOAP;
+import ucm.tfg.agency.soapclient.user.UserWS;
+import ucm.tfg.agency.soapclient.user.UserWS_Service;
 
 public class UserMTAService implements UserService {
 
@@ -26,7 +26,6 @@ public class UserMTAService implements UserService {
         userRegisterSOAP.setPassword(registerUserDTO.getPassword());
         userRegisterSOAP.setBorn(registerUserDTO.getBorn());
         userRegisterSOAP.setIdTypeUser(registerUserDTO.getTypeUser().getIdType());
-        userRegisterSOAP.setPassport(registerUserDTO.getPassport());
         userRegisterSOAP.setSurname(registerUserDTO.getSurname());
         userRegisterSOAP.setName(registerUserDTO.getName());
         Result<Long> result = null;
@@ -52,7 +51,6 @@ public class UserMTAService implements UserService {
                 .email(userResponse.getEmail())
                 .id(userResponse.getId())
                 .name(userResponse.getName())
-                .passport(userResponse.getPassport())
                 .surname(userResponse.getSurname())
                 .type(userResponse.getType())
                 .build();
