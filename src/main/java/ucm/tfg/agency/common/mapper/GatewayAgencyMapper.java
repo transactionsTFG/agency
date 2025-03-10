@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
@@ -38,12 +39,14 @@ public interface GatewayAgencyMapper {
 
     MakeBookingReservationDTO makeBookingReservationDTOtoSOAP(final CreateBookingReservationDTO hotelReservationDTO);
     
+    @Mapping(target = "flights.flight", source = "listIdFlightInstanceSeats")
     MakeFlightReservationSOAP makeFlightReservationDTOtoSOAP(final CreateAirlineReservationDTO airlineReservationDTO);
 
     SuccessReservationAgencyDTO successReservationSOAPtoDTO(final AgencyReservationSuccessDTO successSOAP);
 
     ModifyBookingReservationDTO modifyBookingReservationDTOtoSOAP(final UpdateBookingReservationDTO updateBookingReservationDTO);
 
+    @Mapping(target = "flights.flight", source = "listIdFlightInstanceSeats")
     ModifyFlightReservationRequestionSOAP modifyAirlineRequestionDTOtoSOAP(final UpdateAirlineReservationDTO updateAirlineReservationDTO);
 
     UpdateReservationDTO updateReservationSOAPtoDTO(final ucm.tfg.agency.soapclient.gatewayagency.UpdateReservationDTO updateSOAP);
