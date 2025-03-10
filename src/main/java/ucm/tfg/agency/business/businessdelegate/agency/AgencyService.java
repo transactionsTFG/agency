@@ -1,26 +1,22 @@
 package ucm.tfg.agency.business.businessdelegate.agency;
 
-import java.util.List;
+import java.util.Map;
 
+import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
+import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
-import ucm.tfg.agency.common.dto.airline.reservation.FlightReservationDTO;
-import ucm.tfg.agency.common.dto.hotel.booking.HotelReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 
 public interface AgencyService {
-
-    List<FlightHotelDTO> getFlightsAndHotels();
-
-    TravelDTO getTravelById(long travelId);
-
-    FlightHotelDTO makeFlightAndHotelReservation(FlightReservationDTO flightReservationDTO,
-            HotelReservationDTO hotelReservationDTO);
-
-    FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
-
-    FlightHotelDTO modifyFlightAndHotelReservation(FlightReservationDTO flightReservationDTO,
-            HotelReservationDTO hotelReservationDTO);
-
-    double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
-
+        Map<String, ListFlightHotelDTO> getFlightsAndHotels(final String hotelName, final String countryOrigin, final String countryDestination, final String cityOrigin, final String cityDestination, final String dateFrom);
+        TravelDTO getTravelById(long travelId);
+        FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
+        SuccessReservationAgencyDTO makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO);
+        UpdateReservationDTO modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
+        double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
 }
