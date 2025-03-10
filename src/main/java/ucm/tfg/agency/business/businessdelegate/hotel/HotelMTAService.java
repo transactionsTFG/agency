@@ -2,59 +2,92 @@ package ucm.tfg.agency.business.businessdelegate.hotel;
 
 import java.util.List;
 
+import ucm.tfg.agency.common.dto.agency.BookingDTO;
+import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
+import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
+import ucm.tfg.agency.common.mapper.HotelMapper;
 import ucm.tfg.agency.soapclient.hotelbooking.AgencyHotelBookingWS;
 import ucm.tfg.agency.soapclient.hotelbooking.AgencyHotelBookingWS_Service;
-import ucm.tfg.agency.soapclient.hotelbooking.BookingDTO;
-import ucm.tfg.agency.soapclient.hotelbooking.MakeBookingReservationDTO;
-import ucm.tfg.agency.soapclient.hotelbooking.ModifyBookingReservationDTO;
 import ucm.tfg.agency.soapclient.hotelroom.AgencyHotelRoomWS;
 import ucm.tfg.agency.soapclient.hotelroom.AgencyHotelRoomWS_Service;
-import ucm.tfg.agency.soapclient.hotelroom.RoomDTO;
-import ucm.tfg.agency.soapclient.hotelroom.RoomListDTO;
 
-public class HotelMTAService implements HotelService {
+public class HotelMTAService implements HotelExternalService {
 
     private AgencyHotelRoomWS agencyHotelRoomWS;
     private AgencyHotelBookingWS agencyHotelBookingWS;
+    private HotelMapper hotelMapper;
 
     public HotelMTAService() {
         this.agencyHotelRoomWS = new AgencyHotelRoomWS_Service().getAgencyHotelRoomWSPort();
         this.agencyHotelBookingWS = new AgencyHotelBookingWS_Service().getAgencyHotelBookingWSPort();
+        this.hotelMapper = HotelMapper.INSTANCE;
     }
 
     @Override
-    public RoomDTO getRoomById(long roomId) {
-        return this.agencyHotelRoomWS.searchRoom(roomId);
+    public Result<RoomDTO> getRoomById(long roomId) {
+        try {
+            return Result.success(this.hotelMapper.toRoomDTO(this.agencyHotelRoomWS.searchRoom(roomId)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public List<RoomListDTO> getAllRooms(String hotelName, String countryName) {
-        return this.agencyHotelRoomWS.searchRooms(hotelName, countryName);
+    public Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
+        try {
+            return Result.success(this.hotelMapper.infoSOAPtoDTO(this.agencyHotelRoomWS.searchRooms(hotelName, countryName)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public BookingDTO makeHotelBooking(MakeBookingReservationDTO booking, long userId, String dni) {
-        return this.agencyHotelBookingWS.makeHotelBooking(booking, userId, dni);
+    public Result<BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking, long userId, String dni) {
+        try {
+            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.makeHotelBooking(this.hotelMapper.toMakeBookingReservationDTO(booking), userId, dni)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public BookingDTO modifyHotelBooking(ModifyBookingReservationDTO booking) {
-        return this.agencyHotelBookingWS.modifyHotelBooking(booking);
+    public Result<BookingDTO> modifyHotelBooking(UpdateBookingReservationDTO booking) {
+        try {
+            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.modifyHotelBooking( this.hotelMapper.toModifyBookingReservationDTO(booking))));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public double cancelHotelBooking(long bookingId) {
-        return this.agencyHotelBookingWS.cancelHotelBooking(bookingId, -1);
+    public Result<Double> cancelHotelBooking(long bookingId) {
+        try {
+            return Result.success(this.agencyHotelBookingWS.cancelHotelBooking(bookingId, -1));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public double cancelHotelBookingLine(long bookingId, long roomId) {
-        return this.agencyHotelBookingWS.cancelHotelBookingLine(bookingId, roomId);
+    public Result<Double> cancelHotelBookingLine(long bookingId, long roomId) {
+        try {
+            return Result.success(this.agencyHotelBookingWS.cancelHotelBookingLine(bookingId, roomId));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public BookingDTO getHotelBooking(long bookingId) {
-        return this.agencyHotelBookingWS.readHotelBooking((int) bookingId);
+    public Result<BookingDTO> getHotelBooking(long bookingId) {
+        try {
+            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.readHotelBooking((int) bookingId)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
 }

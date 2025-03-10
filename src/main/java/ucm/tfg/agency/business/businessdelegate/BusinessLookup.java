@@ -8,7 +8,7 @@ import ucm.tfg.agency.business.businessdelegate.airline.AirlineMTAService;
 import ucm.tfg.agency.business.businessdelegate.airline.AirlineExternalService;
 import ucm.tfg.agency.business.businessdelegate.hotel.HotelMSAService;
 import ucm.tfg.agency.business.businessdelegate.hotel.HotelMTAService;
-import ucm.tfg.agency.business.businessdelegate.hotel.HotelService;
+import ucm.tfg.agency.business.businessdelegate.hotel.HotelExternalService;
 import ucm.tfg.agency.business.businessdelegate.user.UserMSAService;
 import ucm.tfg.agency.business.businessdelegate.user.UserMTAService;
 import ucm.tfg.agency.business.businessdelegate.user.UserService;
@@ -45,7 +45,7 @@ public class BusinessLookup {
         return typeService.name().equals(TypeService.MTA.name()) ? this.airlineMTAService : this.airlineMSAService;
     }
 
-    public HotelService getHotelService(TypeService typeService) {
+    public HotelExternalService getHotelService(TypeService typeService) {
         return typeService.name().equals(TypeService.MTA.name()) ? this.hotelMTAService : this.hotelMSAService;
     }
     

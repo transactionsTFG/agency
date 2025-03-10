@@ -3,6 +3,7 @@ package ucm.tfg.agency.business.businessdelegate;
 import java.util.List;
 import java.util.Map;
 
+import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
@@ -15,16 +16,13 @@ import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
 import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
 import ucm.tfg.agency.common.enums.TypeService;
-import ucm.tfg.agency.soapclient.hotelbooking.BookingDTO;
-import ucm.tfg.agency.soapclient.hotelbooking.MakeBookingReservationDTO;
-import ucm.tfg.agency.soapclient.hotelbooking.ModifyBookingReservationDTO;
-import ucm.tfg.agency.soapclient.hotelroom.RoomDTO;
-import ucm.tfg.agency.soapclient.hotelroom.RoomListDTO;
 
 public class BusinessDelegate {
     private final BusinessLookup lookupService = new BusinessLookup();
@@ -79,31 +77,31 @@ public class BusinessDelegate {
         return this.lookupService.getAirlineService(typeService).cancelFlightReservation(flightReservationId);
     }
 
-    public RoomDTO getRoomById(long roomId) {
+    public Result<RoomDTO> getRoomById(long roomId) {
         return this.lookupService.getHotelService(typeService).getRoomById(roomId);
     }
 
-    public List<RoomListDTO> getAllRooms(String hotelName, String countryName) {
+    public Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
         return this.lookupService.getHotelService(typeService).getAllRooms(hotelName, countryName);
     }
 
-    public BookingDTO makeHotelBooking(MakeBookingReservationDTO booking, long userId, String dni) {
+    public Result<BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking, long userId, String dni) {
         return this.lookupService.getHotelService(typeService).makeHotelBooking(booking, userId, dni);
     }
 
-    public BookingDTO modifyHotelBooking(ModifyBookingReservationDTO booking) {
+    public  Result<BookingDTO> modifyHotelBooking(UpdateBookingReservationDTO booking) {
         return this.lookupService.getHotelService(typeService).modifyHotelBooking(booking);
     }
 
-    public double cancelHotelBooking(long bookingId) {
+    public Result<Double> cancelHotelBooking(long bookingId) {
         return this.lookupService.getHotelService(typeService).cancelHotelBooking(bookingId);
     }
 
-    public double cancelHotelBookingLine(long bookingId, long roomId) {
+    public Result<Double> cancelHotelBookingLine(long bookingId, long roomId) {
         return this.lookupService.getHotelService(typeService).cancelHotelBookingLine(bookingId, roomId);
     }
 
-    public BookingDTO getHotelBooking(long bookingId) {
+    public Result<BookingDTO> getHotelBooking(long bookingId) {
         return this.lookupService.getHotelService(typeService).getHotelBooking(bookingId);
     }
 
