@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para makeHotelBooking complex type.
+ * <p>Java class for makeHotelBooking complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="makeHotelBooking"&gt;
@@ -40,7 +40,7 @@ public class MakeHotelBooking {
     protected String dni;
 
     /**
-     * Obtiene el valor de la propiedad booking.
+     * Gets the value of the booking property.
      * 
      * @return
      *     possible object is
@@ -52,7 +52,7 @@ public class MakeHotelBooking {
     }
 
     /**
-     * Define el valor de la propiedad booking.
+     * Sets the value of the booking property.
      * 
      * @param value
      *     allowed object is
@@ -64,7 +64,7 @@ public class MakeHotelBooking {
     }
 
     /**
-     * Obtiene el valor de la propiedad user.
+     * Gets the value of the user property.
      * 
      */
     public long getUser() {
@@ -72,7 +72,7 @@ public class MakeHotelBooking {
     }
 
     /**
-     * Define el valor de la propiedad user.
+     * Sets the value of the user property.
      * 
      */
     public void setUser(long value) {
@@ -80,7 +80,7 @@ public class MakeHotelBooking {
     }
 
     /**
-     * Obtiene el valor de la propiedad dni.
+     * Gets the value of the dni property.
      * 
      * @return
      *     possible object is
@@ -92,7 +92,7 @@ public class MakeHotelBooking {
     }
 
     /**
-     * Define el valor de la propiedad dni.
+     * Sets the value of the dni property.
      * 
      * @param value
      *     allowed object is

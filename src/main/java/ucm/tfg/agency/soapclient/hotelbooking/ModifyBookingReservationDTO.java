@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para modifyBookingReservationDTO complex type.
+ * <p>Java class for modifyBookingReservationDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="modifyBookingReservationDTO"&gt;
@@ -59,7 +59,7 @@ public class ModifyBookingReservationDTO {
     protected boolean withBreakfast;
 
     /**
-     * Obtiene el valor de la propiedad customerId.
+     * Gets the value of the customerId property.
      * 
      */
     public long getCustomerId() {
@@ -67,7 +67,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad customerId.
+     * Sets the value of the customerId property.
      * 
      */
     public void setCustomerId(long value) {
@@ -75,7 +75,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad endDate.
+     * Gets the value of the endDate property.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad endDate.
+     * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -107,7 +107,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -115,7 +115,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad numberOfNights.
+     * Gets the value of the numberOfNights property.
      * 
      */
     public int getNumberOfNights() {
@@ -123,7 +123,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad numberOfNights.
+     * Sets the value of the numberOfNights property.
      * 
      */
     public void setNumberOfNights(int value) {
@@ -131,7 +131,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad peopleNumber.
+     * Gets the value of the peopleNumber property.
      * 
      */
     public int getPeopleNumber() {
@@ -139,7 +139,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad peopleNumber.
+     * Sets the value of the peopleNumber property.
      * 
      */
     public void setPeopleNumber(int value) {
@@ -176,7 +176,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad startDate.
+     * Gets the value of the startDate property.
      * 
      * @return
      *     possible object is
@@ -188,7 +188,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad startDate.
+     * Sets the value of the startDate property.
      * 
      * @param value
      *     allowed object is
@@ -200,7 +200,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad withBreakfast.
+     * Gets the value of the withBreakfast property.
      * 
      */
     public boolean isWithBreakfast() {
@@ -208,7 +208,7 @@ public class ModifyBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad withBreakfast.
+     * Sets the value of the withBreakfast property.
      * 
      */
     public void setWithBreakfast(boolean value) {
