@@ -35,7 +35,7 @@ public class BusinessLookup {
     }
 
     public AgencyService getAgencyService(TypeService typeService) {
-        return typeService.name().equals(TypeService.MTA.name()) ? this.agencyMTAService : null;
+        return typeService.name().equals(TypeService.MTA.name()) ? this.agencyMTAService : this.agencyMTAService;
     }
     
     public AirlineService getAirlineService(TypeService typeService) {
