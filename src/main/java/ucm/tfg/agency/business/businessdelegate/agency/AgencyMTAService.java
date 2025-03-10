@@ -18,7 +18,7 @@ import ucm.tfg.agency.soapclient.gatewayagency.GatewayAgencyWS;
 import ucm.tfg.agency.soapclient.gatewayagency.GatewayAgencyWS_Service;
 import ucm.tfg.agency.soapclient.gatewayagency.SearchAirlineHotelRequestSOAP;
 
-public class AgencyMTAService implements AgencyService {
+public class AgencyMTAService implements AgencyExternalService {
 
     private final GatewayAgencyWS portAgencyWS;
     private final GatewayAgencyMapper mapperAgency;

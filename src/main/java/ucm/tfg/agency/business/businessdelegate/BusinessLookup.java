@@ -2,10 +2,10 @@ package ucm.tfg.agency.business.businessdelegate;
 
 import ucm.tfg.agency.business.businessdelegate.agency.AgencyMSAService;
 import ucm.tfg.agency.business.businessdelegate.agency.AgencyMTAService;
-import ucm.tfg.agency.business.businessdelegate.agency.AgencyService;
+import ucm.tfg.agency.business.businessdelegate.agency.AgencyExternalService;
 import ucm.tfg.agency.business.businessdelegate.airline.AirlineMSAService;
 import ucm.tfg.agency.business.businessdelegate.airline.AirlineMTAService;
-import ucm.tfg.agency.business.businessdelegate.airline.AirlineService;
+import ucm.tfg.agency.business.businessdelegate.airline.AirlineExternalService;
 import ucm.tfg.agency.business.businessdelegate.hotel.HotelMSAService;
 import ucm.tfg.agency.business.businessdelegate.hotel.HotelMTAService;
 import ucm.tfg.agency.business.businessdelegate.hotel.HotelService;
@@ -37,11 +37,11 @@ public class BusinessLookup {
         this.userMSAService = new UserMSAService();
     }
 
-    public AgencyService getAgencyService(TypeService typeService) {
+    public AgencyExternalService getAgencyService(TypeService typeService) {
         return typeService.name().equals(TypeService.MTA.name()) ? this.agencyMTAService : this.agencyMSAService;
     }
     
-    public AirlineService getAirlineService(TypeService typeService) {
+    public AirlineExternalService getAirlineService(TypeService typeService) {
         return typeService.name().equals(TypeService.MTA.name()) ? this.airlineMTAService : this.airlineMSAService;
     }
 

@@ -2,51 +2,93 @@ package ucm.tfg.agency.business.businessdelegate.airline;
 
 import java.util.List;
 
+import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
+import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
+import ucm.tfg.agency.common.mapper.AirlineMapper;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS_Service;
-import ucm.tfg.agency.soapclient.airlineflight.FlightListDTO;
-import ucm.tfg.agency.soapclient.airlineflight.FlightSOAP;
 import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS_Service;
-import ucm.tfg.agency.soapclient.airlinereservation.AgencyReservationSuccessDTO;
 import ucm.tfg.agency.soapclient.airlinereservation.MakeFlightReservationSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.ModifyFlightReservationRequestionSOAP;
-import ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO;
 
-public class AirlineMTAService implements AirlineService {
+public class AirlineMTAService implements AirlineExternalService {
 
-    private AgencyAirlineFlightWS agencyAirlineFlightWS;
-    private AgencyAirlineReservationWS agencyAirlineReservationWS;
+    private final AgencyAirlineFlightWS agencyAirlineFlightWS;
+    private final AgencyAirlineReservationWS agencyAirlineReservationWS;
+    private final AirlineMapper airlineMapper;
 
     public AirlineMTAService() {
         this.agencyAirlineFlightWS = new AgencyAirlineFlightWS_Service().getAgencyAirlineFlightWSPort();
         this.agencyAirlineReservationWS = new AgencyAirlineReservationWS_Service().getAgencyAirlineReservationWSPort();
+        this.airlineMapper = AirlineMapper.INSTANCE;
     }
 
     @Override
-    public FlightSOAP getFlightById(long flightId) {
-        return this.agencyAirlineFlightWS.search(flightId);
+    public Result<FlightAirlineDTO> getFlightById(long flightId) {
+        try {
+            return Result.success(this.airlineMapper.flightSOAPtoDTO(this.agencyAirlineFlightWS.search(flightId)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public List<FlightListDTO> getAllFlights(ParamSearchFlightSOAP params) {
-        return this.agencyAirlineFlightWS.searchFlight(params);
+    public Result<List<FlightAirlineInfoDTO>> getAllFlights(String countryOrigin, String countryDestination, String cityOrigin, String cityDestination, String dateOrigin) {
+        try {
+            ParamSearchFlightSOAP params = new ParamSearchFlightSOAP();
+            params.setCountryOrigin(countryOrigin);
+            params.setCityDestination(cityDestination);
+            params.setCountryDestination(countryDestination);
+            params.setCityOrigin(cityOrigin);
+            params.setDateOrigin(dateOrigin);
+            return Result.success(this.airlineMapper.flightSOAPtoInfoDTO(this.agencyAirlineFlightWS.searchFlight(params)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public AgencyReservationSuccessDTO makeFlightReservation(MakeFlightReservationSOAP flightReservationDTO) {
-        return this.agencyAirlineReservationWS.makeFlightReservation(flightReservationDTO);
+    public Result<SuccessReservationAgencyDTO> makeFlightReservation(String dni, long idCustomer, List<IdFlightInstanceWithSeatsDTO> flights) {
+        try {
+            MakeFlightReservationSOAP makeFlightReservationSOAP = new MakeFlightReservationSOAP();
+            makeFlightReservationSOAP.setDni(dni);
+            makeFlightReservationSOAP.setIdCustomer(idCustomer);
+            MakeFlightReservationSOAP.Flights flightsSOAP = new MakeFlightReservationSOAP.Flights();
+            flightsSOAP.getFlight().addAll(this.airlineMapper.idFlightInstanceWithSeatsDTOtoSOAP(flights));
+            return Result.success(this.airlineMapper.successReservationSOAPtoDTO(this.agencyAirlineReservationWS.makeFlightReservation(makeFlightReservationSOAP)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public UpdateReservationDTO modifyFlightReservation(ModifyFlightReservationRequestionSOAP flightReservationDTO) {
-        return this.agencyAirlineReservationWS.modFlightReservation(flightReservationDTO);
+    public Result<UpdateReservationDTO> modifyFlightReservation(long idReservation, List<IdFlightInstanceWithSeatsDTO> flights) {
+        try {
+            ModifyFlightReservationRequestionSOAP flightReservationDTO = new ModifyFlightReservationRequestionSOAP();
+            flightReservationDTO.setIdReservation(idReservation);
+            ModifyFlightReservationRequestionSOAP.Flights flightsSOAP = new ModifyFlightReservationRequestionSOAP.Flights();
+            flightsSOAP.getFlight().addAll(this.airlineMapper.idFlightInstanceWithSeatsDTOtoSOAP(flights));
+            flightReservationDTO.setFlights(flightsSOAP);
+            return Result.success(this.airlineMapper.updateReservationSOAPtoDTO(this.agencyAirlineReservationWS.modFlightReservation(flightReservationDTO)));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
     @Override
-    public double cancelFlightReservation(long flightReservationId) {
-        return this.agencyAirlineReservationWS.delFlightReservation(flightReservationId);
+    public Result<Double> cancelFlightReservation(long flightReservationId) {
+        try {
+            return Result.success(this.agencyAirlineReservationWS.delFlightReservation(flightReservationId));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
 }

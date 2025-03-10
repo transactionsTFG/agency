@@ -6,23 +6,20 @@ import java.util.Map;
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
+import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
 import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
 import ucm.tfg.agency.common.enums.TypeService;
-import ucm.tfg.agency.soapclient.airlineflight.FlightListDTO;
-import ucm.tfg.agency.soapclient.airlineflight.FlightSOAP;
-import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
-import ucm.tfg.agency.soapclient.airlinereservation.AgencyReservationSuccessDTO;
-import ucm.tfg.agency.soapclient.airlinereservation.MakeFlightReservationSOAP;
-import ucm.tfg.agency.soapclient.airlinereservation.ModifyFlightReservationRequestionSOAP;
 import ucm.tfg.agency.soapclient.hotelbooking.BookingDTO;
 import ucm.tfg.agency.soapclient.hotelbooking.MakeBookingReservationDTO;
 import ucm.tfg.agency.soapclient.hotelbooking.ModifyBookingReservationDTO;
@@ -62,23 +59,23 @@ public class BusinessDelegate {
         return this.lookupService.getAgencyService(this.typeService).modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
     }
 
-    public FlightSOAP getFlight(long idFlight) {
+    public Result<FlightAirlineDTO> getFlight(long idFlight) {
         return this.lookupService.getAirlineService(this.typeService).getFlightById(idFlight);
     }
 
-    public List<FlightListDTO> getAllFlights(ParamSearchFlightSOAP params) {
-        return this.lookupService.getAirlineService(typeService).getAllFlights(params);
+    public Result<List<FlightAirlineInfoDTO>> getAllFlights(String countryOrigin, String countryDestination, String cityOrigin, String cityDestination, String dateOrigin) {
+        return this.lookupService.getAirlineService(typeService).getAllFlights(countryOrigin, countryDestination, cityOrigin, cityDestination, dateOrigin);
     }
 
-    public AgencyReservationSuccessDTO makeFlightReservation(MakeFlightReservationSOAP flightReservationDTO) {
-        return this.lookupService.getAirlineService(typeService).makeFlightReservation(flightReservationDTO);
+    public Result<SuccessReservationAgencyDTO> makeFlightReservation(String dni, long idCustomer, List<IdFlightInstanceWithSeatsDTO> flights) {
+        return this.lookupService.getAirlineService(typeService).makeFlightReservation(dni, idCustomer, flights);
     }
 
-    public ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO modifyFlightReservation(ModifyFlightReservationRequestionSOAP flightReservationDTO) {
-        return this.lookupService.getAirlineService(typeService).modifyFlightReservation(flightReservationDTO);
+    public Result<UpdateReservationDTO> modifyFlightReservation(long idReservation, List<IdFlightInstanceWithSeatsDTO> flights) {
+        return this.lookupService.getAirlineService(typeService).modifyFlightReservation(idReservation, flights);
     }
 
-    public double cancelFlightReservation(long flightReservationId) {
+    public Result<Double> cancelFlightReservation(long flightReservationId) {
         return this.lookupService.getAirlineService(typeService).cancelFlightReservation(flightReservationId);
     }
 
