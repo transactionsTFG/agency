@@ -129,27 +129,27 @@
                     </configuration>
                 </plugin>
                 <!-- Comando: mvn jaxws:wsimport -->
-                <!--
+               <!--
                 <plugin>
-                    <groupId>com.sun.xml.ws</groupId>
-                    <artifactId>jaxws-maven-plugin</artifactId>
-                    <version>4.0.0</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>wsimport</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <wsdlUrls>
-                            <wsdlUrl>http://localhost:9001/agencyMTA/GatewayAgencyWS?wsdl</wsdlUrl>  
-                        </wsdlUrls>
-                        <sourceDestDir>src/main/java</sourceDestDir>
-                        <packageName>ucm.tfg.agency.soapclient.gatewayagency</packageName>
-                    </configuration>
-                </plugin>
-                -->
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlUrls>
+                         <wsdlUrl>http://localhost:9001/agencyMTA/AgencyHotelBookingWS?wsdl</wsdlUrl>  
+                    </wsdlUrls>
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <packageName>ucm.tfg.agency.soapclient.hotelbooking</packageName>
+                </configuration>
+            </plugin>
+            -->
         </plugins>
         </pluginManagement>
     </build>

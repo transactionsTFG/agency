@@ -8,9 +8,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for cancelHotelBookingLineResponse complex type.
+ * <p>Clase Java para cancelHotelBookingLineResponse complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="cancelHotelBookingLineResponse"&gt;
@@ -36,7 +36,7 @@ public class CancelHotelBookingLineResponse {
     protected double _return;
 
     /**
-     * Gets the value of the return property.
+     * Obtiene el valor de la propiedad return.
      * 
      */
     public double getReturn() {
@@ -44,7 +44,7 @@ public class CancelHotelBookingLineResponse {
     }
 
     /**
-     * Sets the value of the return property.
+     * Define el valor de la propiedad return.
      * 
      */
     public void setReturn(double value) {

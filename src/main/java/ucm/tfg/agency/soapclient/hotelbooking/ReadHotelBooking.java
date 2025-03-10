@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for readHotelBooking complex type.
+ * <p>Clase Java para readHotelBooking complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="readHotelBooking"&gt;
@@ -34,7 +34,7 @@ public class ReadHotelBooking {
     protected int bookingId;
 
     /**
-     * Gets the value of the bookingId property.
+     * Obtiene el valor de la propiedad bookingId.
      * 
      */
     public int getBookingId() {
@@ -42,7 +42,7 @@ public class ReadHotelBooking {
     }
 
     /**
-     * Sets the value of the bookingId property.
+     * Define el valor de la propiedad bookingId.
      * 
      */
     public void setBookingId(int value) {

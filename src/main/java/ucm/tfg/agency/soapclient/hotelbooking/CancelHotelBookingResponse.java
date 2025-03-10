@@ -8,16 +8,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para readHotelBookingResponse complex type.
+ * <p>Clase Java para cancelHotelBookingResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="readHotelBookingResponse"&gt;
+ * &lt;complexType name="cancelHotelBookingResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://soap/}bookingDTO" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,35 +27,27 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "readHotelBookingResponse", propOrder = {
+@XmlType(name = "cancelHotelBookingResponse", propOrder = {
     "_return"
 })
-public class ReadHotelBookingResponse {
+public class CancelHotelBookingResponse {
 
     @XmlElement(name = "return")
-    protected BookingDTO _return;
+    protected double _return;
 
     /**
      * Obtiene el valor de la propiedad return.
      * 
-     * @return
-     *     possible object is
-     *     {@link BookingDTO }
-     *     
      */
-    public BookingDTO getReturn() {
+    public double getReturn() {
         return _return;
     }
 
     /**
      * Define el valor de la propiedad return.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link BookingDTO }
-     *     
      */
-    public void setReturn(BookingDTO value) {
+    public void setReturn(double value) {
         this._return = value;
     }
 

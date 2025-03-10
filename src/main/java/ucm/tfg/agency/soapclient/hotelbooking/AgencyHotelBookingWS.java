@@ -81,20 +81,17 @@ public interface AgencyHotelBookingWS {
     /**
      * 
      * @param bookingId
-     * @param roomId
      * @return
      *     returns double
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "cancelHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.CancelHotelBookingLine")
-    @ResponseWrapper(localName = "cancelHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.CancelHotelBookingLineResponse")
+    @RequestWrapper(localName = "cancelHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.CancelHotelBooking")
+    @ResponseWrapper(localName = "cancelHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.CancelHotelBookingResponse")
     @Action(input = "http://soap/AgencyHotelBookingWS/cancelHotelBookingRequest", output = "http://soap/AgencyHotelBookingWS/cancelHotelBookingResponse")
     public double cancelHotelBooking(
         @WebParam(name = "bookingId", targetNamespace = "")
-        long bookingId,
-        @WebParam(name = "roomId", targetNamespace = "")
-        long roomId);
+        long bookingId);
 
     /**
      * 
