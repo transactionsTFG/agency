@@ -1,7 +1,17 @@
 package ucm.tfg.agency.business.businessdelegate;
 
 import java.util.List;
+import java.util.Map;
 
+import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
+import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
+import ucm.tfg.agency.common.dto.agency.TravelDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
@@ -13,7 +23,6 @@ import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyReservationSuccessDTO;
 import ucm.tfg.agency.soapclient.airlinereservation.MakeFlightReservationSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.ModifyFlightReservationRequestionSOAP;
-import ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO;
 import ucm.tfg.agency.soapclient.hotelbooking.BookingDTO;
 import ucm.tfg.agency.soapclient.hotelbooking.MakeBookingReservationDTO;
 import ucm.tfg.agency.soapclient.hotelbooking.ModifyBookingReservationDTO;
@@ -28,7 +37,30 @@ public class BusinessDelegate {
         this.typeService = typeService;
     }
 
-    //TODO... Agregar mas metodos de Agencia
+    public Map<String, ListFlightHotelDTO> getFlightsAndHotels(String hotelName, String countryOrigin, String countryDestination,
+            String cityOrigin, String cityDestination, String dateFrom) {
+        return this.lookupService.getAgencyService(this.typeService).getFlightsAndHotels(hotelName, countryOrigin, countryDestination, cityOrigin, cityDestination, dateFrom);
+    }
+
+    public TravelDTO getTravelById(long travelId) {
+        return this.lookupService.getAgencyService(this.typeService).getTravelById(travelId);
+    }
+
+    public FlightHotelDTO getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+        return this.lookupService.getAgencyService(this.typeService).getFlightAndHotelReservation(flightReservationId, hotelReservationId);
+    }
+
+    public SuccessReservationAgencyDTO makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO){
+        return this.lookupService.getAgencyService(this.typeService).makeFlightAndHotelReservation(flightReservationDTO, hotelReservationDTO);
+    }
+
+    public double cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+        return this.lookupService.getAgencyService(this.typeService).cancelFlightAndHotelReservation(flightReservationId, hotelReservationId);
+    }
+
+    public UpdateReservationDTO modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
+        return this.lookupService.getAgencyService(this.typeService).modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
+    }
 
     public FlightSOAP getFlight(long idFlight) {
         return this.lookupService.getAirlineService(this.typeService).getFlightById(idFlight);
@@ -42,7 +74,7 @@ public class BusinessDelegate {
         return this.lookupService.getAirlineService(typeService).makeFlightReservation(flightReservationDTO);
     }
 
-    public UpdateReservationDTO modifyFlightReservation(ModifyFlightReservationRequestionSOAP flightReservationDTO) {
+    public ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO modifyFlightReservation(ModifyFlightReservationRequestionSOAP flightReservationDTO) {
         return this.lookupService.getAirlineService(typeService).modifyFlightReservation(flightReservationDTO);
     }
 

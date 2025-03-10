@@ -1,6 +1,5 @@
 package ucm.tfg.agency.business.businessdelegate;
 
-import ucm.tfg.agency.business.businessdelegate.agency.AgencyMSAService;
 import ucm.tfg.agency.business.businessdelegate.agency.AgencyMTAService;
 import ucm.tfg.agency.business.businessdelegate.agency.AgencyService;
 import ucm.tfg.agency.business.businessdelegate.airline.AirlineMSAService;
@@ -17,7 +16,6 @@ import ucm.tfg.agency.common.enums.TypeService;
 public class BusinessLookup {
 
     private final AgencyMTAService agencyMTAService;
-    private final AgencyMSAService agencyMSAService;
     private final AirlineMTAService airlineMTAService;
     private final AirlineMSAService airlineMSAService;
     private final HotelMTAService hotelMTAService;
@@ -28,7 +26,6 @@ public class BusinessLookup {
 
     public BusinessLookup() {
         this.agencyMTAService = new AgencyMTAService();
-        this.agencyMSAService = null;
         this.airlineMTAService = new AirlineMTAService();
         this.airlineMSAService = null;
         this.hotelMTAService = new HotelMTAService();
@@ -37,8 +34,8 @@ public class BusinessLookup {
         this.userMSAService = null;
     }
 
-    public AgencyService getAgencyMTAService(TypeService typeService) {
-        return typeService.name().equals(TypeService.MTA.name()) ? this.agencyMTAService : this.agencyMSAService;
+    public AgencyService getAgencyService(TypeService typeService) {
+        return typeService.name().equals(TypeService.MTA.name()) ? this.agencyMTAService : null;
     }
     
     public AirlineService getAirlineService(TypeService typeService) {
