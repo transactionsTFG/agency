@@ -1,5 +1,8 @@
 package ucm.tfg.agency.business.businessdelegate;
 
+import java.util.List;
+
+import ucm.tfg.agency.common.dto.hotel.room.RoomDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
@@ -26,6 +29,10 @@ public class BusinessDelegate {
 
     public Result<ReponseUserDTO> loginUser(final LoginUserDTO userDTO) {
         return this.lookupService.getUserService(this.typeService).loginUser(userDTO);
+    }
+
+    public List<RoomDTO> getRooms() {
+        return this.lookupService.getHotelService(this.typeService).getRooms();
     }
 
     
