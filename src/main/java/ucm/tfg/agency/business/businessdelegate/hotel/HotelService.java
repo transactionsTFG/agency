@@ -2,26 +2,24 @@ package ucm.tfg.agency.business.businessdelegate.hotel;
 
 import java.util.List;
 
-import ucm.tfg.agency.common.dto.hotel.booking.HotelReservationDTO;
-import ucm.tfg.agency.common.dto.hotel.room.RoomDTO;
+import ucm.tfg.agency.soapclient.hotelbooking.BookingDTO;
+import ucm.tfg.agency.soapclient.hotelbooking.MakeBookingReservationDTO;
+import ucm.tfg.agency.soapclient.hotelbooking.ModifyBookingReservationDTO;
+import ucm.tfg.agency.soapclient.hotelroom.RoomDTO;
+import ucm.tfg.agency.soapclient.hotelroom.RoomListDTO;
 
 public interface HotelService {
-
     RoomDTO getRoomById(long roomId);
 
-    List<RoomDTO> getAllRooms(String hotelName, String countryName);
+    List<RoomListDTO> getAllRooms(String hotelName, String countryName);
 
-    HotelReservationDTO makeHotelReservation(HotelReservationDTO hotelReservationDTO);
+    BookingDTO makeHotelBooking(MakeBookingReservationDTO booking, long userId, String dni);
 
-    HotelReservationDTO modifyHotelReservation(HotelReservationDTO hotelReservationDTO);
+    BookingDTO modifyHotelBooking(ModifyBookingReservationDTO booking);
 
-    double cancelHotelReservation(long hotelReservationId);
+    double cancelHotelBooking(long bookingId);
 
-    double cancelHotelReservationLine(long hotelReservationId, long roomId);
+    double cancelHotelBookingLine(long bookingId, long roomId);
 
-    HotelReservationDTO getHotelReservationById(long hotelReservationId);
-
-    List<HotelReservationDTO> getAllHotelReservations();
-
-    List<HotelReservationDTO> getHotelReservationsByUserId(long userId);
+    BookingDTO getHotelBooking(long bookingId);
 }

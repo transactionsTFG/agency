@@ -2,25 +2,30 @@ package ucm.tfg.agency.business.businessdelegate.airline;
 
 import java.util.List;
 
-import ucm.tfg.agency.common.dto.airline.flight.FlightDTO;
-import ucm.tfg.agency.common.dto.airline.reservation.FlightReservationDTO;
+import ucm.tfg.agency.soapclient.airlineflight.FlightListDTO;
+import ucm.tfg.agency.soapclient.airlineflight.FlightSOAP;
+import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
+import ucm.tfg.agency.soapclient.airlinereservation.AgencyReservationSuccessDTO;
+import ucm.tfg.agency.soapclient.airlinereservation.MakeFlightReservationSOAP;
+import ucm.tfg.agency.soapclient.airlinereservation.ModifyFlightReservationRequestionSOAP;
+import ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO;
 
 public interface AirlineService {
 
-    FlightDTO getFlightById(long flightId);
+    FlightSOAP getFlightById(long flightId);
 
-    List<FlightDTO> getAllFlights(String originCountry, String destinationCountry, String originCity, String destinationCity, String originDate);
+    List<FlightListDTO> getAllFlights(ParamSearchFlightSOAP params);
 
-    FlightReservationDTO makeFlightReservation(FlightReservationDTO flightReservationDTO);
+    AgencyReservationSuccessDTO makeFlightReservation(MakeFlightReservationSOAP flightReservationDTO);
 
-    FlightReservationDTO modifyFlightReservation(FlightReservationDTO flightReservationDTO);
+    UpdateReservationDTO modifyFlightReservation(ModifyFlightReservationRequestionSOAP flightReservationDTO);
 
     double cancelFlightReservation(long flightReservationId);
 
-    FlightReservationDTO getFlightReservationById(long flightReservationId);
+    // FlightReservationDTO getFlightReservationById(long flightReservationId);
 
-    List<FlightReservationDTO> getAllFlightReservations();
+    // List<FlightReservationDTO> getAllFlightReservations();
 
-    List<FlightReservationDTO> getFlightReservationsByUserId(long userId);
+    // List<FlightReservationDTO> getFlightReservationsByUserId(long userId);
 
 }
