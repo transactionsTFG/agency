@@ -17,6 +17,10 @@ import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 @AllArgsConstructor
@@ -40,6 +44,47 @@ public class RootController {
         return "index";
     }
 
+    @PostMapping("/search/hotel")
+    public String searchHotel(@RequestParam String hotel, 
+                            @RequestParam String country, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("hotel", hotel);
+        redirectAttributes.addFlashAttribute("country", country);
+        redirectAttributes.addFlashAttribute("activePanel", 1);
+        return "redirect:/offers";
+    }
+    
+    @PostMapping("/search/flight")
+    public String searchFlight(@RequestParam String countryOrigin, 
+                                @RequestParam String countryDestination,
+                                @RequestParam String cityOrigin,
+                                @RequestParam String cityDestination,
+                                @RequestParam String date, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("countryOrigin", countryOrigin);
+        redirectAttributes.addFlashAttribute("countryDestination", countryDestination);
+        redirectAttributes.addFlashAttribute("cityOrigin", cityOrigin);
+        redirectAttributes.addFlashAttribute("cityDestination", cityDestination);
+        redirectAttributes.addFlashAttribute("date", date);
+        redirectAttributes.addFlashAttribute("activePanel", 2);
+        return "redirect:/offers";
+    }
+
+    @PostMapping("/search/hotelAndFlight")
+    public String searchFlightAndHotel(@RequestParam String hotel, 
+                                        @RequestParam String countryOrigin, 
+                                        @RequestParam String countryDestination,
+                                        @RequestParam String cityOrigin,
+                                        @RequestParam String cityDestination,
+                                        @RequestParam String date, RedirectAttributes redirectAttributes) {
+                                            redirectAttributes.addFlashAttribute("hotel", hotel);
+                                            redirectAttributes.addFlashAttribute("countryOrigin", countryOrigin);
+                                            redirectAttributes.addFlashAttribute("countryDestination", countryDestination);
+                                            redirectAttributes.addFlashAttribute("cityOrigin", cityOrigin);
+                                            redirectAttributes.addFlashAttribute("cityDestination", cityDestination);
+                                            redirectAttributes.addFlashAttribute("date", date);
+                                            redirectAttributes.addFlashAttribute("activePanel", 3);
+        return "redirect:/offers";
+    }
+
     @GetMapping("/about")
     public String about() {
         return "about";
@@ -50,10 +95,6 @@ public class RootController {
         return "elements";
     }
 
-    @GetMapping("/offers")
-    public String offers() {
-        return "offers";
-    }
 
     @GetMapping("/single_listing")
     public String single_listing() {

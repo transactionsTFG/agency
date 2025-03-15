@@ -129,7 +129,6 @@
                 </div>
 
             </div>
-
         </div>
 
         <!-- Search -->
@@ -162,112 +161,75 @@
                         </div>
                         <!-- Search Panel Hotel-->
                         <div class="search_panel active">
-                            <form action="#" id="search_form_1"
+                            <form th:action="@{/search/hotel}" id="search_form_1" method="POST"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                                 <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
+                                    <div th:text="#{app.index.hotel.input.search}"></div>
+                                    <input type="text" name="hotel" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+                                    <div th:text="#{app.index.hotel.input.country}"></div>
+                                    <input type="text" name="country" class="destination search_input">
                                 </div>
-                                <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-                                </div>
-                                <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_1" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_1" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
+                                <button class="button search_button" th:utext="#{app.index.submit} + '<span></span><span></span><span></span>'"></button>
                             </form>
                         </div>
-
                         <!-- Search Panel Flight-->
                         <div class="search_panel">
-                            <form action="#" id="search_form_2"
+                            <form th:action="@{/search/flight}" id="search_form_2" method="POST"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                                 <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
+                                    <div th:text="#{app.index.air.input.search}"></div>
+                                    <input type="text" name="countryOrigin" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+                                    <div th:text="#{app.index.air.input.destination}"></div>
+                                    <input type="text" name="countryDestination" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
+                                    <div th:text="#{app.index.air.input.search.city}"></div>
+                                    <input type="text" name="cityOrigin" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_2" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
+                                    <div th:text="#{app.index.air.input.search.city.destination}"></div>
+                                    <input type="text" name="cityDestination" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_2" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
-                                </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
+                                    <div th:text="#{app.index.air.input.date}"></div>
+                                    <input type="text" name="date" class="check_in search_input" placeholder="dd/MM/yyyy">
+                                </div> 
+                                <button class="button search_button" th:utext="#{app.index.submit} + '<span></span><span></span><span></span>'"></button>
                             </form>
                         </div>
-
                         <!-- Search Panel Flight + Hotel -->
                         <div class="search_panel">
-                            <form action="#" id="search_form_3"
+                            <form th:action="@{/search/hotelAndFlight}" id="search_form_3" method="POST"
                                 class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                                 <div class="search_item">
-                                    <div>destination</div>
-                                    <input type="text" class="destination search_input" required="required">
+                                    <div th:text="#{app.index.hotel.input.search}"></div>
+                                    <input type="text" name="hotel" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>check in</div>
-                                    <input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
+                                    <div th:text="#{app.index.air.input.search}"></div>
+                                    <input type="text" name="countryOrigin" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>check out</div>
-                                    <input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
+                                    <div th:text="#{app.index.air.input.destination}"></div>
+                                    <input type="text" name="countryDestination" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>adults</div>
-                                    <select name="adults" id="adults_3" class="dropdown_item_select search_input">
-                                        <option>01</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
+                                    <div th:text="#{app.index.air.input.search.city}"></div>
+                                    <input type="text" name="cityOrigin" class="destination search_input">
                                 </div>
                                 <div class="search_item">
-                                    <div>children</div>
-                                    <select name="children" id="children_3" class="dropdown_item_select search_input">
-                                        <option>0</option>
-                                        <option>02</option>
-                                        <option>03</option>
-                                    </select>
+                                    <div th:text="#{app.index.air.input.search.city.destination}"></div>
+                                    <input type="text" name="cityDestination" class="destination search_input">
                                 </div>
-                                <button
-                                    class="button search_button">search<span></span><span></span><span></span></button>
+                                <div class="search_item">
+                                    <div th:text="#{app.index.air.input.date}"></div>
+                                    <input type="text" name="date" class="check_in search_input" placeholder="dd/MM/yyyy">
+                                </div> 
+                                <button class="button search_button" th:utext="#{app.index.submit} + '<span></span><span></span><span></span>'"></button>
                             </form>
                         </div>
                     </div>
