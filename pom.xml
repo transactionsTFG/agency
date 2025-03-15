@@ -142,10 +142,10 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                         <wsdlUrl>http://localhost:9001/agencyMTA/AgencyHotelBookingWS?wsdl</wsdlUrl>  
+                         <wsdlUrl>http://localhost:9001/agencyMTA/GatewayAgencyWS?wsdl</wsdlUrl>  
                     </wsdlUrls>
                     <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>ucm.tfg.agency.soapclient.hotelbooking</packageName>
+                    <packageName>ucm.tfg.agency.soapclient.gatewayagency</packageName>
                 </configuration>
             </plugin>
             -->

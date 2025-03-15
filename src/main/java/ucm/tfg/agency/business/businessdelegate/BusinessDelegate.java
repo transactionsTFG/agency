@@ -113,5 +113,7 @@ public class BusinessDelegate {
         return this.lookupService.getUserService(this.typeService).loginUser(userDTO);
     }
 
-    
+    public Result<List<TravelDTO>> getTravelsByUser(long userId) {
+        return this.lookupService.getAgencyService(this.typeService).getTravelsByUser(userId);
+    }
 }

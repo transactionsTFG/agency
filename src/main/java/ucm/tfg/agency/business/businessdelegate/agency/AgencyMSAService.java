@@ -1,5 +1,6 @@
 package ucm.tfg.agency.business.businessdelegate.agency;
 
+import java.util.List;
 import java.util.Map;
 
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
@@ -53,6 +54,12 @@ public class AgencyMSAService implements AgencyExternalService {
     public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'cancelFlightAndHotelReservation'");
+    }
+
+    @Override
+    public Result<List<TravelDTO>> getTravelsByUser(long userId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTravelsByUser'");
     }
     
 }

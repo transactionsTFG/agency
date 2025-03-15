@@ -1,5 +1,6 @@
 package ucm.tfg.agency.business.services.agency;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -53,6 +54,11 @@ public class AgencyServiceImpl implements AgencyService {
     @Override
     public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
         return this.businessDelegate.cancelFlightAndHotelReservation(flightReservationId, hotelReservationId);
+    }
+
+    @Override
+    public Result<List<TravelDTO>> getTravelsByUser(long userId) {
+        return this.businessDelegate.getTravelsByUser(userId);
     }
     
 

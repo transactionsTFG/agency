@@ -34,6 +34,8 @@ public interface GatewayAgencyMapper {
     GatewayAgencyMapper INSTANCE = Mappers.getMapper(GatewayAgencyMapper.class);
 
     TravelDTO travelSOAPtoDTO(GetTravelSOAP travelSOAP);
+
+    List<TravelDTO> listTravelSOAPtoDTO(List<GetTravelSOAP> listTravelSOAP);
     
     FlightHotelDTO flightAndHotelSOAPtoDTO(HotelFlightReservationDTO hotelFlightReservationDTO);
 

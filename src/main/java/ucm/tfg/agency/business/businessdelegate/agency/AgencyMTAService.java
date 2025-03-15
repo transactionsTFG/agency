@@ -1,5 +1,6 @@
 package ucm.tfg.agency.business.businessdelegate.agency;
 
+import java.util.List;
 import java.util.Map;
 
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
@@ -92,6 +93,15 @@ public class AgencyMTAService implements AgencyExternalService {
     public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
         try {
             return Result.success(this.portAgencyWS.delFlightHotelReservation(hotelReservationId, flightReservationId));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
+    }
+
+    @Override
+    public Result<List<TravelDTO>> getTravelsByUser(long userId) {
+       try {
+            return Result.success(this.mapperAgency.listTravelSOAPtoDTO(this.portAgencyWS.searchTravelByIdUser(userId)));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }

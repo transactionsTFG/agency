@@ -39,6 +39,8 @@ public class ObjectFactory {
     private final static QName _SearchFlightHotel_QNAME = new QName("http://soap/", "searchFlightHotel");
     private final static QName _SearchFlightHotelResponse_QNAME = new QName("http://soap/", "searchFlightHotelResponse");
     private final static QName _SearchTravel_QNAME = new QName("http://soap/", "searchTravel");
+    private final static QName _SearchTravelByIdUser_QNAME = new QName("http://soap/", "searchTravelByIdUser");
+    private final static QName _SearchTravelByIdUserResponse_QNAME = new QName("http://soap/", "searchTravelByIdUserResponse");
     private final static QName _SearchTravelResponse_QNAME = new QName("http://soap/", "searchTravelResponse");
 
     /**
@@ -174,6 +176,22 @@ public class ObjectFactory {
      */
     public SearchTravel createSearchTravel() {
         return new SearchTravel();
+    }
+
+    /**
+     * Create an instance of {@link SearchTravelByIdUser }
+     * 
+     */
+    public SearchTravelByIdUser createSearchTravelByIdUser() {
+        return new SearchTravelByIdUser();
+    }
+
+    /**
+     * Create an instance of {@link SearchTravelByIdUserResponse }
+     * 
+     */
+    public SearchTravelByIdUserResponse createSearchTravelByIdUserResponse() {
+        return new SearchTravelByIdUserResponse();
     }
 
     /**
@@ -505,6 +523,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soap/", name = "searchTravel")
     public JAXBElement<SearchTravel> createSearchTravel(SearchTravel value) {
         return new JAXBElement<SearchTravel>(_SearchTravel_QNAME, SearchTravel.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchTravelByIdUser }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchTravelByIdUser }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchTravelByIdUser")
+    public JAXBElement<SearchTravelByIdUser> createSearchTravelByIdUser(SearchTravelByIdUser value) {
+        return new JAXBElement<SearchTravelByIdUser>(_SearchTravelByIdUser_QNAME, SearchTravelByIdUser.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchTravelByIdUserResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchTravelByIdUserResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchTravelByIdUserResponse")
+    public JAXBElement<SearchTravelByIdUserResponse> createSearchTravelByIdUserResponse(SearchTravelByIdUserResponse value) {
+        return new JAXBElement<SearchTravelByIdUserResponse>(_SearchTravelByIdUserResponse_QNAME, SearchTravelByIdUserResponse.class, null, value);
     }
 
     /**

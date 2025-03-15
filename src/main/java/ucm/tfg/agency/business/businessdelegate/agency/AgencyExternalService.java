@@ -1,5 +1,6 @@
 package ucm.tfg.agency.business.businessdelegate.agency;
 
+import java.util.List;
 import java.util.Map;
 
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
@@ -20,4 +21,5 @@ public interface AgencyExternalService {
         Result<SuccessReservationAgencyDTO> makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO);
         Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
         Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
+        Result<List<TravelDTO>> getTravelsByUser(long userId);
 }
