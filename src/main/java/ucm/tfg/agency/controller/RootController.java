@@ -90,15 +90,8 @@ public class RootController {
         return "about";
     }
 
-    @GetMapping("/elements")
-    public String elements() {
-        return "elements";
-    }
-
-
     @GetMapping("/single_listing")
     public String single_listing() {
         return "single_listing";
     }
-
 }

@@ -1,13 +1,13 @@
 package ucm.tfg.agency.controller;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
+
 
 @Controller
 @AllArgsConstructor
@@ -39,4 +39,20 @@ public class OfferController {
         model.addAttribute("activePanel", activePanelMeanwhileRedirect);
         return "offers";
     }
+
+    @GetMapping("/hotel/{hotelId}")
+    public String getHotel(@PathVariable("hotelId") long offerId) {
+        return "single_listing";
+    }
+
+    @GetMapping("/flight/{flightId}")
+    public String getFlight(@PathVariable("flightId") long flightId) {
+        return "single_listing";
+    }
+
+    @GetMapping("/package/{hotelId}/{flightId}")
+    public String getOffer(@PathVariable("hotelId") long offerId, @PathVariable("flightId") long flightId) {
+        return "single_listing";
+    }
+    
 }
