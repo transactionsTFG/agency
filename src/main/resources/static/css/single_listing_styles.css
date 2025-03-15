@@ -352,6 +352,11 @@ section
 	opacity: 0;
 	height: 0px;
 }
+
+.m-top-entrance {
+	margin-top: 100px;
+}
+
 .phone
 {
 	display: inline-block;
