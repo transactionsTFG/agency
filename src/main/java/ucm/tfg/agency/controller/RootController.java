@@ -85,11 +85,6 @@ public class RootController {
         return "redirect:/offers";
     }
 
-    @GetMapping("/about")
-    public String about() {
-        return "about";
-    }
-
     @GetMapping("/single_listing")
     public String single_listing() {
         return "single_listing";

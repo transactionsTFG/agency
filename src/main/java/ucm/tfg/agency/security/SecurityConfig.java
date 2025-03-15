@@ -9,7 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
+import ucm.tfg.agency.AgencyApplication;
 import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.auth.AuthService;
 
@@ -17,7 +17,7 @@ import ucm.tfg.agency.business.services.auth.AuthService;
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig {
-    
+ 
     private final AuthService authService;
 
     @Bean
@@ -29,8 +29,10 @@ public class SecurityConfig {
                         csfr -> csfr.csrfTokenRepository(new HttpSessionCsrfTokenRepository())
                 )
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/index", "/").permitAll()
-                                .requestMatchers("/**").permitAll()
+                                .requestMatchers("/index", "/", "/search/hotel", "/search/flight", "/search/hotelAndFlight").permitAll()
+                                .requestMatchers("/about").permitAll()
+                                .requestMatchers("/offers/**").permitAll()
+                                .requestMatchers("css/**", "js/**", "img/**", "fonts/**", "plugins/**", "vendor/**").permitAll()
                                 .anyRequest().authenticated()                   //Todas las demas rutas estan protegidas
                 )
                 .formLogin(login -> login

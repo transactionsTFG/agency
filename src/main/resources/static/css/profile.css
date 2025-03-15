@@ -9,6 +9,7 @@ body {
 .profile-header {
   position: relative;
   overflow: hidden;
+  margin-top: 50;
 }
 
 .profile-header .profile-header-cover {
