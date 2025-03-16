@@ -28,6 +28,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="flightCost" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="hotelCost" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="dateCreation" type="{http://www.w3.org/2001/XMLSchema}anySimpleType" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -49,7 +50,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "hotelReservationID",
     "flightCost",
     "hotelCost",
-    "active"
+    "active",
+    "dateCreation"
 })
 public class GetTravelSOAP {
 
@@ -65,6 +67,7 @@ public class GetTravelSOAP {
     protected double flightCost;
     protected double hotelCost;
     protected boolean active;
+    protected Object dateCreation;
 
     /**
      * Obtiene el valor de la propiedad id.
@@ -280,6 +283,30 @@ public class GetTravelSOAP {
      */
     public void setActive(boolean value) {
         this.active = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad dateCreation.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Object }
+     *     
+     */
+    public Object getDateCreation() {
+        return dateCreation;
+    }
+
+    /**
+     * Define el valor de la propiedad dateCreation.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Object }
+     *     
+     */
+    public void setDateCreation(Object value) {
+        this.dateCreation = value;
     }
 
 }

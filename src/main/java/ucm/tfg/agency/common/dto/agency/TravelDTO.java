@@ -1,5 +1,7 @@
 package ucm.tfg.agency.common.dto.agency;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -18,4 +20,5 @@ public class TravelDTO {
     private double flightCost;
     private double hotelCost;
     private boolean active;
+    private LocalDateTime dateCreation;
 }

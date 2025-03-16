@@ -1,5 +1,8 @@
 package ucm.tfg.agency.common.mapper;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +10,9 @@ import java.util.stream.Collectors;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
+import org.w3c.dom.Element;
 
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
@@ -33,8 +38,10 @@ import ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse;
 public interface GatewayAgencyMapper {
     GatewayAgencyMapper INSTANCE = Mappers.getMapper(GatewayAgencyMapper.class);
 
+    @Mapping(target = "dateCreation", source = "dateCreation", qualifiedByName = "mapDateCreation")
     TravelDTO travelSOAPtoDTO(GetTravelSOAP travelSOAP);
 
+    @Mapping(target = "dateCreation", source = "dateCreation", qualifiedByName = "mapDateCreation")
     List<TravelDTO> listTravelSOAPtoDTO(List<GetTravelSOAP> listTravelSOAP);
     
     FlightHotelDTO flightAndHotelSOAPtoDTO(HotelFlightReservationDTO hotelFlightReservationDTO);
@@ -91,5 +98,16 @@ public interface GatewayAgencyMapper {
                         .listHotel(listHotel)
                         .build();
         })); 
+    }
+
+    @Named("mapDateCreation")
+    default LocalDateTime mapDateCreation(Object dateCreation) {
+        if(dateCreation instanceof Date){
+            return ((Date) dateCreation).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+        } else if(dateCreation instanceof Element){
+            String dateText = ((Element) dateCreation).getTextContent();
+            return LocalDateTime.parse(dateText);
+        } else 
+            return null;
     }
 }

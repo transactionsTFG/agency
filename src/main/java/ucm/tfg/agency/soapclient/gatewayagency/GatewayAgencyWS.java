@@ -27,57 +27,6 @@ public interface GatewayAgencyWS {
 
     /**
      * 
-     * @param flightReservationId
-     * @param hotelBookingId
-     * @return
-     *     returns ucm.tfg.agency.soapclient.gatewayagency.HotelFlightReservationDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getFlightHotelReservation", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.GetFlightHotelReservation")
-    @ResponseWrapper(localName = "getFlightHotelReservationResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.GetFlightHotelReservationResponse")
-    @Action(input = "http://soap/GatewayAgencyWS/getFlightHotelReservationRequest", output = "http://soap/GatewayAgencyWS/getFlightHotelReservationResponse")
-    public HotelFlightReservationDTO getFlightHotelReservation(
-        @WebParam(name = "hotelBookingId", targetNamespace = "")
-        long hotelBookingId,
-        @WebParam(name = "flightReservationId", targetNamespace = "")
-        long flightReservationId);
-
-    /**
-     * 
-     * @param idUser
-     * @return
-     *     returns java.util.List<ucm.tfg.agency.soapclient.gatewayagency.GetTravelSOAP>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchTravelByIdUser", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchTravelByIdUser")
-    @ResponseWrapper(localName = "searchTravelByIdUserResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchTravelByIdUserResponse")
-    @Action(input = "http://soap/GatewayAgencyWS/searchTravelByIdUserRequest", output = "http://soap/GatewayAgencyWS/searchTravelByIdUserResponse")
-    public List<GetTravelSOAP> searchTravelByIdUser(
-        @WebParam(name = "idUser", targetNamespace = "")
-        long idUser);
-
-    /**
-     * 
-     * @param booking
-     * @param reservation
-     * @return
-     *     returns ucm.tfg.agency.soapclient.gatewayagency.UpdateReservationDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "modFlightHotelReservation", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.ModFlightHotelReservation")
-    @ResponseWrapper(localName = "modFlightHotelReservationResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.ModFlightHotelReservationResponse")
-    @Action(input = "http://soap/GatewayAgencyWS/modFlightHotelReservationRequest", output = "http://soap/GatewayAgencyWS/modFlightHotelReservationResponse")
-    public UpdateReservationDTO modFlightHotelReservation(
-        @WebParam(name = "booking", targetNamespace = "")
-        ModifyBookingReservationDTO booking,
-        @WebParam(name = "reservation", targetNamespace = "")
-        ModifyFlightReservationRequestionSOAP reservation);
-
-    /**
-     * 
      * @param booking
      * @param reservation
      * @return
@@ -114,18 +63,54 @@ public interface GatewayAgencyWS {
 
     /**
      * 
-     * @param parmaSearchAirlineHotel
+     * @param booking
+     * @param reservation
      * @return
-     *     returns ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse.Return
+     *     returns ucm.tfg.agency.soapclient.gatewayagency.UpdateReservationDTO
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchFlightHotel", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotel")
-    @ResponseWrapper(localName = "searchFlightHotelResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse")
-    @Action(input = "http://soap/GatewayAgencyWS/searchFlightHotelRequest", output = "http://soap/GatewayAgencyWS/searchFlightHotelResponse")
-    public ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse.Return searchFlightHotel(
-        @WebParam(name = "parmaSearchAirlineHotel", targetNamespace = "")
-        SearchAirlineHotelRequestSOAP parmaSearchAirlineHotel);
+    @RequestWrapper(localName = "modFlightHotelReservation", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.ModFlightHotelReservation")
+    @ResponseWrapper(localName = "modFlightHotelReservationResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.ModFlightHotelReservationResponse")
+    @Action(input = "http://soap/GatewayAgencyWS/modFlightHotelReservationRequest", output = "http://soap/GatewayAgencyWS/modFlightHotelReservationResponse")
+    public UpdateReservationDTO modFlightHotelReservation(
+        @WebParam(name = "booking", targetNamespace = "")
+        ModifyBookingReservationDTO booking,
+        @WebParam(name = "reservation", targetNamespace = "")
+        ModifyFlightReservationRequestionSOAP reservation);
+
+    /**
+     * 
+     * @param flightReservationId
+     * @param hotelBookingId
+     * @return
+     *     returns ucm.tfg.agency.soapclient.gatewayagency.HotelFlightReservationDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getFlightHotelReservation", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.GetFlightHotelReservation")
+    @ResponseWrapper(localName = "getFlightHotelReservationResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.GetFlightHotelReservationResponse")
+    @Action(input = "http://soap/GatewayAgencyWS/getFlightHotelReservationRequest", output = "http://soap/GatewayAgencyWS/getFlightHotelReservationResponse")
+    public HotelFlightReservationDTO getFlightHotelReservation(
+        @WebParam(name = "hotelBookingId", targetNamespace = "")
+        long hotelBookingId,
+        @WebParam(name = "flightReservationId", targetNamespace = "")
+        long flightReservationId);
+
+    /**
+     * 
+     * @param idUser
+     * @return
+     *     returns java.util.List<ucm.tfg.agency.soapclient.gatewayagency.GetTravelSOAP>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchTravelByIdUser", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchTravelByIdUser")
+    @ResponseWrapper(localName = "searchTravelByIdUserResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchTravelByIdUserResponse")
+    @Action(input = "http://soap/GatewayAgencyWS/searchTravelByIdUserRequest", output = "http://soap/GatewayAgencyWS/searchTravelByIdUserResponse")
+    public List<GetTravelSOAP> searchTravelByIdUser(
+        @WebParam(name = "idUser", targetNamespace = "")
+        long idUser);
 
     /**
      * 
@@ -141,5 +126,20 @@ public interface GatewayAgencyWS {
     public GetTravelSOAP searchTravel(
         @WebParam(name = "paramSearchTravel", targetNamespace = "")
         long paramSearchTravel);
+
+    /**
+     * 
+     * @param parmaSearchAirlineHotel
+     * @return
+     *     returns ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse.Return
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlightHotel", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotel")
+    @ResponseWrapper(localName = "searchFlightHotelResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse")
+    @Action(input = "http://soap/GatewayAgencyWS/searchFlightHotelRequest", output = "http://soap/GatewayAgencyWS/searchFlightHotelResponse")
+    public ucm.tfg.agency.soapclient.gatewayagency.SearchFlightHotelResponse.Return searchFlightHotel(
+        @WebParam(name = "parmaSearchAirlineHotel", targetNamespace = "")
+        SearchAirlineHotelRequestSOAP parmaSearchAirlineHotel);
 
 }
