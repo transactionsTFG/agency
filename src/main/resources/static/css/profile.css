@@ -191,6 +191,10 @@ body {
   color: #242a30;
 }
 
+.profile {
+  margin-top: 15px;
+}
+
 .profile-content {
   padding: 25px;
   border-radius: 4px;
@@ -567,7 +571,11 @@ select.form-control:not([size]):not([multiple]) {
 .timeline-content {
   letter-spacing: 0.25px;
   line-height: 18px;
-  font-size: 13px;
+  font-size: 1.1em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .timeline-content:after,

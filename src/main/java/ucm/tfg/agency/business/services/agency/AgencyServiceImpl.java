@@ -1,7 +1,10 @@
 package ucm.tfg.agency.business.services.agency;
 
+import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -58,7 +61,12 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public Result<List<TravelDTO>> getTravelsByUser(long userId) {
-        return this.businessDelegate.getTravelsByUser(userId);
+        Result<List<TravelDTO>> travels = this.businessDelegate.getTravelsByUser(userId);
+        if (!travels.isSuccess())
+            return travels;
+        
+        travels.getData().sort(Comparator.comparing(TravelDTO::getDateCreation).reversed());
+        return travels;
     }
     
 
