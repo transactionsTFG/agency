@@ -49,6 +49,9 @@
                     </div>
                     <div class="profile-content" th:unless="${msg}">
                         <div class="tab-content p-0">
+                            <div th:if="${priceReturn}" class="container-price-return">
+                                <p class="txt-white" th:text="#{app.profile.reservation.cancel} + ': ' + ${priceReturn}"></p>
+                            </div>
                             <div class="tab-pane fade active show" id="profile-post">
                                 <ul class="timeline">
                                     <li th:each="travel : ${travels}">
@@ -85,11 +88,16 @@
                                                 </div> 
                                             </div>
                                             <div class="timeline-footer">
+
                                                 <p th:if="${travel.active == false}" th:text="#{app.profile.reservation.anulation}"></p>
                                                 <a th:if="${travel.active == true}" class="m-r-15 text-inverse-lighter cursor-pointer"><i
-                                                        class="fa fa-edit fa-fw fa-lg m-r-3"></i> <span  th:text="#{app.profile.reservation.modify}"></span></a>
-                                                <a th:if="${travel.active == true}" class="m-r-15 text-inverse-lighter cursor-pointer"><i
-                                                        class="fa fa-trash fa-fw fa-lg m-r-3"></i>  <span th:text="#{app.profile.reservation.cancel}"></span> </a>
+                                                        class="fa fa-edit fa-fw fa-lg m-r-3"></i><span  th:text="#{app.profile.reservation.modify}"></span></a>
+                                                <form class="d-inline" th:action="@{/profile/removeTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}" method="post" th:if="${travel.active == true}">
+                                                    <button type="submit" class="btn-remove m-r-15 text-inverse-lighter cursor-pointer">
+                                                        <i class="fa fa-trash fa-fw fa-lg m-r-3"></i>
+                                                        <span th:text="#{app.profile.reservation.cancel}"></span>
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </li>
