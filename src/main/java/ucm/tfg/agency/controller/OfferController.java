@@ -7,12 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
+import ucm.tfg.agency.business.services.agency.AgencyService;
+import ucm.tfg.agency.business.services.airline.AirlineService;
+import ucm.tfg.agency.business.services.hotel.HotelService;
 
 
 @Controller
 @AllArgsConstructor
 @RequestMapping("/offers")
 public class OfferController {
+
+    private final HotelService hotelService;
+    private final AirlineService airlineService;
+    private final AgencyService agencyService;
 
     @GetMapping
     public String offers(Model model) {
