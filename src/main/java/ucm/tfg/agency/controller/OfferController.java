@@ -1,15 +1,22 @@
 package ucm.tfg.agency.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.agency.AgencyService;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
+import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
+import ucm.tfg.agency.common.utils.StringUtils;
 
 
 @Controller
@@ -25,9 +32,13 @@ public class OfferController {
     public String offers(Model model) {
         final boolean isActivePanelMeanwhileRedirect = model.containsAttribute("activePanel");
         final int activePanelMeanwhileRedirect = isActivePanelMeanwhileRedirect ? (int) model.getAttribute("activePanel") : 1;
-        if (isActivePanelMeanwhileRedirect && activePanelMeanwhileRedirect == 1) {
-            model.addAttribute("hotel", model.getAttribute("hotel"));
-            model.addAttribute("country", model.getAttribute("country"));
+        if (isActivePanelMeanwhileRedirect && activePanelMeanwhileRedirect == 1 || (!isActivePanelMeanwhileRedirect && activePanelMeanwhileRedirect == 1)) {
+            String hotel = (StringUtils.hasText(model.getAttribute("hotel"))) ? (String) model.getAttribute("hotel") : null;
+            String country = StringUtils.hasText(model.getAttribute("country")) ? (String) model.getAttribute("country") : null;
+            model.addAttribute("hotel", hotel);
+            model.addAttribute("country", country);
+            List<RoomInfoDTO> rooms = this.hotelService.getAllRooms(hotel, country).getData();
+            model.addAttribute("listRoom", rooms);
         } else if (isActivePanelMeanwhileRedirect && activePanelMeanwhileRedirect == 2) {
             model.addAttribute("countryOrigin", model.getAttribute("countryOrigin"));
             model.addAttribute("countryDestination", model.getAttribute("countryDestination"));
@@ -47,9 +58,14 @@ public class OfferController {
         return "offers";
     }
 
-    @GetMapping("/hotel/{hotelId}")
-    public String getHotel(@PathVariable("hotelId") long offerId) {
-        return "single_listing";
+    @PostMapping("/hotel")
+    public String getHotel(@RequestParam String hotel, @RequestParam String country, RedirectAttributes redirectAttributes) {
+        hotel = StringUtils.hasText(country) ? hotel : null;
+        country = StringUtils.hasText(country) ? country : null;
+        redirectAttributes.addFlashAttribute("hotel", hotel);
+        redirectAttributes.addFlashAttribute("country", country);
+        redirectAttributes.addFlashAttribute("activePanel", 1);
+        return "redirect:/offers";
     }
 
     @GetMapping("/flight/{flightId}")

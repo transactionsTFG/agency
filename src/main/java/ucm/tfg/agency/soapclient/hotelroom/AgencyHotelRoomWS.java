@@ -27,21 +27,6 @@ public interface AgencyHotelRoomWS {
 
     /**
      * 
-     * @param id
-     * @return
-     *     returns ucm.tfg.agency.soapclient.hotelroom.RoomDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchRoom", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoom")
-    @ResponseWrapper(localName = "searchRoomResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomResponse")
-    @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomResponse")
-    public RoomDTO searchRoom(
-        @WebParam(name = "id", targetNamespace = "")
-        long id);
-
-    /**
-     * 
      * @param nameCountry
      * @param nameHotel
      * @return
@@ -57,5 +42,20 @@ public interface AgencyHotelRoomWS {
         String nameHotel,
         @WebParam(name = "nameCountry", targetNamespace = "")
         String nameCountry);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns ucm.tfg.agency.soapclient.hotelroom.RoomDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchRoom", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoom")
+    @ResponseWrapper(localName = "searchRoomResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomResponse")
+    @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomResponse")
+    public RoomDTO searchRoom(
+        @WebParam(name = "id", targetNamespace = "")
+        long id);
 
 }

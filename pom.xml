@@ -128,7 +128,6 @@
                     </configuration>
                 </plugin>
                 <!-- Comando: mvn jaxws:wsimport -->
-               <!--
                 <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -142,13 +141,12 @@
                 </executions>
                 <configuration>
                     <wsdlUrls>
-                         <wsdlUrl>http://localhost:9001/agencyMTA/GatewayAgencyWS?wsdl</wsdlUrl>  
+                         <wsdlUrl>http://localhost:9001/agencyMTA/AgencyHotelRoomWS?wsdl</wsdlUrl>  
                     </wsdlUrls>
                     <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>ucm.tfg.agency.soapclient.gatewayagency</packageName>
+                    <packageName>ucm.tfg.agency.soapclient.hotelroom</packageName>
                 </configuration>
             </plugin>
-            -->
         </plugins>
         </pluginManagement>
     </build>
