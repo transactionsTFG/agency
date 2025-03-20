@@ -19,4 +19,5 @@ public class RoomListDTO {
     private int peopleNumber;
     private String hotelName;
     private String countryName;
+    private double dailyPrice;
 }

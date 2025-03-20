@@ -11,10 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FlightListDTO {
     private long id;
-    private String arrivalTime;
-    private String departureTime;
+    private String arrivalDate;
+    private String departureDate;
     private String cityDestination;
     private String countryOrigin;
     private String countryDestination;
     private String weekDay;
+    private double price;
 }

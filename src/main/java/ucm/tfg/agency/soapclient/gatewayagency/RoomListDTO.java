@@ -18,6 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;sequence&gt;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *         &lt;element name="countryName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="dailyPrice" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="hotelName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="number" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
@@ -36,6 +37,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "roomListDTO", propOrder = {
     "active",
     "countryName",
+    "dailyPrice",
     "hotelName",
     "id",
     "number",
@@ -47,6 +49,7 @@ public class RoomListDTO {
 
     protected boolean active;
     protected String countryName;
+    protected double dailyPrice;
     protected String hotelName;
     protected long id;
     protected int number;
@@ -92,6 +95,22 @@ public class RoomListDTO {
      */
     public void setCountryName(String value) {
         this.countryName = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad dailyPrice.
+     * 
+     */
+    public double getDailyPrice() {
+        return dailyPrice;
+    }
+
+    /**
+     * Define el valor de la propiedad dailyPrice.
+     * 
+     */
+    public void setDailyPrice(double value) {
+        this.dailyPrice = value;
     }
 
     /**

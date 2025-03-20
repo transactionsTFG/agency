@@ -16,12 +16,13 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arrivalTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arrivalDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="cityDestination" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="countryDestination" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="countryOrigin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="departureTime" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="departureDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="weekDay" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -33,46 +34,48 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "flightListDTO", propOrder = {
-    "arrivalTime",
+    "arrivalDate",
     "cityDestination",
     "countryDestination",
     "countryOrigin",
-    "departureTime",
+    "departureDate",
     "id",
+    "price",
     "weekDay"
 })
 public class FlightListDTO {
 
-    protected String arrivalTime;
+    protected String arrivalDate;
     protected String cityDestination;
     protected String countryDestination;
     protected String countryOrigin;
-    protected String departureTime;
+    protected String departureDate;
     protected long id;
+    protected double price;
     protected String weekDay;
 
     /**
-     * Obtiene el valor de la propiedad arrivalTime.
+     * Obtiene el valor de la propiedad arrivalDate.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getArrivalTime() {
-        return arrivalTime;
+    public String getArrivalDate() {
+        return arrivalDate;
     }
 
     /**
-     * Define el valor de la propiedad arrivalTime.
+     * Define el valor de la propiedad arrivalDate.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setArrivalTime(String value) {
-        this.arrivalTime = value;
+    public void setArrivalDate(String value) {
+        this.arrivalDate = value;
     }
 
     /**
@@ -148,27 +151,27 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad departureTime.
+     * Obtiene el valor de la propiedad departureDate.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getDepartureTime() {
-        return departureTime;
+    public String getDepartureDate() {
+        return departureDate;
     }
 
     /**
-     * Define el valor de la propiedad departureTime.
+     * Define el valor de la propiedad departureDate.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setDepartureTime(String value) {
-        this.departureTime = value;
+    public void setDepartureDate(String value) {
+        this.departureDate = value;
     }
 
     /**
@@ -185,6 +188,22 @@ public class FlightListDTO {
      */
     public void setId(long value) {
         this.id = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad price.
+     * 
+     */
+    public double getPrice() {
+        return price;
+    }
+
+    /**
+     * Define el valor de la propiedad price.
+     * 
+     */
+    public void setPrice(double value) {
+        this.price = value;
     }
 
     /**

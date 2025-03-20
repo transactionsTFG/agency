@@ -97,7 +97,7 @@
                                 </div>
                                 <!-- Search Panel -->
                                 <div class="search_panel" th:classappend="${activePanel == 3} ? 'active' : ''">
-                                    <form action="@{#}" id="search_form_3"
+                                    <form th:action="@{/offers/flightAndHotel}" id="search_form_3" method="post"
                                         class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
                                         <div class="search_item">
                                             <div th:text="#{app.index.hotel.input.search}"></div>
@@ -226,14 +226,14 @@
                                     <div class="col-lg-3 col-1680-4">
                                         <div class="offers_image_container">
                                             <div class="offers_image_background"
-                                                style="background-image:url(img/offer_6.jpg)"></div>
-                                            <div class="offer_name"><a th:href="@{/single_listing}" th:text="${room.countryName}"></a>
+                                                style="background-image:url(img/offer_7.jpg)"></div>
+                                            <div class="offer_name"><a th:href="@{/single_listing}" th:text="${flight.countryDestination} + ',' + ${flight.cityDestination}"></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="offers_content">
-                                            <div class="offers_price" th:text="#{app.offers.order.price(${room.dailyPrice})}"><span th:text="#{app.offers.pernight}"></span></div>
+                                            <div class="offers_price" th:text="#{app.offers.order.price(${flight.price})}"><span th:text="#{app.offers.pernight}"></span></div>
                                             <div class="rating_r rating_r_5 offers_rating" data-rating="5">
                                                 <i></i>
                                                 <i></i>
@@ -241,7 +241,7 @@
                                                 <i></i>
                                                 <i></i>
                                             </div>
-                                            <p class="offers_text" th:text="#{app.offers.hotel.description(${room.hotelName}, ${room.singleBed} ? 'SI' : 'NO', ${room.peopleNumber})}"></p>
+                                            <p class="offers_text" th:text="#{app.offers.flight.description(${flight.departureDate}, ${flight.weekDay}, ${flight.departureDate})}"></p>
                                             <div class="offers_icons">
                                                 <ul class="offers_icons_list">
                                                     <li class="offers_icons_item"><img th:src="@{img/post.png}" alt="">
@@ -254,19 +254,74 @@
                                                             alt=""></li>
                                                 </ul>
                                             </div>
-                                            <div class="button book_button"><a th:href="@{#}" th:utext="#{app.offers.booking} + '<span></span><span></span><span></span>'"></a></div>
+                                            <div class="button book_button"><a th:href="@{#}" th:utext="#{app.offers.flight} + '<span></span><span></span><span></span>'"></a></div>
                                             <div class="offer_reviews">
                                                 <div class="offer_reviews_content">
                                                     <div class="offer_reviews_title" th:text="#{app.offers.good}"></div> 
-                                                    <div class="offer_reviews_subtitle" th:text="#{app.offers.review(${room.number})}">100 reviews</div>
+                                                    <div class="offer_reviews_subtitle">100 reviews</div>
                                                 </div>
-                                                <div class="offer_reviews_rating text-center">8.1</div>
+                                                <div class="offer_reviews_rating text-center">9.0</div>
                                             </div>                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
+                         <!-- AEROLINEA + HOTEL -->  
+                         <div class="offers_grid" th:if="${mapPackage}">
+                            <!-- Offers Item -->
+                            <th:block th:each="entry : ${mapPackage}" >
+                                <th:block th:each="flight : ${entry.value.listFlight}">
+                                    <div th:each="room : ${entry.value.listHotel}" class="offers_item rating_5">
+                                        <div class="row">
+                                            <div class="col-lg-1 temp_col"></div>
+                                            <div class="col-lg-3 col-1680-4">
+                                                <div class="offers_image_container">
+                                                    <div class="offers_image_background"
+                                                        style="background-image:url(img/offer_7.jpg)"></div>
+                                                    <div class="offer_name"><a th:href="@{/single_listing}" th:text="${entry.key}"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="offers_content">
+                                                    <div class="offers_price" th:text="#{app.offers.order.price(${flight.price + room.dailyPrice})}"><span th:text="#{app.offers.pernight}"></span></div>
+                                                    <div class="rating_r rating_r_5 offers_rating" data-rating="5">
+                                                        <i></i>
+                                                        <i></i>
+                                                        <i></i>
+                                                        <i></i>
+                                                        <i></i>
+                                                    </div>
+                                                    <p class="offers_text" th:text="#{app.offers.hotel.description(${room.hotelName}, ${room.singleBed} ? 'SI' : 'NO', ${room.peopleNumber})}"></p>
+                                                    <p class="offers_text" th:text="#{app.offers.flight.description(${flight.departureDate}, ${flight.weekDay}, ${flight.departureDate})}"></p>
+                                                    <div class="offers_icons">
+                                                        <ul class="offers_icons_list">
+                                                            <li class="offers_icons_item"><img th:src="@{img/post.png}" alt="">
+                                                            </li>
+                                                            <li class="offers_icons_item"><img th:src="@{img/compass.png}"
+                                                                    alt=""></li>
+                                                            <li class="offers_icons_item"><img th:src="@{img/bicycle.png}"
+                                                                    alt=""></li>
+                                                            <li class="offers_icons_item"><img th:src="@{img/sailboat.png}"
+                                                                    alt=""></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="button book_button"><a th:href="@{#}" th:utext="#{app.offers.flight} + '<span></span><span></span><span></span>'"></a></div>
+                                                    <div class="offer_reviews">
+                                                        <div class="offer_reviews_content">
+                                                            <div class="offer_reviews_title" th:text="#{app.offers.good}"></div> 
+                                                            <div class="offer_reviews_subtitle">100 reviews</div>
+                                                        </div>
+                                                        <div class="offer_reviews_rating text-center">9.0</div>
+                                                    </div>                                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th:block>
+                            </th:block>
+                        </div>
                     </div>
 
                 </div>

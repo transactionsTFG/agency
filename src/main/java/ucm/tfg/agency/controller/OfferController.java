@@ -1,6 +1,7 @@
 package ucm.tfg.agency.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.agency.AgencyService;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
+import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
@@ -55,12 +57,20 @@ public class OfferController {
             model.addAttribute("date", date);
             model.addAttribute("listFlight", flights.getData());
         } else if (isActivePanelMeanwhileRedirect && activePanelMeanwhileRedirect == 3) {
+            String hotel = (StringUtils.hasText(model.getAttribute("hotel"))) ? (String) model.getAttribute("hotel") : null;
+            String countryOrigin = StringUtils.hasText(model.getAttribute("countryOrigin")) ? (String) model.getAttribute("countryOrigin") : null;
+            String countryDestination = StringUtils.hasText(model.getAttribute("countryDestination")) ? (String) model.getAttribute("countryDestination") : null;
+            String cityOrigin = StringUtils.hasText(model.getAttribute("cityOrigin")) ? (String) model.getAttribute("cityOrigin") : null;
+            String cityDestination = StringUtils.hasText(model.getAttribute("cityDestination")) ? (String) model.getAttribute("cityDestination") : null;
+            String date = StringUtils.hasText(model.getAttribute("date")) ? (String) model.getAttribute("date") : null;
+            Result<Map<String, ListFlightHotelDTO>> result = this.agencyService.getFlightsAndHotels(hotel, countryOrigin, countryDestination, cityOrigin, cityDestination, date);
             model.addAttribute("hotel", model.getAttribute("hotel"));
             model.addAttribute("countryOrigin", model.getAttribute("countryOrigin"));
             model.addAttribute("countryDestination", model.getAttribute("countryDestination"));
             model.addAttribute("cityOrigin", model.getAttribute("cityOrigin"));
             model.addAttribute("cityDestination", model.getAttribute("cityDestination"));
             model.addAttribute("date", model.getAttribute("date"));
+            model.addAttribute("mapPackage", result.getData());
         }
 
         model.addAttribute("activePanel", activePanelMeanwhileRedirect);
@@ -88,9 +98,16 @@ public class OfferController {
         return "redirect:/offers";
     }
 
-    @GetMapping("/package/{hotelId}/{flightId}")
-    public String getOffer(@PathVariable("hotelId") long offerId, @PathVariable("flightId") long flightId) {
-        return "single_listing";
+    @PostMapping("/flightAndHotel")
+    public String getFlight(@RequestParam String hotel, @RequestParam String countryOrigin, @RequestParam String countryDestination, @RequestParam String cityOrigin, @RequestParam String cityDestination, @RequestParam String date, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("hotel", hotel);
+        redirectAttributes.addFlashAttribute("countryOrigin", countryOrigin);
+        redirectAttributes.addFlashAttribute("countryDestination", countryDestination);
+        redirectAttributes.addFlashAttribute("cityOrigin", cityOrigin);
+        redirectAttributes.addFlashAttribute("cityDestination", cityDestination);
+        redirectAttributes.addFlashAttribute("date", date);
+        redirectAttributes.addFlashAttribute("activePanel", 3);
+        return "redirect:/offers";
     }
     
 }

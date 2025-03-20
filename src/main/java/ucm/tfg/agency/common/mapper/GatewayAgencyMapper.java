@@ -23,6 +23,7 @@ import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.utils.DateParser;
 import ucm.tfg.agency.soapclient.gatewayagency.AgencyReservationSuccessDTO;
 import ucm.tfg.agency.soapclient.gatewayagency.FlightListDTO;
 import ucm.tfg.agency.soapclient.gatewayagency.GetTravelSOAP;
@@ -71,12 +72,13 @@ public interface GatewayAgencyMapper {
             List<ucm.tfg.agency.common.dto.agency.FlightListDTO> listFlight = flightListDTO.stream().map(flight -> {
                 return ucm.tfg.agency.common.dto.agency.FlightListDTO.builder()
                         .id(flight.getId())
-                        .arrivalTime(flight.getArrivalTime())
-                        .departureTime(flight.getDepartureTime())
+                        .arrivalDate(flight.getArrivalDate())
+                        .departureDate(flight.getDepartureDate())
                         .cityDestination(flight.getCityDestination())
                         .countryOrigin(flight.getCountryOrigin())
                         .countryDestination(flight.getCountryDestination())
                         .weekDay(flight.getWeekDay())
+                        .price(flight.getPrice())
                         .build();
             }).toList();
 
@@ -90,6 +92,7 @@ public interface GatewayAgencyMapper {
                         .peopleNumber(room.getPeopleNumber())
                         .hotelName(room.getHotelName())
                         .countryName(room.getCountryName())
+                        .dailyPrice(room.getDailyPrice())
                         .build();
             }).toList();
 
@@ -102,12 +105,6 @@ public interface GatewayAgencyMapper {
 
     @Named("mapDateCreation")
     default LocalDateTime mapDateCreation(Object dateCreation) {
-        if(dateCreation instanceof Date){
-            return ((Date) dateCreation).toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        } else if(dateCreation instanceof Element){
-            String dateText = ((Element) dateCreation).getTextContent();
-            return LocalDateTime.parse(dateText);
-        } else 
-            return null;
+        return DateParser.elementToLocalDateTime(dateCreation);
     }
 }
