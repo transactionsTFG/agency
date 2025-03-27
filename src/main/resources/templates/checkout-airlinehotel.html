@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de pago</title>
+    <th:block th:insert="~{fragments/head :: head}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/checkout.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+</head>
+
+<body>
+    <div class="super_container">
+        <th:block th:insert="~{fragments/header :: header}"></th:block>
+        <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
+        <div class='container-checkout'>
+            <div class='window'>
+                <div class='order-info'>
+                    <div class='order-info-content'>
+                        <h2 th:text="#{app.checkout.order.summary}">Order Summary</h2>
+                        <th:block th:if="${room}">
+                            <div class='line'></div>
+                            <table class='order-table'>
+                                <tbody>
+                                    <tr>
+                                        <td><img th:src='@{/img/offer_7.jpg}' class='full-width'></img>
+                                        </td>
+                                        <td>
+                                            <br> <span class='thin'>Hotel</span>
+                                            <br><br> <span class='thin small' th:text="|¿Tiene habitacion simple? ${room.singleBed ? 'Si.' : 'No.'}|"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class='price' th:text="|${room.dailyPrice}€|">$235.95</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </th:block>
+                        <th:block th:if="${flight}">
+                            <div class='line'></div>
+                            <table class='order-table'>
+                                <tbody>
+                                    <tr>
+                                        <td><img th:src='@{/img/offer_6.jpg}' class='full-width'></img>
+                                        </td>
+                                        <td>
+                                            <br><span class='thin'>Vuelo</span>
+                                            <br><br><span class='thin small' th:text="|Estado de Vuelo: ${flight.statusFlight}|" ><br><br></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class='price' th:text="|${flight.price}€|"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </th:block>
+
+                        <div class='line'></div>
+                        <div class='total'>
+                            <span style='float:left;'>
+                                <div class='thin dense' th:text="#{app.checkout.without.iva}">Without IVA 21%</div>
+                                <div class='thin dense' th:text="#{app.checkout.iva}">Delivery</div>
+                                <span th:text="#{app.checkout.total}">Total</span>
+                            </span>
+                            <span style='float:right; text-align:right;'>
+                                <div class='thin dense' th:text="|${price}€|">$68.75</div>
+                                <div class='thin dense' th:text="|${price * 1.21}€|">$4.95</div>
+                                <span th:text="|${price * 1.21}€|"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='credit-info'>
+                    <div class='credit-info-content'>
+                        <form method="post" action="/checkout"> 
+                            <table class='half-input-table'>
+                                <tr>
+                                    <td th:text="#{app.checkout.payment}">Please select your card: </td>
+                                    <td>
+                                        <div class='dropdown' id='card-dropdown'>
+                                            <div class='dropdown-btn' id='current-card'>Visa</div>
+                                            <div class='dropdown-select'>
+                                                <ul>
+                                                    <li>Master Card</li>
+                                                    <li>American Express</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
+                                class='credit-card-image' id='credit-card-image'></img>
+                            <span th:text="#{app.checkout.card.dni}">DNI</span>
+                            <input class='input-field'></input><span th:text="#{app.checkout.card.number}">Card Number</span>
+                            <input class='input-field'></input>
+                            <span th:text="#{app.checkout.card.holder}">Card Holder</span>
+                            <input class='input-field'></input>
+                            <table class='half-input-table'>
+                                <tr>
+                                    <td> 
+                                        <span th:text="#{app.checkout.card.date}">Expires</span>
+                                        <input type="date" class='input-field'></input>
+                                    </td>
+                                    <td>
+                                        <span th:text="#{app.checkout.card.cvc}">CVC</span>
+                                        <input minlength="3" maxlength="3" accept="number" class='input-field'></input>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class='pay-btn' th:text="#{app.checkout.card.submit}">Checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <th:block th:insert="~{fragments/footer :: footer}"></th:block>
+        <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
+    </div>
+
+
+    <script th:src="@{/js/checkout.js}"></script>
+    <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
+    <script th:src="@{/js/custom.js}"></script>
+</body>
+
+</html>
