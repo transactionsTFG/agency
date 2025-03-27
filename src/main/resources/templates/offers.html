@@ -276,7 +276,7 @@
                                                                     alt=""></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="button book_button"><a th:href="@{#}" th:utext="#{app.offers.flight} + '<span></span><span></span><span></span>'"></a></div>
+                                                    <div class="button book_button"><a th:href="@{'/checkout/' + ${room.id} + '/' + ${flight.id}}" th:utext="#{app.offers.flight} + '<span></span><span></span><span></span>'"></a></div>
                                                     <div class="offer_reviews">
                                                         <div class="offer_reviews_content">
                                                             <div class="offer_reviews_title" th:text="#{app.offers.good}"></div> 

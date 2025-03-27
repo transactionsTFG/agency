@@ -49,12 +49,12 @@
                                         </td>
                                         <td>
                                             <br><span class='thin'>Vuelo</span>
-                                            <br><br><span class='thin small' th:text="|${flight.dailyPrice}€|"><br><br></span>
+                                            <br><br><span class='thin small' th:text="|Estado de Vuelo: ${flight.statusFlight}|" ><br><br></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class='price'>$99.95</div>
+                                            <div class='price' th:text="|${flight.price}€|"></div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -64,14 +64,14 @@
                         <div class='line'></div>
                         <div class='total'>
                             <span style='float:left;'>
-                                <div class='thin dense' th:text="#{app.checkout.without.iva}">VAT 21%</div>
+                                <div class='thin dense' th:text="#{app.checkout.without.iva}">Without IVA 21%</div>
                                 <div class='thin dense' th:text="#{app.checkout.iva}">Delivery</div>
                                 <span th:text="#{app.checkout.total}">Total</span>
                             </span>
                             <span style='float:right; text-align:right;'>
-                                <div class='thin dense'>$68.75</div>
-                                <div class='thin dense'>$4.95</div>
-                                <span>500$</span>
+                                <div class='thin dense' th:text="|${price}€|">$68.75</div>
+                                <div class='thin dense' th:text="|${price * 1.21}€|">$4.95</div>
+                                <span th:text="|${price * 1.21}€|"></span>
                             </span>
                         </div>
                     </div>
