@@ -19,14 +19,17 @@ import ucm.tfg.agency.business.services.agency.AgencyService;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
 import ucm.tfg.agency.common.auth.AuthUser;
+import ucm.tfg.agency.common.dto.agency.BookingDTO;
+import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
+import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 
 @Controller
 @RequestMapping("/profile")
 @AllArgsConstructor
 public class ProfileController {
-    
+
     private final AgencyService agencyService;
     private final AirlineService airlineService;
     private final HotelService hotelService;
@@ -37,11 +40,11 @@ public class ProfileController {
         AuthUser auth = (AuthUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Result<List<TravelDTO>> listTravel = this.agencyService.getTravelsByUser(auth.getId());
         int totalReservas = listTravel.isSuccess() ? listTravel.getData().size() : 0;
-        if (listTravel.isSuccess() && !listTravel.getData().isEmpty()) 
+        if (listTravel.isSuccess() && !listTravel.getData().isEmpty())
             model.addAttribute("travels", listTravel.getData());
-        else if(listTravel.isSuccess() && listTravel.getData().isEmpty())
+        else if (listTravel.isSuccess() && listTravel.getData().isEmpty())
             model.addAttribute("msg", this.messageSource.getMessage("app.profile.dontbuy", null, locale));
-        else         
+        else
             model.addAttribute("msg", listTravel.getMessage());
 
         model.addAttribute("totalReservas", totalReservas);
@@ -49,19 +52,51 @@ public class ProfileController {
     }
 
     @PostMapping("/removeTravel/{idFlight}/{idHotel}")
-    public String deleteTravel(@PathVariable long idFlight, @PathVariable long idHotel, RedirectAttributes redirectAttributes) {
+    public String deleteTravel(@PathVariable long idFlight, @PathVariable long idHotel,
+            RedirectAttributes redirectAttributes) {
         Result<Double> result = null;
-        if(idFlight > 0 && idHotel > 0) 
+        if (idFlight > 0 && idHotel > 0)
             result = this.agencyService.cancelFlightAndHotelReservation(idFlight, idHotel);
-        
-        if(idFlight > 0 && idHotel <= 0) 
+
+        if (idFlight > 0 && idHotel <= 0)
             result = this.airlineService.cancelFlightReservation(idFlight);
 
-        if(idFlight <= 0 && idHotel > 0) 
+        if (idFlight <= 0 && idHotel > 0)
             result = this.hotelService.cancelHotelBooking(idHotel);
-    
+
         redirectAttributes.addFlashAttribute("priceReturn", result.getData());
         return "redirect:/profile";
     }
-    
+
+    @GetMapping("modifyTravel/{idFlight}/{idHotel}")
+    public String modifyTravel(@PathVariable long idFlight, @PathVariable long idHotel,
+            RedirectAttributes redirectAttributes) {
+        if (idFlight != -1 && idHotel != -1) {
+            Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
+                    idHotel);
+                    
+            return "modifyTravel";
+        }
+        if (idFlight != -1) {
+            return "redirect:/profile/modifyFlight/" + idFlight;
+        }
+        if (idHotel != -1) {
+            return "redirect:/profile/modifyHotel/" + idHotel;
+        }
+        return "redirect:/profile";
+    }
+
+
+    @GetMapping("modifyFlight/{flightId}")
+    public String modifyFlight(@PathVariable long flightId) {
+        Result<FlightAirlineDTO> flightResult = this.airlineService.getFlightById(flightId);
+        return "modifyFlight";
+    }
+
+    @GetMapping("modifyHotel/{flightId}")
+    public String modifyHotel(@PathVariable long flightId) {
+        Result<BookingDTO> bookingResult = this.hotelService.getHotelBooking(flightId);
+        return "modifyHotel";
+    }
+
 }

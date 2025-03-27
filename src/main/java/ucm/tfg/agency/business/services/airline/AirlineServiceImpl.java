@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.businessdelegate.BusinessDelegate;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
@@ -44,5 +45,10 @@ public class AirlineServiceImpl implements AirlineService {
     @Override
     public Result<Double> cancelFlightReservation(long flightReservationId) {
         return this.businessDelegate.cancelFlightReservation(flightReservationId);
+    }
+
+    @Override
+    public Result<UpdateAirlineReservationDTO> getFlightReservation(long idReservation) {
+        return this.businessDelegate.
     }
 }

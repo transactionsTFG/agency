@@ -61,6 +61,10 @@ public class BusinessDelegate {
         return this.lookupService.getAirlineService(this.typeService).getFlightById(idFlight);
     }
 
+    public Result<UpdateAirlineReservationDTO>getFlightReservation(long idReservation) {
+        return this.lookupService.getAgencyService(this.typeService).getFlightReservation(idReservation);
+    }
+
     public Result<List<FlightAirlineInfoDTO>> getAllFlights(String countryOrigin, String countryDestination, String cityOrigin, String cityDestination, String dateOrigin) {
         return this.lookupService.getAirlineService(typeService).getAllFlights(countryOrigin, countryDestination, cityOrigin, cityDestination, dateOrigin);
     }

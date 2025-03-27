@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title th:text="#{app.profile.title} + ' ' + ${#authentication.principal.name}"></title>
@@ -32,7 +33,9 @@
                                 <!-- END profile-header-img -->
                                 <!-- BEGIN profile-header-info -->
                                 <div class="profile-header-info">
-                                    <h4 class="m-t-10 m-b-5" th:text="${#authentication.principal.name} + ' ' + ${#authentication.principal.surname}"></h4>
+                                    <h4 class="m-t-10 m-b-5"
+                                        th:text="${#authentication.principal.name} + ' ' + ${#authentication.principal.surname}">
+                                    </h4>
                                     <p class="m-b-10" th:text="${#authentication.principal.born}"></p>
                                     <p class="m-b-10" th:text="#{app.profile.buy} + ': ' + ${totalReservas}"></p>
                                 </div>
@@ -50,14 +53,17 @@
                     <div class="profile-content" th:unless="${msg}">
                         <div class="tab-content p-0">
                             <div th:if="${priceReturn}" class="container-price-return">
-                                <p class="txt-white" th:text="#{app.profile.reservation.cancel} + ': ' + ${priceReturn}"></p>
+                                <p class="txt-white"
+                                    th:text="#{app.profile.reservation.cancel} + ': ' + ${priceReturn}"></p>
                             </div>
                             <div class="tab-pane fade active show" id="profile-post">
                                 <ul class="timeline">
                                     <li th:each="travel : ${travels}">
                                         <div class="timeline-time">
-                                            <span class="date" th:text="${#temporals.format(travel.dateCreation, 'dd MMMM yyyy')}"></span>
-                                            <span class="time" th:text="${#temporals.format(travel.dateCreation, 'HH:mm')}"></span>
+                                            <span class="date"
+                                                th:text="${#temporals.format(travel.dateCreation, 'dd MMMM yyyy')}"></span>
+                                            <span class="time"
+                                                th:text="${#temporals.format(travel.dateCreation, 'HH:mm')}"></span>
                                         </div>
                                         <div class="timeline-icon">
                                             <a href="#">&nbsp;</a>
@@ -65,35 +71,57 @@
                                         <div class="timeline-body">
                                             <div class="timeline-header">
                                                 <span class="userimage">
-                                                    <img th:if="${travel.flightReservationID > 0 and travel.hotelReservationID <= 0}" th:src="@{/img/avion_profile.jpg}" alt="">
-                                                    <img th:if="${travel.flightReservationID <= 0 and travel.hotelReservationID > 0}" th:src="@{/img/hotel_profile.jpg}" alt="">
-                                                    <img th:if="${travel.flightReservationID > 0 and travel.hotelReservationID > 0}" th:src="@{/img/avion_hotel_profile.jpg}" alt="">
+                                                    <img th:if="${travel.flightReservationID > 0 and travel.hotelReservationID <= 0}"
+                                                        th:src="@{/img/avion_profile.jpg}" alt="">
+                                                    <img th:if="${travel.flightReservationID <= 0 and travel.hotelReservationID > 0}"
+                                                        th:src="@{/img/hotel_profile.jpg}" alt="">
+                                                    <img th:if="${travel.flightReservationID > 0 and travel.hotelReservationID > 0}"
+                                                        th:src="@{/img/avion_hotel_profile.jpg}" alt="">
                                                 </span>
-                                                <span class="username" th:if="${travel.flightReservationID > 0 and travel.hotelReservationID <= 0}" th:text="#{app.profile.reservation.flight}"></span>
-                                                <span class="username" th:if="${travel.flightReservationID <= 0 and travel.hotelReservationID > 0}" th:text="#{app.profile.reservation.hotel}"></span>
-                                                <span class="username" th:if="${travel.flightReservationID > 0 and travel.hotelReservationID > 0}" th:text="#{app.profile.reservation.hotelflight}"></span>
-                                                <span class="username pull-right text-muted" th:text="${travel.cost} + ' €'"></span>
+                                                <span class="username"
+                                                    th:if="${travel.flightReservationID > 0 and travel.hotelReservationID <= 0}"
+                                                    th:text="#{app.profile.reservation.flight}"></span>
+                                                <span class="username"
+                                                    th:if="${travel.flightReservationID <= 0 and travel.hotelReservationID > 0}"
+                                                    th:text="#{app.profile.reservation.hotel}"></span>
+                                                <span class="username"
+                                                    th:if="${travel.flightReservationID > 0 and travel.hotelReservationID > 0}"
+                                                    th:text="#{app.profile.reservation.hotelflight}"></span>
+                                                <span class="username pull-right text-muted"
+                                                    th:text="${travel.cost} + ' €'"></span>
                                             </div>
                                             <div class="timeline-content">
-                                                <i class="fa fa-map-marker text-danger fa-fw"></i><span th:text="#{app.profile.reservation.dateInit} + ': ' + ${travel.date}"></span><br>
-                                                <i class="fa fa-map-marker text-danger fa-fw"></i><span th:text="#{app.profile.reservation.dateEnd} + ': ' + ${travel.returnDate}"></span><br>
+                                                <i class="fa fa-map-marker text-danger fa-fw"></i><span
+                                                    th:text="#{app.profile.reservation.dateInit} + ': ' + ${travel.date}"></span><br>
+                                                <i class="fa fa-map-marker text-danger fa-fw"></i><span
+                                                    th:text="#{app.profile.reservation.dateEnd} + ': ' + ${travel.returnDate}"></span><br>
                                                 <div th:if="${travel.flightReservationID > 0}">
-                                                    <span th:text="#{app.profile.reservation.status} + ': ' + ${travel.status}"></span><br>
+                                                    <span
+                                                        th:text="#{app.profile.reservation.status} + ': ' + ${travel.status}"></span><br>
                                                 </div>
                                                 <div th:if="${travel.flightReservationID > 0}">
-                                                    <span th:text="#{app.profile.reservation.pricehotel} + ': ' + ${travel.hotelCost}"></span><br>
-                                                </div> 
+                                                    <span
+                                                        th:text="#{app.profile.reservation.pricehotel} + ': ' + ${travel.hotelCost}"></span><br>
+                                                </div>
                                                 <div th:if="${travel.hotelReservationID > 0}">
-                                                    <span  th:text="#{app.profile.reservation.priceflight} + ': ' + ${travel.flightCost}"></span>
-                                                </div> 
+                                                    <span
+                                                        th:text="#{app.profile.reservation.priceflight} + ': ' + ${travel.flightCost}"></span>
+                                                </div>
                                             </div>
                                             <div class="timeline-footer">
 
-                                                <p th:if="${travel.active == false}" th:text="#{app.profile.reservation.anulation}"></p>
-                                                <a th:if="${travel.active == true}" class="m-r-15 text-inverse-lighter cursor-pointer"><i
-                                                        class="fa fa-edit fa-fw fa-lg m-r-3"></i><span  th:text="#{app.profile.reservation.modify}"></span></a>
-                                                <form class="d-inline" th:action="@{/profile/removeTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}" method="post" th:if="${travel.active == true}">
-                                                    <button type="submit" class="btn-remove m-r-15 text-inverse-lighter cursor-pointer">
+                                                <p th:if="${travel.active == false}"
+                                                    th:text="#{app.profile.reservation.anulation}"></p>
+                                                <a th:if="${travel.active == true}" th:href="@{/profile/modifyTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}"
+                                                    class="m-r-15 text-inverse-lighter cursor-pointer">
+                                                    <i class="fa fa-edit fa-fw fa-lg m-r-3"></i>
+                                                    <span th:text="#{app.profile.reservation.modify}"></span>
+                                                </a>
+                                                <form class="d-inline"
+                                                    th:action="@{/profile/removeTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}"
+                                                    method="post" th:if="${travel.active == true}">
+                                                    <button type="submit"
+                                                        class="btn-remove m-r-15 text-inverse-lighter cursor-pointer">
                                                         <i class="fa fa-trash fa-fw fa-lg m-r-3"></i>
                                                         <span th:text="#{app.profile.reservation.cancel}"></span>
                                                     </button>
