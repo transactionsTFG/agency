@@ -12,6 +12,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
 @Service
 @AllArgsConstructor
@@ -44,5 +45,10 @@ public class AirlineServiceImpl implements AirlineService {
     @Override
     public Result<Double> cancelFlightReservation(long flightReservationId) {
         return this.businessDelegate.cancelFlightReservation(flightReservationId);
+    }
+
+    @Override
+    public FlightInstanceDTO searchFlightInstance(long flightInstanceId) {
+        return this.businessDelegate.getFlightInstance(flightInstanceId);
     }
 }

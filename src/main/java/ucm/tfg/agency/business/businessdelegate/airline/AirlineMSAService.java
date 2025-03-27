@@ -7,6 +7,7 @@ import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
 
 public class AirlineMSAService implements AirlineExternalService {
@@ -42,6 +43,12 @@ public class AirlineMSAService implements AirlineExternalService {
     public Result<Double> cancelFlightReservation(long flightReservationId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'cancelFlightReservation'");
+    }
+
+    @Override
+    public FlightInstanceDTO getFlightInstance(long flightInstanceId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFlightInstance'");
     }
  
 }

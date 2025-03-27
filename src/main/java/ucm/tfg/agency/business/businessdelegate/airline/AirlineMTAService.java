@@ -12,6 +12,7 @@ import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
 import ucm.tfg.agency.common.mapper.AirlineMapper;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS_Service;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS_Service;
@@ -89,6 +90,11 @@ public class AirlineMTAService implements AirlineExternalService {
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
+    }
+
+    @Override
+    public FlightInstanceDTO getFlightInstance(long flightInstanceId) {
+        return this.agencyAirlineFlightWS.searchFlightInstance(flightInstanceId);  
     }
 
 }
