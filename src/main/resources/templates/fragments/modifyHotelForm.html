@@ -1,0 +1,34 @@
+<th:block th:fragment="modifyHotelForm">
+    <form th:action="@{/profile/modifyHotel}" th:method="post">
+        <div class="form-group">
+            <input type="date" name="startDate" id="startDate" required>
+            startdate
+        </div>
+        <div class="form-group">
+            <input type="date" name="endDate" id="endDate" required>
+            
+            enddate
+        </div>
+        <div class="form-group">
+            <input type="number" name="numberOfNights" id="numberOfNights" required min="1">
+            numberofnights
+        </div>
+        <div class="form-group">
+            <select name="withBreakfast" id="withBreakfast" required>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+            </select>
+            withbreakfast
+        </div>
+        <div class="form-group">
+            <input type="number" name="peopleNumber" id="peopleNumber" required min="1">
+            peoplenumber
+        </div>
+        <div class="form-group">
+            roomlist th:each > input:number
+        </div>
+        <div class="form-group">
+            <button type="submit">Modificar</button>
+        </div>
+    </form>
+</th:block>
