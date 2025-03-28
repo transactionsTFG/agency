@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para roomDTO complex type.
+ * <p>Java class for roomDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="roomDTO"&gt;
@@ -52,7 +52,7 @@ public class RoomDTO {
     protected boolean singleBed;
 
     /**
-     * Obtiene el valor de la propiedad available.
+     * Gets the value of the available property.
      * 
      */
     public boolean isAvailable() {
@@ -60,7 +60,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad available.
+     * Sets the value of the available property.
      * 
      */
     public void setAvailable(boolean value) {
@@ -68,7 +68,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad dailyPrice.
+     * Gets the value of the dailyPrice property.
      * 
      */
     public double getDailyPrice() {
@@ -76,7 +76,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad dailyPrice.
+     * Sets the value of the dailyPrice property.
      * 
      */
     public void setDailyPrice(double value) {
@@ -84,7 +84,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad hotelId.
+     * Gets the value of the hotelId property.
      * 
      */
     public long getHotelId() {
@@ -92,7 +92,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad hotelId.
+     * Sets the value of the hotelId property.
      * 
      */
     public void setHotelId(long value) {
@@ -100,7 +100,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -108,7 +108,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -116,7 +116,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad number.
+     * Gets the value of the number property.
      * 
      */
     public int getNumber() {
@@ -124,7 +124,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad number.
+     * Sets the value of the number property.
      * 
      */
     public void setNumber(int value) {
@@ -132,7 +132,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad peopleNumber.
+     * Gets the value of the peopleNumber property.
      * 
      */
     public int getPeopleNumber() {
@@ -140,7 +140,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad peopleNumber.
+     * Sets the value of the peopleNumber property.
      * 
      */
     public void setPeopleNumber(int value) {
@@ -148,7 +148,7 @@ public class RoomDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad singleBed.
+     * Gets the value of the singleBed property.
      * 
      */
     public boolean isSingleBed() {
@@ -156,7 +156,7 @@ public class RoomDTO {
     }
 
     /**
-     * Define el valor de la propiedad singleBed.
+     * Sets the value of the singleBed property.
      * 
      */
     public void setSingleBed(boolean value) {

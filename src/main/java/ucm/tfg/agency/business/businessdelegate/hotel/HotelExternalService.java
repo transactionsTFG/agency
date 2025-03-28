@@ -17,4 +17,5 @@ public interface HotelExternalService {
     Result<Double> cancelHotelBooking(long bookingId);
     Result<Double> cancelHotelBookingLine(long bookingId, long roomId);
     Result<BookingDTO> getHotelBooking(long bookingId);
+    Result<List<RoomDTO>> getRoomsByBooking(long bookingId);
 }

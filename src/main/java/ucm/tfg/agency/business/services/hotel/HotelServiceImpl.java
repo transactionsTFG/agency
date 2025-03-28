@@ -53,5 +53,10 @@ public class HotelServiceImpl implements HotelService {
     public Result<BookingDTO> getHotelBooking(long bookingId) {
         return this.businessDelegate.getHotelBooking(bookingId);
     }
+
+    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
+        return null;
+        // return this.businessDelegate.
+    }
     
 }

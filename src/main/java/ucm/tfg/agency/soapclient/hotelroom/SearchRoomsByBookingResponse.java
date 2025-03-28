@@ -1,5 +1,5 @@
 
-package ucm.tfg.agency.soapclient.airlineflight;
+package ucm.tfg.agency.soapclient.hotelroom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +10,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchFlightResponse complex type.
+ * <p>Java class for searchRoomsByBookingResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="searchFlightResponse"&gt;
+ * &lt;complexType name="searchRoomsByBookingResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://soap/}flightListDTO" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://soap/}roomDTO" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -29,13 +29,13 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "searchFlightResponse", propOrder = {
+@XmlType(name = "searchRoomsByBookingResponse", propOrder = {
     "_return"
 })
-public class SearchFlightResponse {
+public class SearchRoomsByBookingResponse {
 
     @XmlElement(name = "return")
-    protected List<FlightListDTO> _return;
+    protected List<RoomDTO> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class SearchFlightResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link FlightListDTO }
+     * {@link RoomDTO }
      * 
      * 
      */
-    public List<FlightListDTO> getReturn() {
+    public List<RoomDTO> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<FlightListDTO>();
+            _return = new ArrayList<RoomDTO>();
         }
         return this._return;
     }

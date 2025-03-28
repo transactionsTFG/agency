@@ -4,6 +4,7 @@ import java.util.List;
 
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 
@@ -51,6 +52,12 @@ public class HotelMSAService implements HotelExternalService {
     public Result<ucm.tfg.agency.common.dto.agency.BookingDTO> getHotelBooking(long bookingId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getHotelBooking'");
+    }
+
+    @Override
+    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRoomsByBooking'");
     }
 
    

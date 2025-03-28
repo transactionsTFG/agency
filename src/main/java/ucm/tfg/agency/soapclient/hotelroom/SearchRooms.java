@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para searchRooms complex type.
+ * <p>Java class for searchRooms complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="searchRooms"&gt;
@@ -37,7 +37,7 @@ public class SearchRooms {
     protected String nameCountry;
 
     /**
-     * Obtiene el valor de la propiedad nameHotel.
+     * Gets the value of the nameHotel property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class SearchRooms {
     }
 
     /**
-     * Define el valor de la propiedad nameHotel.
+     * Sets the value of the nameHotel property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class SearchRooms {
     }
 
     /**
-     * Obtiene el valor de la propiedad nameCountry.
+     * Gets the value of the nameCountry property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class SearchRooms {
     }
 
     /**
-     * Define el valor de la propiedad nameCountry.
+     * Sets the value of the nameCountry property.
      * 
      * @param value
      *     allowed object is

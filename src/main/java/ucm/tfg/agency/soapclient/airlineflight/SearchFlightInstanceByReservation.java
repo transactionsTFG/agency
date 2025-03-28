@@ -7,16 +7,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for search complex type.
+ * <p>Java class for searchFlightInstanceByReservation complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="search"&gt;
+ * &lt;complexType name="searchFlightInstanceByReservation"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="idFlightSearch" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="reservationId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,27 +26,27 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "search", propOrder = {
-    "idFlightSearch"
+@XmlType(name = "searchFlightInstanceByReservation", propOrder = {
+    "reservationId"
 })
-public class Search {
+public class SearchFlightInstanceByReservation {
 
-    protected long idFlightSearch;
+    protected long reservationId;
 
     /**
-     * Gets the value of the idFlightSearch property.
+     * Gets the value of the reservationId property.
      * 
      */
-    public long getIdFlightSearch() {
-        return idFlightSearch;
+    public long getReservationId() {
+        return reservationId;
     }
 
     /**
-     * Sets the value of the idFlightSearch property.
+     * Sets the value of the reservationId property.
      * 
      */
-    public void setIdFlightSearch(long value) {
-        this.idFlightSearch = value;
+    public void setReservationId(long value) {
+        this.reservationId = value;
     }
 
 }

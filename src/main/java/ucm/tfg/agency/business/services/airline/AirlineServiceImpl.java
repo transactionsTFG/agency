@@ -49,6 +49,7 @@ public class AirlineServiceImpl implements AirlineService {
 
     @Override
     public Result<UpdateAirlineReservationDTO> getFlightReservation(long idReservation) {
-        return this.businessDelegate.
+        return null;
+        // return this.businessDelegate.
     }
 }

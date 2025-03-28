@@ -1,5 +1,5 @@
 
-package ucm.tfg.agency.soapclient.hotelroom;
+package ucm.tfg.agency.soapclient.airlineflight;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchRoomResponse complex type.
+ * <p>Java class for searchFlightInstanceResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="searchRoomResponse"&gt;
+ * &lt;complexType name="searchFlightInstanceResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://soap/}roomDTO" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://soap/}flightInstanceDTO" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,23 +27,23 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "searchRoomResponse", propOrder = {
+@XmlType(name = "searchFlightInstanceResponse", propOrder = {
     "_return"
 })
-public class SearchRoomResponse {
+public class SearchFlightInstanceResponse {
 
     @XmlElement(name = "return")
-    protected RoomDTO _return;
+    protected FlightInstanceDTO _return;
 
     /**
      * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link RoomDTO }
+     *     {@link FlightInstanceDTO }
      *     
      */
-    public RoomDTO getReturn() {
+    public FlightInstanceDTO getReturn() {
         return _return;
     }
 
@@ -52,10 +52,10 @@ public class SearchRoomResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link RoomDTO }
+     *     {@link FlightInstanceDTO }
      *     
      */
-    public void setReturn(RoomDTO value) {
+    public void setReturn(FlightInstanceDTO value) {
         this._return = value;
     }
 

@@ -90,4 +90,11 @@ public class HotelMTAService implements HotelExternalService {
         }
     }
 
+    @Override
+    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
+        // this.agencyHotelRoomWS.
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRoomsByBooking'");
+    }
+
 }

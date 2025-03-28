@@ -27,21 +27,6 @@ public interface AgencyAirlineFlightWS {
 
     /**
      * 
-     * @param paramSearchFlight
-     * @return
-     *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.FlightListDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlight")
-    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightResponse")
-    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightResponse")
-    public List<FlightListDTO> searchFlight(
-        @WebParam(name = "paramSearchFlight", targetNamespace = "")
-        ParamSearchFlightSOAP paramSearchFlight);
-
-    /**
-     * 
      * @param idFlightSearch
      * @return
      *     returns ucm.tfg.agency.soapclient.airlineflight.FlightSOAP
@@ -54,5 +39,50 @@ public interface AgencyAirlineFlightWS {
     public FlightSOAP search(
         @WebParam(name = "idFlightSearch", targetNamespace = "")
         long idFlightSearch);
+
+    /**
+     * 
+     * @param reservationId
+     * @return
+     *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlightInstanceByReservation", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightInstanceByReservation")
+    @ResponseWrapper(localName = "searchFlightInstanceByReservationResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightInstanceByReservationResponse")
+    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightInstanceByReservationRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightInstanceByReservationResponse")
+    public List<IdFlightInstanceWithSeatsDTO> searchFlightInstanceByReservation(
+        @WebParam(name = "reservationId", targetNamespace = "")
+        long reservationId);
+
+    /**
+     * 
+     * @param idFlightInstance
+     * @return
+     *     returns ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlightInstance", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightInstance")
+    @ResponseWrapper(localName = "searchFlightInstanceResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightInstanceResponse")
+    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightInstanceRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightInstanceResponse")
+    public FlightInstanceDTO searchFlightInstance(
+        @WebParam(name = "idFlightInstance", targetNamespace = "")
+        long idFlightInstance);
+
+    /**
+     * 
+     * @param paramSearchFlight
+     * @return
+     *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.FlightListDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlight")
+    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightResponse")
+    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightResponse")
+    public List<FlightListDTO> searchFlight(
+        @WebParam(name = "paramSearchFlight", targetNamespace = "")
+        ParamSearchFlightSOAP paramSearchFlight);
 
 }

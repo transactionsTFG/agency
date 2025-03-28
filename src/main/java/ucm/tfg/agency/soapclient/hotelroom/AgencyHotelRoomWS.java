@@ -27,15 +27,30 @@ public interface AgencyHotelRoomWS {
 
     /**
      * 
-     * @param nameCountry
-     * @param nameHotel
+     * @param id
      * @return
-     *     returns java.util.List<ucm.tfg.agency.soapclient.hotelroom.RoomListDTO>
+     *     returns ucm.tfg.agency.zzz.RoomDTO
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchRooms", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRooms")
-    @ResponseWrapper(localName = "searchRoomsResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomsResponse")
+    @RequestWrapper(localName = "searchRoom", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRoom")
+    @ResponseWrapper(localName = "searchRoomResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRoomResponse")
+    @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomResponse")
+    public RoomDTO searchRoom(
+        @WebParam(name = "id", targetNamespace = "")
+        long id);
+
+    /**
+     * 
+     * @param nameCountry
+     * @param nameHotel
+     * @return
+     *     returns java.util.List<ucm.tfg.agency.zzz.RoomListDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchRooms", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRooms")
+    @ResponseWrapper(localName = "searchRoomsResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRoomsResponse")
     @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomsRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomsResponse")
     public List<RoomListDTO> searchRooms(
         @WebParam(name = "nameHotel", targetNamespace = "")
@@ -45,17 +60,17 @@ public interface AgencyHotelRoomWS {
 
     /**
      * 
-     * @param id
+     * @param bookingId
      * @return
-     *     returns ucm.tfg.agency.soapclient.hotelroom.RoomDTO
+     *     returns java.util.List<ucm.tfg.agency.zzz.RoomDTO>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchRoom", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoom")
-    @ResponseWrapper(localName = "searchRoomResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomResponse")
-    @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomResponse")
-    public RoomDTO searchRoom(
-        @WebParam(name = "id", targetNamespace = "")
-        long id);
+    @RequestWrapper(localName = "searchRoomsByBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRoomsByBooking")
+    @ResponseWrapper(localName = "searchRoomsByBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.zzz.SearchRoomsByBookingResponse")
+    @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomsByBookingRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomsByBookingResponse")
+    public List<RoomDTO> searchRoomsByBooking(
+        @WebParam(name = "bookingId", targetNamespace = "")
+        long bookingId);
 
 }

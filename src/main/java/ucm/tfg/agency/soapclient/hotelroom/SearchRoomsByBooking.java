@@ -7,16 +7,16 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchRoom complex type.
+ * <p>Java class for searchRoomsByBooking complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="searchRoom"&gt;
+ * &lt;complexType name="searchRoomsByBooking"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="bookingId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,27 +26,27 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "searchRoom", propOrder = {
-    "id"
+@XmlType(name = "searchRoomsByBooking", propOrder = {
+    "bookingId"
 })
-public class SearchRoom {
+public class SearchRoomsByBooking {
 
-    protected long id;
+    protected long bookingId;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the bookingId property.
      * 
      */
-    public long getId() {
-        return id;
+    public long getBookingId() {
+        return bookingId;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the bookingId property.
      * 
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setBookingId(long value) {
+        this.bookingId = value;
     }
 
 }

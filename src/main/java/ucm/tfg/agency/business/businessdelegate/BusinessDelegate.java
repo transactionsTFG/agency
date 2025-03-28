@@ -62,7 +62,8 @@ public class BusinessDelegate {
     }
 
     public Result<UpdateAirlineReservationDTO>getFlightReservation(long idReservation) {
-        return this.lookupService.getAgencyService(this.typeService).getFlightReservation(idReservation);
+        return null;
+        // return this.lookupService.getAgencyService(this.typeService).getFlightReservation(idReservation);
     }
 
     public Result<List<FlightAirlineInfoDTO>> getAllFlights(String countryOrigin, String countryDestination, String cityOrigin, String cityDestination, String dateOrigin) {
