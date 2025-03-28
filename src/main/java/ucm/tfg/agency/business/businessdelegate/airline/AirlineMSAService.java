@@ -43,5 +43,12 @@ public class AirlineMSAService implements AirlineExternalService {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'cancelFlightReservation'");
     }
+
+    @Override
+    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightByReservation(
+            long reservationId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFlightByReservation'");
+    }
  
 }

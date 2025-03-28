@@ -8,7 +8,6 @@ import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 
-
 public class HotelMSAService implements HotelExternalService {
 
     @Override
@@ -55,10 +54,9 @@ public class HotelMSAService implements HotelExternalService {
     }
 
     @Override
-    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
+    public Result<List<ucm.tfg.agency.soapclient.hotelroom.RoomDTO>> getRoomsByBooking(long bookingId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getRoomsByBooking'");
     }
 
-   
 }

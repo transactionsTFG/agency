@@ -39,7 +39,8 @@ public class HotelMTAService implements HotelExternalService {
     @Override
     public Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
         try {
-            return Result.success(this.hotelMapper.infoSOAPtoDTO(this.agencyHotelRoomWS.searchRooms(hotelName, countryName)));
+            return Result.success(
+                    this.hotelMapper.infoSOAPtoDTO(this.agencyHotelRoomWS.searchRooms(hotelName, countryName)));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
@@ -48,7 +49,8 @@ public class HotelMTAService implements HotelExternalService {
     @Override
     public Result<BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking, long userId, String dni) {
         try {
-            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.makeHotelBooking(this.hotelMapper.toMakeBookingReservationDTO(booking), userId, dni)));
+            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS
+                    .makeHotelBooking(this.hotelMapper.toMakeBookingReservationDTO(booking), userId, dni)));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
@@ -57,7 +59,8 @@ public class HotelMTAService implements HotelExternalService {
     @Override
     public Result<BookingDTO> modifyHotelBooking(UpdateBookingReservationDTO booking) {
         try {
-            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.modifyHotelBooking( this.hotelMapper.toModifyBookingReservationDTO(booking))));
+            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS
+                    .modifyHotelBooking(this.hotelMapper.toModifyBookingReservationDTO(booking))));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
@@ -84,17 +87,20 @@ public class HotelMTAService implements HotelExternalService {
     @Override
     public Result<BookingDTO> getHotelBooking(long bookingId) {
         try {
-            return Result.success(this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.readHotelBooking((int) bookingId)));
+            return Result.success(
+                    this.hotelMapper.toBookingDTO(this.agencyHotelBookingWS.readHotelBooking((int) bookingId)));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
     }
 
     @Override
-    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
-        // this.agencyHotelRoomWS.
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRoomsByBooking'");
+    public Result<List<ucm.tfg.agency.soapclient.hotelroom.RoomDTO>> getRoomsByBooking(long bookingId) {
+        try {
+            return Result.success(this.agencyHotelRoomWS.searchRoomsByBooking(bookingId));
+        } catch (Exception e) {
+            return Result.failure(CatchExceptionSOAP.getMessageError(e));
+        }
     }
 
 }
