@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.utils.AuthUtil;
@@ -56,7 +57,13 @@ public class CheckoutController {
     public String checkoutFlight(@PathVariable long idFlightInstance, Model model) {
         FlightInstanceAirlineDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
         model.addAttribute("flight", flight);
-        return "checkout-flight";
+        return "checkout-airline";
+    }
+
+    @PostMapping("/flight")
+    public String reservationFlight(@RequestParam int numberOfSeats, @RequestParam long flightInstanceId, @RequestParam String dni) {
+        this.airlineService.makeFlightReservation(dni, AuthUtil.getAuth().getId(), List.of(new IdFlightInstanceWithSeatsDTO(flightInstanceId, numberOfSeats)));
+        return "redirect:/profile";
     }
 
     @GetMapping("/{idHotel}/{idFlightInstance}")
@@ -73,10 +80,7 @@ public class CheckoutController {
     }
 
 
-    @PostMapping("/flight")
-    public String reservationFlight(@RequestBody String entity) {
-        return entity;
-    }
+    
 
     @PostMapping("/flighthotel")
     public String reservationHotelFlight(@RequestBody String entity) {

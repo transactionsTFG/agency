@@ -20,7 +20,7 @@
                 <div class='order-info'>
                     <div class='order-info-content'>
                         <h2 th:text="#{app.checkout.order.summary}">Order Summary</h2>
-                        <th:block th:if="${room}">
+                        <th:block th:if="${flight}">
                             <div class='line'></div>
                             <table class='order-table'>
                                 <tbody>
@@ -30,7 +30,7 @@
                                         <td>
                                             <br><span class='thin'>Reserva de Vuelo</span>
                                             <input type="hidden" name="flightInstanceId" th:value="${flight.id}"/>
-                                            <br><span class='thin m-right-input'>Numero de asientos</span><input type="number" name="numberSeats" value="1" min="1" max="10" id="number-seats"/>
+                                            <br><span class='thin m-right-input'>Numero de asientos</span><input type="number" name="numberOfSeats" value="1" min="1" max="10" id="numberSeats"/>
                                             <br><span class='thin m-right-input'>Check-in</span><input type="date" name="startDate" id="checkin" th:value="${flight.departureDate}" readonly disabled/>
                                             <br><span class='thin m-right-input'>Check-out</span><input type="date" name="endDate" id="checkout"  th:value="${flight.arrivalDate}" readonly disabled/>
                                         </td>
@@ -111,6 +111,63 @@
     <script th:src="@{/js/checkout.js}"></script>
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
     <script th:src="@{/js/custom.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const payBtn = document.getElementById('pay');
+            const inputNumberSeats = document.getElementById('numberSeats');
+
+            inputNumberSeats.addEventListener('change', () => {
+                updatePrice(inputNumberSeats.value);
+            });
+
+            payBtn.addEventListener('click', function (e) {
+                const dni = document.getElementById("dni").value;
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardHolder = document.getElementById('cardHolder').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvc = document.getElementById('cvc').value;
+       
+                if (!/^\d{8}[A-Za-z]$/.test(dni)) {
+                    alert('DNI inválido. Formato: 8 números y una letra.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    alert('Número de tarjeta inválido. Debe tener 16 dígitos.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (cardHolder.trim().length < 3) {
+                    console.log(cardHolder.trim().length);
+                    alert('Nombre del titular inválido.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!expiryDate) {
+                    alert('Fecha de expiración requerida.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{3}$/.test(cvc)) {
+                    alert('CVC inválido. Debe ser un número de 3 cifras.');
+                    e.preventDefault();
+                    return;
+                }
+            });
+
+        });
+        function updatePrice(days){
+            const priceFixed = "[[${flight.price}]]";
+            document.getElementById('without-iva').innerHTML = `${priceFixed * days}€`;
+            document.getElementById('with-iva').innerHTML = `${priceFixed * days * 1.21}€`;
+            document.getElementById('price-final').innerHTML = `${priceFixed * days * 1.21}€`;
+            document.getElementById('numberOfNights').value = `${days}`;
+        }
+    </script>
 </body>
 
 </html>

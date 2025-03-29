@@ -63,7 +63,9 @@ public class AirlineMTAService implements AirlineExternalService {
             makeFlightReservationSOAP.setDni(dni);
             makeFlightReservationSOAP.setIdCustomer(idCustomer);
             MakeFlightReservationSOAP.Flights flightsSOAP = new MakeFlightReservationSOAP.Flights();
+            
             flightsSOAP.getFlight().addAll(this.airlineMapper.idFlightInstanceWithSeatsDTOtoSOAP(flights));
+            makeFlightReservationSOAP.setFlights(flightsSOAP);
             return Result.success(this.airlineMapper.successReservationSOAPtoDTO(this.agencyAirlineReservationWS.makeFlightReservation(makeFlightReservationSOAP)));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
