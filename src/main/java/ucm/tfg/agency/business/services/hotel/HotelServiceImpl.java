@@ -12,6 +12,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 @Service
 @AllArgsConstructor
@@ -54,9 +55,8 @@ public class HotelServiceImpl implements HotelService {
         return this.businessDelegate.getHotelBooking(bookingId);
     }
 
-    public Result<List<RoomDTO>> getRoomsByBooking(long bookingId) {
-        return null;
-        // return this.businessDelegate.
+    public Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
+        return this.businessDelegate.getRoomsByBooking(bookingId);
     }
     
 }

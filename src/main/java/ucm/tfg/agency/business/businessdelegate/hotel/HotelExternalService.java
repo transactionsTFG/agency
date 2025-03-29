@@ -8,6 +8,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 public interface HotelExternalService {
     Result<RoomDTO> getRoomById(long roomId);
@@ -17,5 +18,5 @@ public interface HotelExternalService {
     Result<Double> cancelHotelBooking(long bookingId);
     Result<Double> cancelHotelBookingLine(long bookingId, long roomId);
     Result<BookingDTO> getHotelBooking(long bookingId);
-    Result<List<ucm.tfg.agency.soapclient.hotelroom.RoomDTO>> getRoomsByBooking(long bookingId);
+    Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId);
 }

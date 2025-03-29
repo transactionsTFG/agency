@@ -48,8 +48,7 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     @Override
-    public Result<UpdateAirlineReservationDTO> getFlightReservation(long idReservation) {
-        return null;
-        // return this.businessDelegate.
+    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightReservation(long idReservation) {
+        return this.businessDelegate.getFlightReservation(idReservation);
     }
 }

@@ -23,6 +23,7 @@ import ucm.tfg.agency.common.dto.user.LoginUserDTO;
 import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
 import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
 import ucm.tfg.agency.common.enums.TypeService;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 public class BusinessDelegate {
     private final BusinessLookup lookupService = new BusinessLookup();
@@ -101,6 +102,10 @@ public class BusinessDelegate {
 
     public Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
         return this.lookupService.getHotelService(typeService).getAllRooms(hotelName, countryName);
+    }
+
+    public Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
+        return this.lookupService.getHotelService(typeService).getRoomsByBooking(bookingId);
     }
 
     public Result<BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking, long userId, String dni) {

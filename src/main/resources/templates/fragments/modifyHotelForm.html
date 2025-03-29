@@ -1,34 +1,51 @@
 <th:block th:fragment="modifyHotelForm">
-    <form th:action="@{/profile/modifyHotel}" th:method="post">
+    <form class="container" th:action="@{/profile/modifyHotel}" th:method="post">
+
         <div class="form-group">
-            <input type="date" name="startDate" id="startDate" required>
-            startdate
-        </div>
-        <div class="form-group">
-            <input type="date" name="endDate" id="endDate" required>
-            
-            enddate
-        </div>
-        <div class="form-group">
-            <input type="number" name="numberOfNights" id="numberOfNights" required min="1">
-            numberofnights
-        </div>
-        <div class="form-group">
-            <select name="withBreakfast" id="withBreakfast" required>
-                <option value="true">Sí</option>
-                <option value="false">No</option>
+            <label for="withBreakfast" class="form-label">Con desayuno</label>
+            <select class="form-control" name="withBreakfast" id="withBreakfast" required>
+                <option th:selected="${booking.withBreakfast == true}" value="true">Sí</option>
+                <option th:selected="${booking.withBreakfast == false}" value="false">No</option>
             </select>
-            withbreakfast
         </div>
         <div class="form-group">
-            <input type="number" name="peopleNumber" id="peopleNumber" required min="1">
-            peoplenumber
+            <label for="peopleNumber" class="form-label">Número de personas</label>
+            <input class="form-control" type="number" name="peopleNumber" id="peopleNumber"
+                th:value="${booking.peopleNumber}" required min="1">
+        </div>
+        <div class="row">
+
+            <div th:each="room : ${roomList}">
+                <div class="card col-auto m-1" th:if="${room.available == true}">
+                    <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
+                    <div class="card-body">
+
+                        <h5 class="card-title" th:text="${'Habitación número ' + room.roomDTO.number}">Título</h5>
+                        <p th:text="${'Precio por día: ' + room.roomDailyPrice + '€'}">Precio por día</p>
+                        <div class="form-group">
+                            <label for="startDate" class="form-label">Fecha de entrada</label>
+                            <input class="form-control" type="date" name="startDate" id="startDate"
+                                th:value="${room.startDate}" required>
+                            startdate
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate" class="form-label">Fecha de salida</label>
+                            <input class="form-control" type="date" name="endDate" id="endDate"
+                                th:value="${room.endDate}" required>
+                            enddate
+                        </div>
+                        <div class="form-group">
+                            <label for="numberOfNights" class="form-label">Número de noches</label>
+                            <input class="form-control" type="number" name="numberOfNights" id="numberOfNights"
+                                th:value="${room.numberOfNights}" required min="1">
+                            numberofnights
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            roomlist th:each > input:number
-        </div>
-        <div class="form-group">
-            <button type="submit">Modificar</button>
+            <button class="btn btn-success" type="submit">Modificar</button>
         </div>
     </form>
 </th:block>

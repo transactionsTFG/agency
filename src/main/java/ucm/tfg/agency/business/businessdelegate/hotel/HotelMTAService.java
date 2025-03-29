@@ -14,6 +14,7 @@ import ucm.tfg.agency.soapclient.hotelbooking.AgencyHotelBookingWS;
 import ucm.tfg.agency.soapclient.hotelbooking.AgencyHotelBookingWS_Service;
 import ucm.tfg.agency.soapclient.hotelroom.AgencyHotelRoomWS;
 import ucm.tfg.agency.soapclient.hotelroom.AgencyHotelRoomWS_Service;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 public class HotelMTAService implements HotelExternalService {
 
@@ -95,7 +96,7 @@ public class HotelMTAService implements HotelExternalService {
     }
 
     @Override
-    public Result<List<ucm.tfg.agency.soapclient.hotelroom.RoomDTO>> getRoomsByBooking(long bookingId) {
+    public Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
         try {
             return Result.success(this.agencyHotelRoomWS.searchRoomsByBooking(bookingId));
         } catch (Exception e) {

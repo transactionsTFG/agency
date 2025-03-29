@@ -1,5 +1,6 @@
 package ucm.tfg.agency.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,7 +24,9 @@ import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
+import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 @Controller
 @RequestMapping("/profile")
@@ -74,7 +77,7 @@ public class ProfileController {
         if (idFlight != -1 && idHotel != -1) {
             Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
                     idHotel);
-                    
+
             return "modifyTravel";
         }
         if (idFlight != -1) {
@@ -86,17 +89,45 @@ public class ProfileController {
         return "redirect:/profile";
     }
 
-
     @GetMapping("modifyFlight/{flightId}")
-    public String modifyFlight(@PathVariable long flightId) {
+    public String modifyFlight(@PathVariable long flightId, Model model) {
         Result<FlightAirlineDTO> flightResult = this.airlineService.getFlightById(flightId);
+        Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> flightReservationsResult = this.airlineService
+                .getFlightReservation(flightId);
+        model.addAttribute("flight", flightResult.getData());
+        if (flightReservationsResult.getData() != null && !flightReservationsResult.getData().isEmpty()) {
+            model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
+        } else {
+            model.addAttribute("flightInstance", null);
+        }
         return "modifyFlight";
     }
 
     @GetMapping("modifyHotel/{flightId}")
-    public String modifyHotel(@PathVariable long flightId) {
+    public String modifyHotel(@PathVariable long flightId, Model model) {
         Result<BookingDTO> bookingResult = this.hotelService.getHotelBooking(flightId);
+        Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(flightId);
+        // "18/09/9126" -> "9126-09-18"
+        List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
+        bookingLineDTOs.stream().forEach(bl -> {
+            String[] startDate = bl.getStartDate().split("/");
+            bl.setStartDate(String.join("-", startDate[2], startDate[1], startDate[0]));
+            String[] endDate = bl.getEndDate().split("/");
+            bl.setEndDate(String.join("-", endDate[2], endDate[1], endDate[0]));
+        });
+        model.addAttribute("booking", bookingResult.getData());
+        model.addAttribute("roomList", bookingLineDTOs);
         return "modifyHotel";
+    }
+
+    @PostMapping("modifyHotel")
+    public String modifyHotelPost(Model model) {
+        return "redirect:/profile";
+    }
+
+    @PostMapping("modifyFlight")
+    public String modifyFlightPost(Model model) {
+        return "redirect:/profile";
     }
 
 }

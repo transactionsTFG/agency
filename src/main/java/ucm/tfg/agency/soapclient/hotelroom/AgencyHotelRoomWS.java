@@ -29,14 +29,14 @@ public interface AgencyHotelRoomWS {
      * 
      * @param bookingId
      * @return
-     *     returns java.util.List<ucm.tfg.agency.soapclient.hotelroom.RoomDTO>
+     *     returns java.util.List<ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "searchRoomsByBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomsByBooking")
     @ResponseWrapper(localName = "searchRoomsByBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelroom.SearchRoomsByBookingResponse")
     @Action(input = "http://soap/AgencyHotelRoomWS/searchRoomsByBookingRequest", output = "http://soap/AgencyHotelRoomWS/searchRoomsByBookingResponse")
-    public List<RoomDTO> searchRoomsByBooking(
+    public List<BookingLineDTO> searchRoomsByBooking(
         @WebParam(name = "bookingId", targetNamespace = "")
         long bookingId);
 
