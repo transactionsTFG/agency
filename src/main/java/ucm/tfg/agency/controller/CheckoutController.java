@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
+import ucm.tfg.agency.business.services.agency.AgencyService;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
+import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.utils.AuthUtil;
 import ucm.tfg.agency.common.utils.DateParser;
-import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Controller
@@ -30,7 +30,8 @@ public class CheckoutController {
     
     private final AirlineService airlineService;
     private final HotelService hotelService;
-    
+    private final AgencyService agencyService;
+
     @GetMapping("/hotel/{idHotel}")
     public String checkoutHotel(@PathVariable long idHotel, Model model) {
         RoomDTO room = this.hotelService.getRoomById(idHotel).getData();
@@ -83,7 +84,18 @@ public class CheckoutController {
     
 
     @PostMapping("/flighthotel")
-    public String reservationHotelFlight(@RequestBody String entity) {
-        return entity;
+    public String reservationHotelFlight(@RequestParam String startDate, @RequestParam String endDate, 
+                @RequestParam int numberOfNights, @RequestParam(required = false, value = "false") Boolean withBreakfast, 
+                @RequestParam int peopleNumber, @RequestParam long roomId, @RequestParam int numberOfSeats, @RequestParam long flightInstanceId, @RequestParam String dni) {
+        CreateBookingReservationDTO booking = new CreateBookingReservationDTO();
+        booking.setStartDate(DateParser.parserLocalDateClientToBackendFormat(startDate));
+        booking.setEndDate(DateParser.parserLocalDateClientToBackendFormat(endDate));
+        booking.setNumberOfNights(numberOfNights);
+        booking.setWithBreakfast(Boolean.TRUE.equals(withBreakfast));
+        booking.setPeopleNumber(peopleNumber);
+        booking.setRoomId(List.of(Long.valueOf(roomId)));
+        CreateAirlineReservationDTO flight = new CreateAirlineReservationDTO(dni, AuthUtil.getAuth().getId(), List.of(new IdFlightInstanceWithSeatsDTO(flightInstanceId, numberOfSeats)));
+        this.agencyService.makeFlightAndHotelReservation(flight, booking);
+        return "redirect:/profile";
     }
 }
