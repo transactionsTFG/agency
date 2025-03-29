@@ -5,10 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
+import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
@@ -31,6 +33,16 @@ public class CheckoutController {
         return "checkout-hotel";
     }
 
+    @PostMapping("/hotel")
+    public String reservationHotel(@RequestParam String startDate, @RequestParam String endDate, 
+                                    @RequestParam int numberOfNights, @RequestParam boolean withBreakfast, 
+                                    @RequestParam int peopleNumber, @RequestParam long roomId) {
+        CreateBookingReservationDTO booking = new CreateBookingReservationDTO();
+        return "redirect:/offers";
+    }
+    
+
+
     @GetMapping("/flight/{idFlightInstance}")
     public String checkoutFlight(@PathVariable long idFlightInstance, Model model) {
         FlightInstanceDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
@@ -51,12 +63,7 @@ public class CheckoutController {
         return "checkout-airlinehotel";
     }
 
-    @PostMapping("/hotel")
-    public String reservationHotel() {
-        final int numberRoom = 1;
-        return ""; //this.hotelService.makeFlightReservation();
-    }
-    
+
     @PostMapping("/flight")
     public String reservationFlight(@RequestBody String entity) {
         return entity;
