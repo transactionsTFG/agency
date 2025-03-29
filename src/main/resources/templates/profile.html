@@ -80,10 +80,10 @@
                                                 <div th:if="${travel.flightReservationID > 0}">
                                                     <span th:text="#{app.profile.reservation.status} + ': ' + ${travel.status}"></span><br>
                                                 </div>
-                                                <div th:if="${travel.flightReservationID > 0}">
+                                                <div th:if="${travel.hotelReservationID > 0}">
                                                     <span th:text="#{app.profile.reservation.pricehotel} + ': ' + ${travel.hotelCost}"></span><br>
                                                 </div> 
-                                                <div th:if="${travel.hotelReservationID > 0}">
+                                                <div th:if="${travel.flightReservationID > 0}">
                                                     <span  th:text="#{app.profile.reservation.priceflight} + ': ' + ${travel.flightCost}"></span>
                                                 </div> 
                                             </div>

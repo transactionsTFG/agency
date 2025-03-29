@@ -29,10 +29,11 @@
                                         </td>
                                         <td>
                                             <br><span class='thin'>Reserva de Hotel</span>
+                                            <input type="hidden" name="roomId" th:value="${room.id}"/>
                                             <br><span class='thin' th:text="|¿Tiene habitacion simple? ${room.singleBed ? 'Si.' : 'No.'}|"></span>
                                             <br><span class='thin m-right-input'>Check-in</span><input type="date" name="startDate" id="checkin"></input>
                                             <br><span class='thin m-right-input'>Check-out</span><input type="date" name="endDate" id="checkout">
-                                            <br><span class='thin m-right-input'>Numero de noches</span><input type="text" name="numberOfNights" id="numberOfNights" value="1" readonly disabled ></input>
+                                            <br><span class='thin m-right-input'>Numero de noches</span><input type="number" name="numberOfNights" id="numberOfNights" value="1" readonly  ></input>
                                             <br><span class='thin m-right-input'>Numero personas</span><input type="number" name="peopleNumber" value="1" min="1" max="2" id="number-persons"></input>
                                             <br><label>Incluir desayuno <input type="checkbox" name="withBreakfast" class="m-right-input"></label>
                                         </td>
@@ -81,7 +82,7 @@
                             <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
                                 class='credit-card-image' id='credit-card-image'></img>
                             <span th:text="#{app.checkout.card.dni}">DNI</span>
-                            <input class='input-field' id="dni" required pattern="[0-9]{8}[A-Za-z]{1}" title="Formato: 8 dígitos y 1 letra"></input>
+                            <input class='input-field' id="dni" name="dni" required pattern="[0-9]{8}[A-Za-z]{1}" title="Formato: 8 dígitos y 1 letra"></input>
                             
                             <span th:text="#{app.checkout.card.number}">Card Number</span>
                             <input class='input-field' id="cardNumber" required></input>

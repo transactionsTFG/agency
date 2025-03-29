@@ -1,5 +1,7 @@
 package ucm.tfg.agency.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,8 @@ import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
-import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.utils.AuthUtil;
+import ucm.tfg.agency.common.utils.DateParser;
 import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,10 +38,17 @@ public class CheckoutController {
 
     @PostMapping("/hotel")
     public String reservationHotel(@RequestParam String startDate, @RequestParam String endDate, 
-                                    @RequestParam int numberOfNights, @RequestParam boolean withBreakfast, 
-                                    @RequestParam int peopleNumber, @RequestParam long roomId) {
+                                    @RequestParam int numberOfNights, @RequestParam(required = false, value = "false") Boolean withBreakfast, 
+                                    @RequestParam int peopleNumber, @RequestParam long roomId, @RequestParam String dni) {
         CreateBookingReservationDTO booking = new CreateBookingReservationDTO();
-        return "redirect:/offers";
+        booking.setStartDate(DateParser.parserLocalDateClientToBackendFormat(startDate));
+        booking.setEndDate(DateParser.parserLocalDateClientToBackendFormat(endDate));
+        booking.setNumberOfNights(numberOfNights);
+        booking.setWithBreakfast(Boolean.TRUE.equals(withBreakfast));
+        booking.setPeopleNumber(peopleNumber);
+        booking.setRoomId(List.of(Long.valueOf(roomId)));
+        this.hotelService.makeHotelBooking(booking, AuthUtil.getAuth().getId(), dni);
+        return "redirect:/profile";
     }
     
 

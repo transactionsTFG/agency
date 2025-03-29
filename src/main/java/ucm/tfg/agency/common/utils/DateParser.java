@@ -1,6 +1,8 @@
 package ucm.tfg.agency.common.utils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.w3c.dom.Element;
 
@@ -21,6 +23,12 @@ public class DateParser {
         } else {
             return null;
         }
+    }
+
+    public static String parserLocalDateClientToBackendFormat(String dateClientJS){
+        LocalDate date = LocalDate.parse(dateClientJS);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(formatter);
     }
 
 }
