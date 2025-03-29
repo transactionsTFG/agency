@@ -7,6 +7,7 @@ import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
 import ucm.tfg.agency.common.mapper.AirlineMapper;
@@ -93,8 +94,8 @@ public class AirlineMTAService implements AirlineExternalService {
     }
 
     @Override
-    public FlightInstanceDTO getFlightInstance(long flightInstanceId) {
-        return this.agencyAirlineFlightWS.searchFlightInstance(flightInstanceId);  
+    public FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId) {
+        return this.airlineMapper.flightInstanceSOAPtoDTO(this.agencyAirlineFlightWS.searchFlightInstance(flightInstanceId));  
     }
 
 }

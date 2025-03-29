@@ -6,6 +6,7 @@ import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
@@ -46,7 +47,7 @@ public class AirlineMSAService implements AirlineExternalService {
     }
 
     @Override
-    public FlightInstanceDTO getFlightInstance(long flightInstanceId) {
+    public FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getFlightInstance'");
     }

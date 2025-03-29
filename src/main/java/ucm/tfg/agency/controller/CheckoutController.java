@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.services.airline.AirlineService;
 import ucm.tfg.agency.business.services.hotel.HotelService;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.utils.AuthUtil;
 import ucm.tfg.agency.common.utils.DateParser;
@@ -51,11 +52,9 @@ public class CheckoutController {
         return "redirect:/profile";
     }
     
-
-
     @GetMapping("/flight/{idFlightInstance}")
     public String checkoutFlight(@PathVariable long idFlightInstance, Model model) {
-        FlightInstanceDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
+        FlightInstanceAirlineDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
         model.addAttribute("flight", flight);
         return "checkout-flight";
     }
@@ -66,7 +65,7 @@ public class CheckoutController {
         RoomDTO room = this.hotelService.getRoomById(idHotel).getData();
         price += room.getDailyPrice();
         model.addAttribute("room", room);
-        FlightInstanceDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
+        FlightInstanceAirlineDTO flight = this.airlineService.searchFlightInstance(idFlightInstance);
         price += flight.getPrice();
         model.addAttribute("flight", flight);
         model.addAttribute("price", price);

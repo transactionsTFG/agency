@@ -13,7 +13,6 @@ import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
-import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
 public interface AgencyExternalService {
         Result<Map<String, ListFlightHotelDTO>> getFlightsAndHotels(final String hotelName, final String countryOrigin, final String countryDestination, final String cityOrigin, final String cityDestination, final String dateFrom);

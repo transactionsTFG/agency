@@ -7,8 +7,8 @@ import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
-import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
 public interface AirlineService {
     Result<FlightAirlineDTO> getFlightById(long flightId);
@@ -16,5 +16,5 @@ public interface AirlineService {
     Result<SuccessReservationAgencyDTO> makeFlightReservation(String dni, long idCustomer, List<IdFlightInstanceWithSeatsDTO> flights);
     Result<UpdateReservationDTO> modifyFlightReservation(long idReservation, List<IdFlightInstanceWithSeatsDTO> flights);
     Result<Double> cancelFlightReservation(long flightReservationId);
-    FlightInstanceDTO searchFlightInstance(long flightInstanceId);
+    FlightInstanceAirlineDTO searchFlightInstance(long flightInstanceId);
 }

@@ -17,6 +17,15 @@ public class DateParser {
         }
     }
 
+    public static LocalDate elementToLocalDate(Object date){
+        if(date instanceof Element d){
+            String dateText = d.getTextContent();
+            return LocalDate.parse(dateText);
+        } else {
+            return null;
+        }
+    }
+
     public static String elementToString(Object date){
         if(date instanceof Element d){
             return d.getTextContent();
