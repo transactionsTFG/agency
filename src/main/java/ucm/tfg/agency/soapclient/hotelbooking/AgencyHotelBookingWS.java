@@ -26,6 +26,21 @@ public interface AgencyHotelBookingWS {
 
     /**
      * 
+     * @param bookingId
+     * @return
+     *     returns ucm.tfg.agency.soapclient.hotelbooking.BookingDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "readHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ReadHotelBooking")
+    @ResponseWrapper(localName = "readHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ReadHotelBookingResponse")
+    @Action(input = "http://soap/AgencyHotelBookingWS/readHotelBookingRequest", output = "http://soap/AgencyHotelBookingWS/readHotelBookingResponse")
+    public BookingDTO readHotelBooking(
+        @WebParam(name = "bookingId", targetNamespace = "")
+        int bookingId);
+
+    /**
+     * 
      * @param booking
      * @param user
      * @param dni
@@ -47,21 +62,6 @@ public interface AgencyHotelBookingWS {
 
     /**
      * 
-     * @param booking
-     * @return
-     *     returns ucm.tfg.agency.soapclient.hotelbooking.BookingDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "modifyHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ModifyHotelBooking")
-    @ResponseWrapper(localName = "modifyHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ModifyHotelBookingResponse")
-    @Action(input = "http://soap/AgencyHotelBookingWS/modifyHotelBookingRequest", output = "http://soap/AgencyHotelBookingWS/modifyHotelBookingResponse")
-    public BookingDTO modifyHotelBooking(
-        @WebParam(name = "booking", targetNamespace = "")
-        ModifyBookingReservationDTO booking);
-
-    /**
-     * 
      * @param bookingId
      * @param roomId
      * @return
@@ -80,6 +80,21 @@ public interface AgencyHotelBookingWS {
 
     /**
      * 
+     * @param booking
+     * @return
+     *     returns ucm.tfg.agency.soapclient.hotelbooking.BookingDTO
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "modifyHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ModifyHotelBooking")
+    @ResponseWrapper(localName = "modifyHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ModifyHotelBookingResponse")
+    @Action(input = "http://soap/AgencyHotelBookingWS/modifyHotelBookingRequest", output = "http://soap/AgencyHotelBookingWS/modifyHotelBookingResponse")
+    public BookingDTO modifyHotelBooking(
+        @WebParam(name = "booking", targetNamespace = "")
+        ModifyBookingReservationDTO booking);
+
+    /**
+     * 
      * @param bookingId
      * @return
      *     returns double
@@ -92,20 +107,5 @@ public interface AgencyHotelBookingWS {
     public double cancelHotelBooking(
         @WebParam(name = "bookingId", targetNamespace = "")
         long bookingId);
-
-    /**
-     * 
-     * @param bookingId
-     * @return
-     *     returns ucm.tfg.agency.soapclient.hotelbooking.BookingDTO
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "readHotelBooking", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ReadHotelBooking")
-    @ResponseWrapper(localName = "readHotelBookingResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.hotelbooking.ReadHotelBookingResponse")
-    @Action(input = "http://soap/AgencyHotelBookingWS/readHotelBookingRequest", output = "http://soap/AgencyHotelBookingWS/readHotelBookingResponse")
-    public BookingDTO readHotelBooking(
-        @WebParam(name = "bookingId", targetNamespace = "")
-        int bookingId);
 
 }
