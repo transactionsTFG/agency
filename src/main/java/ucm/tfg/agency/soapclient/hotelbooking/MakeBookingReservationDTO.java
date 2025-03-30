@@ -19,7 +19,6 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="customerId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="endDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="numberOfNights" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="peopleNumber" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
@@ -36,7 +35,6 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "makeBookingReservationDTO", propOrder = {
-    "customerId",
     "endDate",
     "numberOfNights",
     "peopleNumber",
@@ -46,7 +44,6 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class MakeBookingReservationDTO {
 
-    protected long customerId;
     protected String endDate;
     protected int numberOfNights;
     protected int peopleNumber;
@@ -54,22 +51,6 @@ public class MakeBookingReservationDTO {
     protected List<Long> roomId;
     protected String startDate;
     protected boolean withBreakfast;
-
-    /**
-     * Obtiene el valor de la propiedad customerId.
-     * 
-     */
-    public long getCustomerId() {
-        return customerId;
-    }
-
-    /**
-     * Define el valor de la propiedad customerId.
-     * 
-     */
-    public void setCustomerId(long value) {
-        this.customerId = value;
-    }
 
     /**
      * Obtiene el valor de la propiedad endDate.

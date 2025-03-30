@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de pago</title>
+    <th:block th:insert="~{fragments/head :: head}"></th:block>
+    <link rel="stylesheet" th:href="@{/css/checkout.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
+</head>
+
+<body>
+    <div class="super_container">
+        <th:block th:insert="~{fragments/header :: header}"></th:block>
+        <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
+        <div class='container-checkout'>
+            <form method="post" th:action="@{/checkout/flight}" class='window'>
+                <div class='order-info'>
+                    <div class='order-info-content'>
+                        <h2 th:text="#{app.checkout.order.summary}">Order Summary</h2>
+                        <th:block th:if="${flight}">
+                            <div class='line'></div>
+                            <table class='order-table'>
+                                <tbody>
+                                    <tr>
+                                        <td><img th:src='@{/img/offer_7.jpg}' class='full-width'></img>
+                                        </td>
+                                        <td>
+                                            <br><span class='thin'>Reserva de Vuelo</span>
+                                            <input type="hidden" name="flightInstanceId" th:value="${flight.id}"/>
+                                            <br><span class='thin m-right-input'>Numero de asientos</span><input type="number" name="numberOfSeats" value="1" min="1" max="10" id="numberSeats"/>
+                                            <br><span class='thin m-right-input'>Check-in</span><input type="date" name="startDate" id="checkin" th:value="${flight.departureDate}" readonly disabled/>
+                                            <br><span class='thin m-right-input'>Check-out</span><input type="date" name="endDate" id="checkout"  th:value="${flight.arrivalDate}" readonly disabled/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class='price' th:text="|${flight.price}€|" id="price">$235.95</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </th:block>
+                        <div class='line'></div>
+                        <div class='total'>
+                            <span style='float:left;'>
+                                <div class='thin dense' th:text="#{app.checkout.without.iva}">Without IVA 21%</div>
+                                <div class='thin dense' th:text="#{app.checkout.iva}">Delivery</div>
+                                <span th:text="#{app.checkout.total}">Total</span>
+                            </span>
+                            <span style='float:right; text-align:right;'>
+                                <div class='thin dense' th:text="|${flight.price}€|" id="without-iva">$68.75</div>
+                                <div class='thin dense' th:text="|${flight.price * 1.21}€|" id="with-iva">$4.95</div>
+                                <span th:text="|${flight.price * 1.21}€|" id="price-final"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class='credit-info'>
+                    <div class='credit-info-content'>
+                            <table class='half-input-table'>
+                                <tr>
+                                    <td th:text="#{app.checkout.payment}">Please select your card: </td>
+                                    <td>
+                                        <div class='dropdown' id='card-dropdown'>
+                                            <div class='dropdown-btn' id='current-card'>Visa</div>
+                                            <div class='dropdown-select'>
+                                                <ul>
+                                                    <li>Master Card</li>
+                                                    <li>American Express</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
+                                class='credit-card-image' id='credit-card-image'></img>
+                            <span th:text="#{app.checkout.card.dni}">DNI</span>
+                            <input class='input-field' id="dni" name="dni" required pattern="[0-9]{8}[A-Za-z]{1}" title="Formato: 8 dígitos y 1 letra"></input>
+                            
+                            <span th:text="#{app.checkout.card.number}">Card Number</span>
+                            <input class='input-field' id="cardNumber" required></input>
+                            
+                            <span th:text="#{app.checkout.card.holder}" required>Card Holder</span>
+                            <input class='input-field' id="cardHolder"></input>
+                            <table class='half-input-table'>
+                                <tr>
+                                    <td> 
+                                        <span th:text="#{app.checkout.card.date}">Expires</span>
+                                        <input type="date" class='input-field' id="expiryDate"></input>
+                                    </td>
+                                    <td>
+                                        <span th:text="#{app.checkout.card.cvc}">CVC</span>
+                                        <input minlength="3" maxlength="3" id="cvc" accept="number" class='input-field'></input>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class='pay-btn' th:text="#{app.checkout.card.submit}" id="pay">Checkout</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <th:block th:insert="~{fragments/footer :: footer}"></th:block>
+        <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
+    </div>
+
+
+    <script th:src="@{/js/checkout.js}"></script>
+    <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
+    <script th:src="@{/js/custom.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const payBtn = document.getElementById('pay');
+            const inputNumberSeats = document.getElementById('numberSeats');
+
+            inputNumberSeats.addEventListener('change', () => {
+                updatePrice(inputNumberSeats.value);
+            });
+
+            payBtn.addEventListener('click', function (e) {
+                const dni = document.getElementById("dni").value;
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardHolder = document.getElementById('cardHolder').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvc = document.getElementById('cvc').value;
+       
+                if (!/^\d{8}[A-Za-z]$/.test(dni)) {
+                    alert('DNI inválido. Formato: 8 números y una letra.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    alert('Número de tarjeta inválido. Debe tener 16 dígitos.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (cardHolder.trim().length < 3) {
+                    console.log(cardHolder.trim().length);
+                    alert('Nombre del titular inválido.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!expiryDate) {
+                    alert('Fecha de expiración requerida.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{3}$/.test(cvc)) {
+                    alert('CVC inválido. Debe ser un número de 3 cifras.');
+                    e.preventDefault();
+                    return;
+                }
+            });
+
+        });
+        function updatePrice(days){
+            const priceFixed = "[[${flight.price}]]";
+            document.getElementById('without-iva').innerHTML = `${priceFixed * days}€`;
+            document.getElementById('with-iva').innerHTML = `${priceFixed * days * 1.21}€`;
+            document.getElementById('price-final').innerHTML = `${priceFixed * days * 1.21}€`;
+            document.getElementById('numberOfNights').value = `${days}`;
+        }
+    </script>
+</body>
+
+</html>

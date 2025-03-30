@@ -7,11 +7,13 @@ import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.exception.CatchExceptionSOAP;
 import ucm.tfg.agency.common.mapper.AirlineMapper;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS;
 import ucm.tfg.agency.soapclient.airlineflight.AgencyAirlineFlightWS_Service;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import ucm.tfg.agency.soapclient.airlineflight.ParamSearchFlightSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyAirlineReservationWS_Service;
@@ -64,7 +66,9 @@ public class AirlineMTAService implements AirlineExternalService {
             makeFlightReservationSOAP.setDni(dni);
             makeFlightReservationSOAP.setIdCustomer(idCustomer);
             MakeFlightReservationSOAP.Flights flightsSOAP = new MakeFlightReservationSOAP.Flights();
+            
             flightsSOAP.getFlight().addAll(this.airlineMapper.idFlightInstanceWithSeatsDTOtoSOAP(flights));
+            makeFlightReservationSOAP.setFlights(flightsSOAP);
             return Result.success(this.airlineMapper.successReservationSOAPtoDTO(
                     this.agencyAirlineReservationWS.makeFlightReservation(makeFlightReservationSOAP)));
         } catch (Exception e) {
@@ -105,6 +109,11 @@ public class AirlineMTAService implements AirlineExternalService {
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
+    }
+
+    @Override
+    public FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId) {
+        return this.airlineMapper.flightInstanceSOAPtoDTO(this.agencyAirlineFlightWS.searchFlightInstance(flightInstanceId));  
     }
 
 }

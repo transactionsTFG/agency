@@ -16,6 +16,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
@@ -24,6 +25,7 @@ import ucm.tfg.agency.common.dto.user.RegisterUserDTO;
 import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
 import ucm.tfg.agency.common.enums.TypeService;
 import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 
 public class BusinessDelegate {
     private final BusinessLookup lookupService = new BusinessLookup();
@@ -138,5 +140,9 @@ public class BusinessDelegate {
 
     public Result<List<TravelDTO>> getTravelsByUser(long userId) {
         return this.lookupService.getAgencyService(this.typeService).getTravelsByUser(userId);
+    }
+
+    public FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId) {
+        return this.lookupService.getAirlineService(this.typeService).getFlightInstance(flightInstanceId);
     }
 }

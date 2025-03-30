@@ -8,9 +8,15 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
+<<<<<<< HEAD
  * <p>Java class for searchFlightInstanceResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
+=======
+ * <p>Clase Java para searchFlightInstanceResponse complex type.
+ * 
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+>>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
  * 
  * <pre>
  * &lt;complexType name="searchFlightInstanceResponse"&gt;
@@ -36,7 +42,11 @@ public class SearchFlightInstanceResponse {
     protected FlightInstanceDTO _return;
 
     /**
+<<<<<<< HEAD
      * Gets the value of the return property.
+=======
+     * Obtiene el valor de la propiedad return.
+>>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @return
      *     possible object is
@@ -48,7 +58,11 @@ public class SearchFlightInstanceResponse {
     }
 
     /**
+<<<<<<< HEAD
      * Sets the value of the return property.
+=======
+     * Define el valor de la propiedad return.
+>>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @param value
      *     allowed object is

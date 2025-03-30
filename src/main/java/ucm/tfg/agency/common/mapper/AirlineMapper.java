@@ -1,5 +1,6 @@
 package ucm.tfg.agency.common.mapper;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,7 +14,9 @@ import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
+import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.utils.DateParser;
+import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import ucm.tfg.agency.soapclient.airlineflight.FlightListDTO;
 import ucm.tfg.agency.soapclient.airlineflight.FlightSOAP;
 import ucm.tfg.agency.soapclient.airlinereservation.AgencyReservationSuccessDTO;
@@ -23,16 +26,24 @@ import ucm.tfg.agency.soapclient.airlinereservation.IdFlightInstanceWithSeatsSOA
 public interface AirlineMapper {
     AirlineMapper INSTANCE = Mappers.getMapper(AirlineMapper.class);
 
-    @Mapping(target = "arrivalTime", source = "arrivalTime", qualifiedByName = "mapDateCreation")
-    @Mapping(target = "departureTime", source = "departureTime", qualifiedByName = "mapDateCreation")
+    @Mapping(target = "arrivalTime", source = "arrivalTime", qualifiedByName = "mapDateTimeCreation")
+    @Mapping(target = "departureTime", source = "departureTime", qualifiedByName = "mapDateTimeCreation")
     FlightAirlineDTO flightSOAPtoDTO(FlightSOAP flightSOAP);
     List<FlightAirlineInfoDTO> flightSOAPtoInfoDTO(List<FlightListDTO> flightSOAP);
     SuccessReservationAgencyDTO successReservationSOAPtoDTO(final AgencyReservationSuccessDTO successSOAP);
     UpdateReservationDTO updateReservationSOAPtoDTO(final ucm.tfg.agency.soapclient.airlinereservation.UpdateReservationDTO updateSOAP);
     List<IdFlightInstanceWithSeatsSOAP> idFlightInstanceWithSeatsDTOtoSOAP(List<IdFlightInstanceWithSeatsDTO> idFlightInstanceWithSeatsDTO);
-     @Named("mapDateCreation")
-    default String mapDateCreation(Object arrivalTime) {
+    @Mapping(target = "arrivalDate", source = "arrivalDate", qualifiedByName = "mapDateCreation")
+    @Mapping(target = "departureDate", source = "departureDate", qualifiedByName = "mapDateCreation")
+    FlightInstanceAirlineDTO flightInstanceSOAPtoDTO(FlightInstanceDTO flightSOAP);
+
+    @Named("mapDateTimeCreation")
+    default String mapTimeDateCreation(Object arrivalTime) {
         return DateParser.elementToString(arrivalTime);
     }
 
+    @Named("mapDateCreation")
+    default LocalDate mapDateCreation(Object date) {
+        return DateParser.elementToLocalDate(date);
+    }
 }

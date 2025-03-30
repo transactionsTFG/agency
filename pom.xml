@@ -129,6 +129,7 @@
                 </plugin>
                 <!-- Comando: mvn jaxws:wsimport -->
                 <!-- <plugin>
+                <!-- <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>4.0.0</version>
@@ -146,6 +147,7 @@
                     <sourceDestDir>src/main/java</sourceDestDir>
                     <packageName>ucm.tfg.agency.soapclient.hotelroom</packageName>
                 </configuration>
+            </plugin> -->
             </plugin> -->
         </plugins>
         </pluginManagement>
