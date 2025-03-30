@@ -24,6 +24,7 @@ import ucm.tfg.agency.business.services.hotel.HotelService;
 import ucm.tfg.agency.common.auth.AuthUser;
 import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
@@ -146,7 +147,10 @@ public class ProfileController {
     }
 
     @PostMapping("modifyFlight")
-    public String modifyFlightPost(Model model) {
+    public String modifyFlightPost(@RequestParam long idReservation, @RequestParam long idFlightInstance,
+            @RequestParam int seats) {
+        IdFlightInstanceWithSeatsDTO flightInstanceWithSeats = new IdFlightInstanceWithSeatsDTO(idFlightInstance, seats);
+        this.airlineService.modifyFlightReservation(idReservation, Arrays.asList(flightInstanceWithSeats));
         return "redirect:/profile";
     }
 
