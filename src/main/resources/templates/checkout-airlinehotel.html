@@ -16,7 +16,8 @@
         <th:block th:insert="~{fragments/header :: header}"></th:block>
         <th:block th:insert="~{fragments/header :: responsive-header}"></th:block>
         <div class='container-checkout'>
-            <div class='window'>
+            <form method="post" th:action="@{/checkout/flighthotel}" class='window'>
+
                 <div class='order-info'>
                     <div class='order-info-content'>
                         <h2 th:text="#{app.checkout.order.summary}">Order Summary</h2>
@@ -25,7 +26,7 @@
                             <table class='order-table'>
                                 <tbody>
                                     <tr>
-                                        <td><img th:src='@{/img/offer_7.jpg}' class='full-width'></img>
+                                        <td><img th:src='@{/img/offer_6.jpg}' class='full-width'></img>
                                         </td>
                                         <td>
                                             <br><span class='thin'>Reserva de Hotel</span>
@@ -56,7 +57,7 @@
                                     <td>
                                         <br><span class='thin'>Reserva de Vuelo</span>
                                         <input type="hidden" name="flightInstanceId" th:value="${flight.id}"/>
-                                        <br><span class='thin m-right-input'>Numero de asientos</span><input type="number" name="numberOfSeats" value="1" min="1" max="10" id="numberSeats"/>
+                                        <br><span class='thin m-right-input'>Numero de asientos</span><input type="number" name="numberOfSeats" value="1" min="1" max="10" id="numberOfSeats"/>
                                         <br><span class='thin m-right-input'>Check-in</span><input type="date" name="startDate" th:value="${flight.departureDate}" readonly disabled/>
                                         <br><span class='thin m-right-input'>Check-out</span><input type="date" name="endDate" th:value="${flight.arrivalDate}" readonly disabled/>
                                     </td>
@@ -78,9 +79,9 @@
                                 <span th:text="#{app.checkout.total}">Total</span>
                             </span>
                             <span style='float:right; text-align:right;'>
-                                <div class='thin dense' th:text="|${price}€|">$68.75</div>
-                                <div class='thin dense' th:text="|${price * 1.21}€|">$4.95</div>
-                                <span th:text="|${price * 1.21}€|"></span>
+                                <div class='thin dense' th:text="|${price}€|"  id="without-iva">$68.75</div>
+                                <div class='thin dense' th:text="|${price * 1.21}€|" id="with-iva">$4.95</div>
+                                <span th:text="|${price * 1.21}€|" id="price-final"></span>
                             </span>
                         </div>
                     </div>
@@ -128,7 +129,7 @@
                             <button class='pay-btn' th:text="#{app.checkout.card.submit}" id="pay">Checkout</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <th:block th:insert="~{fragments/footer :: footer}"></th:block>
         <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
@@ -138,6 +139,117 @@
     <script th:src="@{/js/checkout.js}"></script>
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>
     <script th:src="@{/js/custom.js}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const payBtn = document.getElementById('pay');
+            const inputCheckIn = document.getElementById('checkin');
+            const inputCheckOut = document.getElementById('checkout');
+            const inputNumberSeats = document.getElementById('numberOfSeats');
+            inputCheckIn.setAttribute('min', new Date().toISOString().split('T')[0]);
+            inputCheckIn.valueAsDate = new Date();
+
+            const todayAddOneDay = new Date();
+            todayAddOneDay.setDate(new Date().getDate() + 1);
+            inputCheckOut.valueAsDate = todayAddOneDay;
+
+            inputCheckIn.addEventListener('change', () => {
+                const today = new Date();
+                today.setDate(today.getDate() - 1);
+                const checkInDate = new Date(inputCheckIn.valueAsDate);
+                if(checkInDate < today) {
+                    alert('La fecha de entrada no puede ser anterior a la fecha actual.');
+                    inputCheckIn.value = '';
+                } else {
+                    const checkoutDate = new Date(checkInDate);
+                    checkoutDate.setDate(checkInDate.getUTCDate() + 1);
+                    inputCheckOut.setAttribute('min', checkoutDate.toISOString().split('T')[0]);
+                    inputCheckOut.valueAsDate  = checkoutDate;
+                    updatePrice(1, document.getElementById('numberOfSeats').value);
+                }
+            });
+
+            inputCheckOut.addEventListener('change', () => {
+                const checkInDate = new Date(inputCheckIn.valueAsDate);
+                const checkOutDate = new Date(inputCheckOut.valueAsDate);
+                if(checkInDate >= checkOutDate) {
+                    alert('La fecha de salida no puede ser anterior a la fecha de entrada.');
+                } else {
+                    const diffTime = Math.abs(checkOutDate - checkInDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    updatePrice(diffDays, document.getElementById('numberOfSeats').value);
+                }
+            });
+
+            payBtn.addEventListener('click', function (e) {
+                const checkin = document.getElementById('checkin').valueAsDate;
+                const checkout = document.getElementById('checkout').valueAsDate;
+                const people = document.getElementById('number-persons').value;
+                const dni = document.getElementById("dni").value;
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cardHolder = document.getElementById('cardHolder').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvc = document.getElementById('cvc').value;
+                if (!checkin || !checkout || checkin >= checkout) {
+                    alert('Revisa las fechas de entrada y salida.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (people < 1 || people > 2) {
+                    alert('Número de personas debe estar entre 1 y 2.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{8}[A-Za-z]$/.test(dni)) {
+                    alert('DNI inválido. Formato: 8 números y una letra.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{16}$/.test(cardNumber)) {
+                    alert('Número de tarjeta inválido. Debe tener 16 dígitos.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (cardHolder.trim().length < 3) {
+                    console.log(cardHolder.trim().length);
+                    alert('Nombre del titular inválido.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!expiryDate) {
+                    alert('Fecha de expiración requerida.');
+                    e.preventDefault();
+                    return;
+                }
+        
+                if (!/^\d{3}$/.test(cvc)) {
+                    alert('CVC inválido. Debe ser un número de 3 cifras.');
+                    e.preventDefault();
+                    return;
+                }
+            });
+
+            inputNumberSeats.addEventListener('change', () => {
+                updatePrice(document.getElementById('numberOfNights').value, inputNumberSeats.value);
+            });
+    
+        });
+
+       
+        function updatePrice(days, seats){
+            const priceFlightFixet = "[[${flight.price}]]" * seats;
+            const priceRoomFixed = "[[${room.dailyPrice}]]" * days;
+            const priceFixed = priceFlightFixet + priceRoomFixed;
+            document.getElementById('without-iva').innerHTML = `${priceFixed}€`;
+            document.getElementById('with-iva').innerHTML = `${priceFixed * 1.21}€`;
+            document.getElementById('price-final').innerHTML = `${priceFixed * 1.21}€`;
+            document.getElementById('numberOfNights').value = `${days}`;
+        }
+    </script>
 </body>
 
 </html>
