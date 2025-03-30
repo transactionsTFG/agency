@@ -1,5 +1,6 @@
 package ucm.tfg.agency.controller;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -23,9 +25,11 @@ import ucm.tfg.agency.common.auth.AuthUser;
 import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.utils.AuthUtil;
 import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 @Controller
@@ -121,7 +125,23 @@ public class ProfileController {
     }
 
     @PostMapping("modifyHotel")
-    public String modifyHotelPost(Model model) {
+    public String modifyHotelPost(@RequestParam long bookingId,
+            @RequestParam Boolean withBreakfast, @RequestParam int peopleNumber, @RequestParam long roomId,
+            @RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam int numberOfNights) {
+        UpdateBookingReservationDTO booking = new UpdateBookingReservationDTO();
+        booking.setId(bookingId);
+        booking.setStartDate((startDate.getDayOfMonth() < 10 ? "0" : "") + startDate.getDayOfMonth() + "/"
+                + (startDate.getMonthValue() < 10 ? "0" : "") + startDate.getMonthValue() + "/" +
+                startDate.getYear());
+        booking.setEndDate((endDate.getDayOfMonth() < 10 ? "0" : "") + endDate.getDayOfMonth() + "/"
+                + (endDate.getMonthValue() < 10 ? "0" : "") + endDate.getMonthValue() + "/" +
+                endDate.getYear());
+        booking.setNumberOfNights(numberOfNights);
+        booking.setWithBreakfast(withBreakfast);
+        booking.setPeopleNumber(peopleNumber);
+        booking.setCustomerId(AuthUtil.getAuth().getId());
+        booking.setRoomId(Arrays.asList(roomId));
+        this.hotelService.modifyHotelBooking(booking);
         return "redirect:/profile";
     }
 

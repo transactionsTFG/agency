@@ -7,15 +7,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
-<<<<<<< HEAD
  * <p>Java class for flightInstanceDTO complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
-=======
  * <p>Clase Java para flightInstanceDTO complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
  * 
  * <pre>
  * &lt;complexType name="flightInstanceDTO"&gt;
@@ -61,11 +58,8 @@ public class FlightInstanceDTO {
     protected String statusFlight;
 
     /**
-<<<<<<< HEAD
      * Gets the value of the active property.
-=======
      * Obtiene el valor de la propiedad active.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public boolean isActive() {
@@ -73,11 +67,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the active property.
-=======
      * Define el valor de la propiedad active.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public void setActive(boolean value) {
@@ -85,11 +76,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the arrivalDate property.
-=======
      * Obtiene el valor de la propiedad arrivalDate.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @return
      *     possible object is
@@ -101,11 +89,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the arrivalDate property.
-=======
      * Define el valor de la propiedad arrivalDate.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @param value
      *     allowed object is
@@ -117,11 +102,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the departureDate property.
-=======
      * Obtiene el valor de la propiedad departureDate.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @return
      *     possible object is
@@ -133,11 +115,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the departureDate property.
-=======
      * Define el valor de la propiedad departureDate.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @param value
      *     allowed object is
@@ -149,11 +128,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the id property.
-=======
      * Obtiene el valor de la propiedad id.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public long getId() {
@@ -161,11 +137,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the id property.
-=======
      * Define el valor de la propiedad id.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public void setId(long value) {
@@ -173,11 +146,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the idFlight property.
-=======
      * Obtiene el valor de la propiedad idFlight.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public long getIdFlight() {
@@ -185,11 +155,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the idFlight property.
-=======
      * Define el valor de la propiedad idFlight.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public void setIdFlight(long value) {
@@ -197,11 +164,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the passengerCounter property.
-=======
      * Obtiene el valor de la propiedad passengerCounter.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public int getPassengerCounter() {
@@ -209,11 +173,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the passengerCounter property.
-=======
      * Define el valor de la propiedad passengerCounter.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public void setPassengerCounter(int value) {
@@ -221,11 +182,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the price property.
-=======
      * Obtiene el valor de la propiedad price.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public double getPrice() {
@@ -233,11 +191,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the price property.
-=======
      * Define el valor de la propiedad price.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      */
     public void setPrice(double value) {
@@ -245,11 +200,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Gets the value of the statusFlight property.
-=======
      * Obtiene el valor de la propiedad statusFlight.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @return
      *     possible object is
@@ -261,11 +213,8 @@ public class FlightInstanceDTO {
     }
 
     /**
-<<<<<<< HEAD
      * Sets the value of the statusFlight property.
-=======
      * Define el valor de la propiedad statusFlight.
->>>>>>> 43d7f60833fe04bc86b98f69f9edbc12c9d528c0
      * 
      * @param value
      *     allowed object is

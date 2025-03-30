@@ -91,8 +91,8 @@
     </dependencies>
 
     <build>
-    <pluginManagement>
-        <plugins>
+        <pluginManagement>
+            <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -129,27 +129,25 @@
                 </plugin>
                 <!-- Comando: mvn jaxws:wsimport -->
                 <!-- <plugin>
-                <!-- <plugin>
-                <groupId>com.sun.xml.ws</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-                <version>4.0.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <wsdlUrls>
-                         <wsdlUrl>http://localhost:9001/agencyMTA/AgencyHotelRoomWS?wsdl</wsdlUrl>  
-                    </wsdlUrls>
-                    <sourceDestDir>src/main/java</sourceDestDir>
-                    <packageName>ucm.tfg.agency.soapclient.hotelroom</packageName>
-                </configuration>
-            </plugin> -->
-            </plugin> -->
-        </plugins>
+                    <groupId>com.sun.xml.ws</groupId>
+                    <artifactId>jaxws-maven-plugin</artifactId>
+                    <version>4.0.0</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>wsimport</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <wsdlUrls>
+                            <wsdlUrl>http://localhost:9001/agencyMTA/AgencyHotelRoomWS?wsdl</wsdlUrl>
+                        </wsdlUrls>
+                        <sourceDestDir>src/main/java</sourceDestDir>
+                        <packageName>ucm.tfg.agency.soapclient.hotelroom</packageName>
+                    </configuration>
+                </plugin> -->
+            </plugins>
         </pluginManagement>
     </build>
 </project>

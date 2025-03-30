@@ -2,6 +2,7 @@
     <form class="container" th:action="@{/profile/modifyHotel}" th:method="post">
 
         <div class="form-group">
+            <input type="hidden" name="bookingId" th:value="${booking.id}">
             <label for="withBreakfast" class="form-label">Con desayuno</label>
             <select class="form-control" name="withBreakfast" id="withBreakfast" required>
                 <option th:selected="${booking.withBreakfast == true}" value="true">Sí</option>
@@ -19,7 +20,7 @@
                 <div class="card col-auto m-1" th:if="${room.available == true}">
                     <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
                     <div class="card-body">
-
+                        <input type="hidden" name="roomId" th:value="${room.roomDTO.id}">
                         <h5 class="card-title" th:text="${'Habitación número ' + room.roomDTO.number}">Título</h5>
                         <p th:text="${'Precio por día: ' + room.roomDailyPrice + '€'}">Precio por día</p>
                         <div class="form-group">
