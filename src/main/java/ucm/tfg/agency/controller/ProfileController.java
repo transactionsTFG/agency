@@ -9,7 +9,6 @@ import org.springframework.context.MessageSource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +25,9 @@ import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
-import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.utils.AuthUtil;
 import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
@@ -78,11 +77,18 @@ public class ProfileController {
 
     @GetMapping("modifyTravel/{idFlight}/{idHotel}")
     public String modifyTravel(@PathVariable long idFlight, @PathVariable long idHotel,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes, Model model) {
         if (idFlight != -1 && idHotel != -1) {
             Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
                     idHotel);
-
+            Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> flightReservationsResult = this.airlineService
+                    .getFlightReservation(idFlight);
+            model.addAttribute("flight", flightHoteResult.getData().getReservation());
+            model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
+            Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(idHotel);
+            List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
+            model.addAttribute("booking", flightHoteResult.getData().getBooking());
+            model.addAttribute("roomList", bookingLineDTOs);
             return "modifyTravel";
         }
         if (idFlight != -1) {
@@ -91,6 +97,35 @@ public class ProfileController {
         if (idHotel != -1) {
             return "redirect:/profile/modifyHotel/" + idHotel;
         }
+        return "redirect:/profile";
+    }
+
+    @PostMapping("modifyTravel")
+    public String modifyTravelPost(@RequestParam long bookingId,
+            @RequestParam Boolean withBreakfast,
+            @RequestParam int peopleNumber,
+            @RequestParam long roomId,
+            @RequestParam LocalDate startDate,
+            @RequestParam LocalDate endDate,
+            @RequestParam int numberOfNights,
+            @RequestParam long idReservation,
+            @RequestParam long idFlightInstance,
+            @RequestParam int seats) {
+        UpdateBookingReservationDTO updateBookingReservationDTO = new UpdateBookingReservationDTO();
+        updateBookingReservationDTO.setId(bookingId);
+        updateBookingReservationDTO.setStartDate(startDate.toString());
+        updateBookingReservationDTO.setEndDate(endDate.toString());
+        updateBookingReservationDTO.setNumberOfNights(numberOfNights);
+        updateBookingReservationDTO.setWithBreakfast(withBreakfast);
+        updateBookingReservationDTO.setPeopleNumber(peopleNumber);
+        updateBookingReservationDTO.setCustomerId(AuthUtil.getAuth().getId());
+        updateBookingReservationDTO.setRoomId(Arrays.asList(roomId));
+        UpdateAirlineReservationDTO updateAirlineReservationDTO = new UpdateAirlineReservationDTO();
+        updateAirlineReservationDTO.setIdReservation(idReservation);
+        IdFlightInstanceWithSeatsDTO flightInstanceWithSeats = new IdFlightInstanceWithSeatsDTO(idFlightInstance,
+                seats);
+        updateAirlineReservationDTO.setListIdFlightInstanceSeats(Arrays.asList(flightInstanceWithSeats));
+        this.agencyService.modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
         return "redirect:/profile";
     }
 
@@ -108,18 +143,11 @@ public class ProfileController {
         return "modifyFlight";
     }
 
-    @GetMapping("modifyHotel/{flightId}")
-    public String modifyHotel(@PathVariable long flightId, Model model) {
-        Result<BookingDTO> bookingResult = this.hotelService.getHotelBooking(flightId);
-        Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(flightId);
-        // "18/09/9126" -> "9126-09-18"
+    @GetMapping("modifyHotel/{bookingId}")
+    public String modifyHotel(@PathVariable long bookingId, Model model) {
+        Result<BookingDTO> bookingResult = this.hotelService.getHotelBooking(bookingId);
+        Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(bookingId);
         List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
-        bookingLineDTOs.stream().forEach(bl -> {
-            String[] startDate = bl.getStartDate().split("/");
-            bl.setStartDate(String.join("-", startDate[2], startDate[1], startDate[0]));
-            String[] endDate = bl.getEndDate().split("/");
-            bl.setEndDate(String.join("-", endDate[2], endDate[1], endDate[0]));
-        });
         model.addAttribute("booking", bookingResult.getData());
         model.addAttribute("roomList", bookingLineDTOs);
         return "modifyHotel";
@@ -131,12 +159,8 @@ public class ProfileController {
             @RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam int numberOfNights) {
         UpdateBookingReservationDTO booking = new UpdateBookingReservationDTO();
         booking.setId(bookingId);
-        booking.setStartDate((startDate.getDayOfMonth() < 10 ? "0" : "") + startDate.getDayOfMonth() + "/"
-                + (startDate.getMonthValue() < 10 ? "0" : "") + startDate.getMonthValue() + "/" +
-                startDate.getYear());
-        booking.setEndDate((endDate.getDayOfMonth() < 10 ? "0" : "") + endDate.getDayOfMonth() + "/"
-                + (endDate.getMonthValue() < 10 ? "0" : "") + endDate.getMonthValue() + "/" +
-                endDate.getYear());
+        booking.setStartDate(startDate.toString());
+        booking.setEndDate(endDate.toString());
         booking.setNumberOfNights(numberOfNights);
         booking.setWithBreakfast(withBreakfast);
         booking.setPeopleNumber(peopleNumber);
@@ -149,7 +173,8 @@ public class ProfileController {
     @PostMapping("modifyFlight")
     public String modifyFlightPost(@RequestParam long idReservation, @RequestParam long idFlightInstance,
             @RequestParam int seats) {
-        IdFlightInstanceWithSeatsDTO flightInstanceWithSeats = new IdFlightInstanceWithSeatsDTO(idFlightInstance, seats);
+        IdFlightInstanceWithSeatsDTO flightInstanceWithSeats = new IdFlightInstanceWithSeatsDTO(idFlightInstance,
+                seats);
         this.airlineService.modifyFlightReservation(idReservation, Arrays.asList(flightInstanceWithSeats));
         return "redirect:/profile";
     }
