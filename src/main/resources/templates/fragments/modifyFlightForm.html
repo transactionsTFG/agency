@@ -1,5 +1,5 @@
 <th:block th:fragment="modifyFlightForm">
-    <form th:action="@{/profile/modifyFlight}" th:method="post">
+    <form th:if="${flight != null}" th:action="@{/profile/modifyFlight}" th:method="post">
         <input type="hidden" name="idReservation" th:value="${flight.id}">
         <div class="form-group">
             <p th:text="${'Código de vuelo: ' + flight.codeFlight}"></p>
@@ -22,4 +22,5 @@
             <button type="submit">Modificar</button>
         </div>
     </form>
+    <div th:if="${flight == null}" class="d-flex justify-content-center p-4 m-4 text-uppercase badge badge-danger">¡Algo ha ido mal!</div>
 </th:block>
