@@ -24,6 +24,7 @@ import ucm.tfg.agency.common.auth.AuthUser;
 import ucm.tfg.agency.common.dto.agency.BookingDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
@@ -81,15 +82,23 @@ public class ProfileController {
         if (idFlight != -1 && idHotel != -1) {
             Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
                     idHotel);
+            ReservationDTO flightResult = this.airlineService.getFlightReservation(idFlight);
             Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> flightReservationsResult = this.airlineService
-                    .getFlightReservation(idFlight);
-            model.addAttribute("flight", flightHoteResult.getData().getReservation());
-            model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
+                    .getFlightsByReservation(flightResult.getId());
             Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(idHotel);
             List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
-            model.addAttribute("booking", flightHoteResult.getData().getBooking());
-            model.addAttribute("roomList", bookingLineDTOs);
-            return "modifyTravel";
+            try {
+                model.addAttribute("flight", flightResult);
+                if (!flightReservationsResult.getData().isEmpty())
+                    model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
+                else
+                    model.addAttribute("errorVuelos", "Ha ocurrido un error al leer los vuelos");
+                model.addAttribute("booking", flightHoteResult.getData().getBooking());
+                model.addAttribute("roomList", bookingLineDTOs);
+                return "modifyTravel";
+            } catch (Exception e) {
+                return "redirect:/profile";
+            }
         }
         if (idFlight != -1) {
             return "redirect:/profile/modifyFlight/" + idFlight;
@@ -131,15 +140,14 @@ public class ProfileController {
 
     @GetMapping("modifyFlight/{flightId}")
     public String modifyFlight(@PathVariable long flightId, Model model) {
-        Result<FlightAirlineDTO> flightResult = this.airlineService.getFlightById(flightId);
+        ReservationDTO flightResult = this.airlineService.getFlightReservation(flightId);
         Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> flightReservationsResult = this.airlineService
-                .getFlightReservation(flightId);
-        model.addAttribute("flight", flightResult.getData());
-        if (flightReservationsResult.getData() != null && !flightReservationsResult.getData().isEmpty()) {
+                .getFlightsByReservation(flightResult.getId());
+        model.addAttribute("flight", flightResult);
+        if (!flightReservationsResult.getData().isEmpty())
             model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
-        } else {
-            model.addAttribute("flightInstance", null);
-        }
+        else
+            model.addAttribute("errorVuelos", "Ha ocurrido un error al leer los vuelos");
         return "modifyFlight";
     }
 

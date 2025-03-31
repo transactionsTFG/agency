@@ -1,10 +1,10 @@
 
 package ucm.tfg.agency.soapclient.airlinereservation;
 
+import javax.xml.namespace.QName;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.annotation.XmlElementDecl;
 import jakarta.xml.bind.annotation.XmlRegistry;
-import javax.xml.namespace.QName;
 
 
 /**
@@ -32,6 +32,8 @@ public class ObjectFactory {
     private final static QName _MakeFlightReservationResponse_QNAME = new QName("http://soap/", "makeFlightReservationResponse");
     private final static QName _ModFlightReservation_QNAME = new QName("http://soap/", "modFlightReservation");
     private final static QName _ModFlightReservationResponse_QNAME = new QName("http://soap/", "modFlightReservationResponse");
+    private final static QName _SearchFlightReservation_QNAME = new QName("http://soap/", "searchFlightReservation");
+    private final static QName _SearchFlightReservationResponse_QNAME = new QName("http://soap/", "searchFlightReservationResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: ucm.tfg.agency.soapclient.airlinereservation
@@ -105,6 +107,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SearchFlightReservation }
+     * 
+     */
+    public SearchFlightReservation createSearchFlightReservation() {
+        return new SearchFlightReservation();
+    }
+
+    /**
+     * Create an instance of {@link SearchFlightReservationResponse }
+     * 
+     */
+    public SearchFlightReservationResponse createSearchFlightReservationResponse() {
+        return new SearchFlightReservationResponse();
+    }
+
+    /**
      * Create an instance of {@link BookingDTO }
      * 
      */
@@ -118,6 +136,14 @@ public class ObjectFactory {
      */
     public AgencyReservationSuccessDTO createAgencyReservationSuccessDTO() {
         return new AgencyReservationSuccessDTO();
+    }
+
+    /**
+     * Create an instance of {@link ReservationDTO }
+     * 
+     */
+    public ReservationDTO createReservationDTO() {
+        return new ReservationDTO();
     }
 
     /**
@@ -270,6 +296,32 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soap/", name = "modFlightReservationResponse")
     public JAXBElement<ModFlightReservationResponse> createModFlightReservationResponse(ModFlightReservationResponse value) {
         return new JAXBElement<ModFlightReservationResponse>(_ModFlightReservationResponse_QNAME, ModFlightReservationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightReservation }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightReservation }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightReservation")
+    public JAXBElement<SearchFlightReservation> createSearchFlightReservation(SearchFlightReservation value) {
+        return new JAXBElement<SearchFlightReservation>(_SearchFlightReservation_QNAME, SearchFlightReservation.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightReservationResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightReservationResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightReservationResponse")
+    public JAXBElement<SearchFlightReservationResponse> createSearchFlightReservationResponse(SearchFlightReservationResponse value) {
+        return new JAXBElement<SearchFlightReservationResponse>(_SearchFlightReservationResponse_QNAME, SearchFlightReservationResponse.class, null, value);
     }
 
 }

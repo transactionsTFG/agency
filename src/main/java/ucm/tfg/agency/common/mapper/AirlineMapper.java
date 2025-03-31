@@ -10,6 +10,7 @@ import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
@@ -36,6 +37,8 @@ public interface AirlineMapper {
     @Mapping(target = "arrivalDate", source = "arrivalDate", qualifiedByName = "mapDateCreation")
     @Mapping(target = "departureDate", source = "departureDate", qualifiedByName = "mapDateCreation")
     FlightInstanceAirlineDTO flightInstanceSOAPtoDTO(FlightInstanceDTO flightSOAP);
+
+    ReservationDTO flightReservationToDTO(ucm.tfg.agency.soapclient.airlinereservation.ReservationDTO reservationDTO);
 
     @Named("mapDateTimeCreation")
     default String mapTimeDateCreation(Object arrivalTime) {

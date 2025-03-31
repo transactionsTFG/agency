@@ -7,12 +7,12 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for delFlightReservation complex type.
+ * <p>Java class for searchFlightReservation complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="delFlightReservation"&gt;
+ * &lt;complexType name="searchFlightReservation"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -26,10 +26,10 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "delFlightReservation", propOrder = {
+@XmlType(name = "searchFlightReservation", propOrder = {
     "idReservationAirline"
 })
-public class DelFlightReservation {
+public class SearchFlightReservation {
 
     protected long idReservationAirline;
 

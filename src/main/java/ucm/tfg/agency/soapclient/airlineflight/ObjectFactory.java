@@ -29,8 +29,8 @@ public class ObjectFactory {
     private final static QName _SearchFlight_QNAME = new QName("http://soap/", "searchFlight");
     private final static QName _SearchFlightResponse_QNAME = new QName("http://soap/", "searchFlightResponse");
     private final static QName _SearchFlightInstance_QNAME = new QName("http://soap/", "searchFlightInstance");
-    private final static QName _SearchFlightInstanceByReservation_QNAME = new QName("http://soap/", "searchFlightInstanceByReservation");
-    private final static QName _SearchFlightInstanceByReservationResponse_QNAME = new QName("http://soap/", "searchFlightInstanceByReservationResponse");
+    private final static QName _SearchFlightsByReservation_QNAME = new QName("http://soap/", "searchFlightsByReservation");
+    private final static QName _SearchFlightsByReservationResponse_QNAME = new QName("http://soap/", "searchFlightsByReservationResponse");
     private final static QName _SearchFlightInstanceResponse_QNAME = new QName("http://soap/", "searchFlightInstanceResponse");
     private final static QName _SearchResponse_QNAME = new QName("http://soap/", "searchResponse");
 
@@ -82,19 +82,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SearchFlightInstanceByReservation }
+     * Create an instance of {@link SearchFlightsByReservation }
      * 
      */
-    public SearchFlightInstanceByReservation createSearchFlightInstanceByReservation() {
-        return new SearchFlightInstanceByReservation();
+    public SearchFlightsByReservation createSearchFlightsByReservation() {
+        return new SearchFlightsByReservation();
     }
 
     /**
-     * Create an instance of {@link SearchFlightInstanceByReservationResponse }
+     * Create an instance of {@link SearchFlightsByReservationResponse }
      * 
      */
-    public SearchFlightInstanceByReservationResponse createSearchFlightInstanceByReservationResponse() {
-        return new SearchFlightInstanceByReservationResponse();
+    public SearchFlightsByReservationResponse createSearchFlightsByReservationResponse() {
+        return new SearchFlightsByReservationResponse();
     }
 
     /**
@@ -211,29 +211,29 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightInstanceByReservation }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightsByReservation }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightInstanceByReservation }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightsByReservation }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightInstanceByReservation")
-    public JAXBElement<SearchFlightInstanceByReservation> createSearchFlightInstanceByReservation(SearchFlightInstanceByReservation value) {
-        return new JAXBElement<SearchFlightInstanceByReservation>(_SearchFlightInstanceByReservation_QNAME, SearchFlightInstanceByReservation.class, null, value);
+    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightsByReservation")
+    public JAXBElement<SearchFlightsByReservation> createSearchFlightsByReservation(SearchFlightsByReservation value) {
+        return new JAXBElement<SearchFlightsByReservation>(_SearchFlightsByReservation_QNAME, SearchFlightsByReservation.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightInstanceByReservationResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link SearchFlightsByReservationResponse }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightInstanceByReservationResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link SearchFlightsByReservationResponse }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightInstanceByReservationResponse")
-    public JAXBElement<SearchFlightInstanceByReservationResponse> createSearchFlightInstanceByReservationResponse(SearchFlightInstanceByReservationResponse value) {
-        return new JAXBElement<SearchFlightInstanceByReservationResponse>(_SearchFlightInstanceByReservationResponse_QNAME, SearchFlightInstanceByReservationResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soap/", name = "searchFlightsByReservationResponse")
+    public JAXBElement<SearchFlightsByReservationResponse> createSearchFlightsByReservationResponse(SearchFlightsByReservationResponse value) {
+        return new JAXBElement<SearchFlightsByReservationResponse>(_SearchFlightsByReservationResponse_QNAME, SearchFlightsByReservationResponse.class, null, value);
     }
 
     /**

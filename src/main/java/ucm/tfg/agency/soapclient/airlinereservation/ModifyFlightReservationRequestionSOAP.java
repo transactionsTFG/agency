@@ -9,9 +9,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para modifyFlightReservationRequestionSOAP complex type.
+ * <p>Java class for modifyFlightReservationRequestionSOAP complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="modifyFlightReservationRequestionSOAP"&gt;
@@ -49,7 +49,7 @@ public class ModifyFlightReservationRequestionSOAP {
     protected ModifyFlightReservationRequestionSOAP.Flights flights;
 
     /**
-     * Obtiene el valor de la propiedad idReservation.
+     * Gets the value of the idReservation property.
      * 
      */
     public long getIdReservation() {
@@ -57,7 +57,7 @@ public class ModifyFlightReservationRequestionSOAP {
     }
 
     /**
-     * Define el valor de la propiedad idReservation.
+     * Sets the value of the idReservation property.
      * 
      */
     public void setIdReservation(long value) {
@@ -65,7 +65,7 @@ public class ModifyFlightReservationRequestionSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad flights.
+     * Gets the value of the flights property.
      * 
      * @return
      *     possible object is
@@ -77,7 +77,7 @@ public class ModifyFlightReservationRequestionSOAP {
     }
 
     /**
-     * Define el valor de la propiedad flights.
+     * Sets the value of the flights property.
      * 
      * @param value
      *     allowed object is
@@ -90,9 +90,9 @@ public class ModifyFlightReservationRequestionSOAP {
 
 
     /**
-     * <p>Clase Java para anonymous complex type.
+     * <p>Java class for anonymous complex type.
      * 
-     * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+     * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
      * &lt;complexType&gt;
@@ -122,7 +122,7 @@ public class ModifyFlightReservationRequestionSOAP {
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
+         * returned list will be present inside the Jakarta XML Binding object.
          * This is why there is not a <CODE>set</CODE> method for the flight property.
          * 
          * <p>

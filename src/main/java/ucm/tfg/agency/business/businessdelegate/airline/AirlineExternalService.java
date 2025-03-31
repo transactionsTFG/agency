@@ -3,6 +3,7 @@ package ucm.tfg.agency.business.businessdelegate.airline;
 import java.util.List;
 
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
@@ -16,6 +17,7 @@ public interface AirlineExternalService {
     Result<SuccessReservationAgencyDTO> makeFlightReservation(String dni, long idCustomer, List<IdFlightInstanceWithSeatsDTO> flights);
     Result<UpdateReservationDTO> modifyFlightReservation(long idReservation, List<IdFlightInstanceWithSeatsDTO> flights);
     Result<Double> cancelFlightReservation(long flightReservationId);
+    ReservationDTO getFlightReservation(long flightReservationId);
     Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightByReservation(long reservationId);
     FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId);
 }

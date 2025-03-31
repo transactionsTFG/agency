@@ -70,22 +70,16 @@
                 <div class="col-6">
 
                     <input type="hidden" name="idReservation" th:value="${flight.id}">
+                    <input type="hidden" name="idFlightInstance" th:value="${flightInstance.idFlightInstance}">
                     <div class="form-group">
-                        <p th:text="${'Código de vuelo: ' + flight.codeFlight}"></p>
+                        <p th:text="${'Fecha de reserva: ' + flight.date}"></p>
                     </div>
                     <div class="form-group">
-                        <p th:text="${flight.weekDay}"></p>
-                    </div>
-                    <div class="form-group">
-                        <p th:text="${'Hora de llegada: ' + flight.arrivalTime}"></p>
-
-                    </div>
-                    <div class="form-group">
-                        <p th:text="${'Hora de salida: ' + flight.departureTime}"></p>
+                        <p th:text="${'Total de la reserva: ' + flight.total}"></p>
                     </div>
                     <div class="form-group">
                         <label for="seats">Número de asientos</label>
-                        <input type="number" name="seats" id="seats" th:value="${flightInstance.seats}">
+                        <input type="number" name="seats" min="1" id="seats" th:value="${flightInstance.seats}">
                     </div>
                 </div>
                 <div class="form-group col">

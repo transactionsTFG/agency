@@ -3,6 +3,7 @@ package ucm.tfg.agency.business.businessdelegate.airline;
 import java.util.List;
 
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
@@ -105,7 +106,7 @@ public class AirlineMTAService implements AirlineExternalService {
     public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightByReservation(
             long reservationId) {
         try {
-            return Result.success(this.agencyAirlineFlightWS.searchFlightInstanceByReservation(reservationId));
+            return Result.success(this.agencyAirlineFlightWS.searchFlightsByReservation(reservationId));
         } catch (Exception e) {
             return Result.failure(CatchExceptionSOAP.getMessageError(e));
         }
@@ -114,6 +115,11 @@ public class AirlineMTAService implements AirlineExternalService {
     @Override
     public FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId) {
         return this.airlineMapper.flightInstanceSOAPtoDTO(this.agencyAirlineFlightWS.searchFlightInstance(flightInstanceId));  
+    }
+
+    @Override
+    public ReservationDTO getFlightReservation(long flightReservationId) {
+        return this.airlineMapper.flightReservationToDTO(this.agencyAirlineReservationWS.searchFlightReservation(flightReservationId));
     }
 
 }

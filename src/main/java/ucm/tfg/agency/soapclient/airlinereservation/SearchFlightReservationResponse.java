@@ -3,20 +3,21 @@ package ucm.tfg.agency.soapclient.airlinereservation;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for makeFlightReservation complex type.
+ * <p>Java class for searchFlightReservationResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="makeFlightReservation"&gt;
+ * &lt;complexType name="searchFlightReservationResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="reservation" type="{http://soap/}makeFlightReservationSOAP" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://soap/}reservationDTO" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,35 +27,36 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "makeFlightReservation", propOrder = {
-    "reservation"
+@XmlType(name = "searchFlightReservationResponse", propOrder = {
+    "_return"
 })
-public class MakeFlightReservation {
+public class SearchFlightReservationResponse {
 
-    protected MakeFlightReservationSOAP reservation;
+    @XmlElement(name = "return")
+    protected ReservationDTO _return;
 
     /**
-     * Gets the value of the reservation property.
+     * Gets the value of the return property.
      * 
      * @return
      *     possible object is
-     *     {@link MakeFlightReservationSOAP }
+     *     {@link ReservationDTO }
      *     
      */
-    public MakeFlightReservationSOAP getReservation() {
-        return reservation;
+    public ReservationDTO getReturn() {
+        return _return;
     }
 
     /**
-     * Sets the value of the reservation property.
+     * Sets the value of the return property.
      * 
      * @param value
      *     allowed object is
-     *     {@link MakeFlightReservationSOAP }
+     *     {@link ReservationDTO }
      *     
      */
-    public void setReservation(MakeFlightReservationSOAP value) {
-        this.reservation = value;
+    public void setReturn(ReservationDTO value) {
+        this._return = value;
     }
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import ucm.tfg.agency.business.businessdelegate.BusinessDelegate;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
@@ -50,12 +51,17 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     @Override
-    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightReservation(long idReservation) {
-        return this.businessDelegate.getFlightReservation(idReservation);
+    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightsByReservation(long idReservation) {
+        return this.businessDelegate.getFlightsByReservation(idReservation);
     }
 
     @Override
     public FlightInstanceAirlineDTO searchFlightInstance(long flightInstanceId) {
         return this.businessDelegate.getFlightInstance(flightInstanceId);
+    }
+
+    @Override
+    public ReservationDTO getFlightReservation(long reservationId) {
+        return this.businessDelegate.getFlightReservation(reservationId);
     }
 }

@@ -9,9 +9,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para makeFlightReservationSOAP complex type.
+ * <p>Java class for makeFlightReservationSOAP complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="makeFlightReservationSOAP"&gt;
@@ -52,7 +52,7 @@ public class MakeFlightReservationSOAP {
     protected MakeFlightReservationSOAP.Flights flights;
 
     /**
-     * Obtiene el valor de la propiedad dni.
+     * Gets the value of the dni property.
      * 
      * @return
      *     possible object is
@@ -64,7 +64,7 @@ public class MakeFlightReservationSOAP {
     }
 
     /**
-     * Define el valor de la propiedad dni.
+     * Sets the value of the dni property.
      * 
      * @param value
      *     allowed object is
@@ -76,7 +76,7 @@ public class MakeFlightReservationSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad idCustomer.
+     * Gets the value of the idCustomer property.
      * 
      */
     public long getIdCustomer() {
@@ -84,7 +84,7 @@ public class MakeFlightReservationSOAP {
     }
 
     /**
-     * Define el valor de la propiedad idCustomer.
+     * Sets the value of the idCustomer property.
      * 
      */
     public void setIdCustomer(long value) {
@@ -92,7 +92,7 @@ public class MakeFlightReservationSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad flights.
+     * Gets the value of the flights property.
      * 
      * @return
      *     possible object is
@@ -104,7 +104,7 @@ public class MakeFlightReservationSOAP {
     }
 
     /**
-     * Define el valor de la propiedad flights.
+     * Sets the value of the flights property.
      * 
      * @param value
      *     allowed object is
@@ -117,9 +117,9 @@ public class MakeFlightReservationSOAP {
 
 
     /**
-     * <p>Clase Java para anonymous complex type.
+     * <p>Java class for anonymous complex type.
      * 
-     * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+     * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
      * &lt;complexType&gt;
@@ -149,7 +149,7 @@ public class MakeFlightReservationSOAP {
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the
-         * returned list will be present inside the JAXB object.
+         * returned list will be present inside the Jakarta XML Binding object.
          * This is why there is not a <CODE>set</CODE> method for the flight property.
          * 
          * <p>

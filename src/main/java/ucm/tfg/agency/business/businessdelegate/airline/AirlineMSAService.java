@@ -3,6 +3,7 @@ package ucm.tfg.agency.business.businessdelegate.airline;
 import java.util.List;
 
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
@@ -57,6 +58,12 @@ public class AirlineMSAService implements AirlineExternalService {
             long reservationId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getFlightByReservation'");
+    }
+
+    @Override
+    public ReservationDTO getFlightReservation(long flightReservationId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getFlightReservation'");
     }
  
 }

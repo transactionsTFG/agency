@@ -9,6 +9,7 @@ import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.FlightHotelDTO;
 import ucm.tfg.agency.common.dto.agency.IdFlightInstanceWithSeatsDTO;
 import ucm.tfg.agency.common.dto.agency.ListFlightHotelDTO;
+import ucm.tfg.agency.common.dto.agency.ReservationDTO;
 import ucm.tfg.agency.common.dto.agency.SuccessReservationAgencyDTO;
 import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
@@ -73,7 +74,7 @@ public class BusinessDelegate {
         return this.lookupService.getAirlineService(this.typeService).getFlightById(idFlight);
     }
 
-    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightReservation(
+    public Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightsByReservation(
             long idReservation) {
         return this.lookupService.getAirlineService(this.typeService).getFlightByReservation(idReservation);
     }
@@ -96,6 +97,10 @@ public class BusinessDelegate {
 
     public Result<Double> cancelFlightReservation(long flightReservationId) {
         return this.lookupService.getAirlineService(typeService).cancelFlightReservation(flightReservationId);
+    }
+
+    public ReservationDTO getFlightReservation(long flightReservationid) {
+        return this.lookupService.getAirlineService(typeService).getFlightReservation(flightReservationid);
     }
 
     public Result<RoomDTO> getRoomById(long roomId) {

@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para modFlightReservation complex type.
+ * <p>Java class for modFlightReservation complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="modFlightReservation"&gt;
@@ -34,7 +34,7 @@ public class ModFlightReservation {
     protected ModifyFlightReservationRequestionSOAP reservation;
 
     /**
-     * Obtiene el valor de la propiedad reservation.
+     * Gets the value of the reservation property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class ModFlightReservation {
     }
 
     /**
-     * Define el valor de la propiedad reservation.
+     * Sets the value of the reservation property.
      * 
      * @param value
      *     allowed object is

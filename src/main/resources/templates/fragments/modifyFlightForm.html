@@ -2,23 +2,20 @@
     <form th:if="${flight != null}" th:action="@{/profile/modifyFlight}" th:method="post">
         <input type="hidden" name="idReservation" th:value="${flight.id}">
         <div class="form-group">
-            <p th:text="${'Código de vuelo: ' + flight.codeFlight}"></p>
+            <p th:text="${'Fecha de reserva: ' + flight.date}"></p>
         </div>
         <div class="form-group">
-            <p th:text="${flight.weekDay}"></p>
+            <p th:text="${'Total de la reserva: ' + flight.total}"></p>
         </div>
-        <div class="form-group">
-            <p th:text="${'Hora de llegada: ' + flight.arrivalTime}"></p>
-
-        </div>
-        <div class="form-group">
-            <p th:text="${'Hora de salida: ' + flight.departureTime}"></p>
-        </div>
-        <div class="form-group">
+        <div th:if="${flightInstance != null}" class="form-group">
             <label for="seats">Número de asientos</label>
-            <input type="number" name="seats" id="seats" th:value="${flightInstance.seats}">
+            <input type="hidden" name="idFlightInstance" th:value="${flightInstance.idFlightInstance}">
+            <input type="number" name="seats" min="1" id="seats" th:value="${flightInstance.seats}">
         </div>
-        <div class="form-group">
+        <div th:if="${errorVuelos != null}" class="form-group">
+            <p class="text-danger" th:text="${errorVuelos}"></p>
+        </div>
+        <div th:if="${errorVuelos == null}" class="form-group">
             <button type="submit">Modificar</button>
         </div>
     </form>

@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para statusFlightDTO complex type.
+ * <p>Java class for statusFlightDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="statusFlightDTO"&gt;
@@ -43,7 +43,7 @@ public class StatusFlightDTO {
     protected String status;
 
     /**
-     * Obtiene el valor de la propiedad price.
+     * Gets the value of the price property.
      * 
      */
     public double getPrice() {
@@ -51,7 +51,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Define el valor de la propiedad price.
+     * Sets the value of the price property.
      * 
      */
     public void setPrice(double value) {
@@ -59,7 +59,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad returnDate.
+     * Gets the value of the returnDate property.
      * 
      * @return
      *     possible object is
@@ -71,7 +71,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Define el valor de la propiedad returnDate.
+     * Sets the value of the returnDate property.
      * 
      * @param value
      *     allowed object is
@@ -83,7 +83,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad seats.
+     * Gets the value of the seats property.
      * 
      */
     public int getSeats() {
@@ -91,7 +91,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Define el valor de la propiedad seats.
+     * Sets the value of the seats property.
      * 
      */
     public void setSeats(int value) {
@@ -99,7 +99,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad status.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class StatusFlightDTO {
     }
 
     /**
-     * Define el valor de la propiedad status.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is
