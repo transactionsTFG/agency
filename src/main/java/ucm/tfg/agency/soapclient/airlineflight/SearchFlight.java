@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for searchFlight complex type.
+ * <p>Clase Java para searchFlight complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="searchFlight"&gt;
@@ -34,7 +34,7 @@ public class SearchFlight {
     protected ParamSearchFlightSOAP paramSearchFlight;
 
     /**
-     * Gets the value of the paramSearchFlight property.
+     * Obtiene el valor de la propiedad paramSearchFlight.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class SearchFlight {
     }
 
     /**
-     * Sets the value of the paramSearchFlight property.
+     * Define el valor de la propiedad paramSearchFlight.
      * 
      * @param value
      *     allowed object is

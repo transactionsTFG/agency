@@ -141,12 +141,13 @@
                     </executions>
                     <configuration>
                         <wsdlUrls>
-                            <wsdlUrl>http://localhost:9001/agencyMTA/AgencyAirlineReservationWS?wsdl</wsdlUrl>
+                            <wsdlUrl>http://localhost:9001/agencyMTA/AgencyAirlineFlightWS?wsdl</wsdlUrl>
                         </wsdlUrls>
                         <sourceDestDir>src/main/java</sourceDestDir>
-                        <packageName>ucm.tfg.agency.soapclient.airlinereservation</packageName>
+                        <packageName>ucm.tfg.agency.soapclient.airlineflight</packageName>
                     </configuration>
                 </plugin>
+                
             </plugins>
         </pluginManagement>
     </build>

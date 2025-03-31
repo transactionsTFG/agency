@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for search complex type.
+ * <p>Clase Java para search complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="search"&gt;
@@ -34,7 +34,7 @@ public class Search {
     protected long idFlightSearch;
 
     /**
-     * Gets the value of the idFlightSearch property.
+     * Obtiene el valor de la propiedad idFlightSearch.
      * 
      */
     public long getIdFlightSearch() {
@@ -42,7 +42,7 @@ public class Search {
     }
 
     /**
-     * Sets the value of the idFlightSearch property.
+     * Define el valor de la propiedad idFlightSearch.
      * 
      */
     public void setIdFlightSearch(long value) {
