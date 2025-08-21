@@ -31,6 +31,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.utils.AuthUtil;
+import ucm.tfg.agency.common.utils.DateParser;
 import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 @Controller
@@ -156,6 +157,10 @@ public class ProfileController {
         Result<BookingDTO> bookingResult = this.hotelService.getHotelBooking(bookingId);
         Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(bookingId);
         List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
+        bookingLineDTOs.forEach(bl -> {
+            bl.setStartDate(DateParser.parserLocalDateClientToFrontEnd(bl.getStartDate()));
+            bl.setEndDate(DateParser.parserLocalDateClientToFrontEnd(bl.getEndDate()));
+        });
         model.addAttribute("booking", bookingResult.getData());
         model.addAttribute("roomList", bookingLineDTOs);
         return "modifyHotel";
@@ -167,8 +172,8 @@ public class ProfileController {
             @RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam int numberOfNights) {
         UpdateBookingReservationDTO booking = new UpdateBookingReservationDTO();
         booking.setId(bookingId);
-        booking.setStartDate(startDate.toString());
-        booking.setEndDate(endDate.toString());
+        booking.setStartDate(DateParser.parserLocalDateClientToBackendFormat(startDate.toString()));
+        booking.setEndDate(DateParser.parserLocalDateClientToBackendFormat(endDate.toString()));
         booking.setNumberOfNights(numberOfNights);
         booking.setWithBreakfast(withBreakfast);
         booking.setPeopleNumber(peopleNumber);
