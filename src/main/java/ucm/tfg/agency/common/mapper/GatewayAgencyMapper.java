@@ -23,6 +23,8 @@ import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.user.ReponseUserDTO;
+import ucm.tfg.agency.common.dto.user.UserDTO;
 import ucm.tfg.agency.common.utils.DateParser;
 import ucm.tfg.agency.soapclient.gatewayagency.AgencyReservationSuccessDTO;
 import ucm.tfg.agency.soapclient.gatewayagency.FlightListDTO;
@@ -60,6 +62,9 @@ public interface GatewayAgencyMapper {
     ModifyFlightReservationRequestionSOAP modifyAirlineRequestionDTOtoSOAP(final UpdateAirlineReservationDTO updateAirlineReservationDTO);
 
     UpdateReservationDTO updateReservationSOAPtoDTO(final ucm.tfg.agency.soapclient.gatewayagency.UpdateReservationDTO updateSOAP);
+
+    
+    ReponseUserDTO responseUserDTO(final UserDTO u);
     
     default Map<String, ListFlightHotelDTO> mapListFlightHotelDTO(final SearchFlightHotelResponse.Return mapFlightHotel) {
         if (mapFlightHotel == null || mapFlightHotel.getEntry() == null ||  mapFlightHotel.getEntry().isEmpty()) 
