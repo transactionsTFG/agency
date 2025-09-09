@@ -10,16 +10,15 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para makeBookingReservationDTO complex type.
+ * <p>Java class for makeBookingReservationDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="makeBookingReservationDTO"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="customerId" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="endDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="numberOfNights" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *         &lt;element name="peopleNumber" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
@@ -36,7 +35,6 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "makeBookingReservationDTO", propOrder = {
-    "customerId",
     "endDate",
     "numberOfNights",
     "peopleNumber",
@@ -46,7 +44,6 @@ import jakarta.xml.bind.annotation.XmlType;
 })
 public class MakeBookingReservationDTO {
 
-    protected long customerId;
     protected String endDate;
     protected int numberOfNights;
     protected int peopleNumber;
@@ -56,23 +53,7 @@ public class MakeBookingReservationDTO {
     protected boolean withBreakfast;
 
     /**
-     * Obtiene el valor de la propiedad customerId.
-     * 
-     */
-    public long getCustomerId() {
-        return customerId;
-    }
-
-    /**
-     * Define el valor de la propiedad customerId.
-     * 
-     */
-    public void setCustomerId(long value) {
-        this.customerId = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad endDate.
+     * Gets the value of the endDate property.
      * 
      * @return
      *     possible object is
@@ -84,7 +65,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad endDate.
+     * Sets the value of the endDate property.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +77,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad numberOfNights.
+     * Gets the value of the numberOfNights property.
      * 
      */
     public int getNumberOfNights() {
@@ -104,7 +85,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad numberOfNights.
+     * Sets the value of the numberOfNights property.
      * 
      */
     public void setNumberOfNights(int value) {
@@ -112,7 +93,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad peopleNumber.
+     * Gets the value of the peopleNumber property.
      * 
      */
     public int getPeopleNumber() {
@@ -120,7 +101,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad peopleNumber.
+     * Sets the value of the peopleNumber property.
      * 
      */
     public void setPeopleNumber(int value) {
@@ -157,7 +138,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad startDate.
+     * Gets the value of the startDate property.
      * 
      * @return
      *     possible object is
@@ -169,7 +150,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad startDate.
+     * Sets the value of the startDate property.
      * 
      * @param value
      *     allowed object is
@@ -181,7 +162,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad withBreakfast.
+     * Gets the value of the withBreakfast property.
      * 
      */
     public boolean isWithBreakfast() {
@@ -189,7 +170,7 @@ public class MakeBookingReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad withBreakfast.
+     * Sets the value of the withBreakfast property.
      * 
      */
     public void setWithBreakfast(boolean value) {

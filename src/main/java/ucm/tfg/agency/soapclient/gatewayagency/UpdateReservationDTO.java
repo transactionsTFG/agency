@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para updateReservationDTO complex type.
+ * <p>Java class for updateReservationDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="updateReservationDTO"&gt;
@@ -59,7 +59,7 @@ public class UpdateReservationDTO {
     protected List<UpdatePriceReservationDTO> updatePriceReservationDTO;
 
     /**
-     * Obtiene el valor de la propiedad active.
+     * Gets the value of the active property.
      * 
      */
     public boolean isActive() {
@@ -67,7 +67,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad active.
+     * Sets the value of the active property.
      * 
      */
     public void setActive(boolean value) {
@@ -75,7 +75,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad bookingDTO.
+     * Gets the value of the bookingDTO property.
      * 
      * @return
      *     possible object is
@@ -87,7 +87,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad bookingDTO.
+     * Sets the value of the bookingDTO property.
      * 
      * @param value
      *     allowed object is
@@ -99,7 +99,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad date.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
@@ -111,7 +111,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad date.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
@@ -123,7 +123,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -131,7 +131,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -139,7 +139,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idCustomer.
+     * Gets the value of the idCustomer property.
      * 
      */
     public long getIdCustomer() {
@@ -147,7 +147,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad idCustomer.
+     * Sets the value of the idCustomer property.
      * 
      */
     public void setIdCustomer(long value) {
@@ -155,7 +155,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad total.
+     * Gets the value of the total property.
      * 
      */
     public double getTotal() {
@@ -163,7 +163,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad total.
+     * Sets the value of the total property.
      * 
      */
     public void setTotal(double value) {
@@ -171,7 +171,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad updatePrice.
+     * Gets the value of the updatePrice property.
      * 
      */
     public double getUpdatePrice() {
@@ -179,7 +179,7 @@ public class UpdateReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad updatePrice.
+     * Sets the value of the updatePrice property.
      * 
      */
     public void setUpdatePrice(double value) {

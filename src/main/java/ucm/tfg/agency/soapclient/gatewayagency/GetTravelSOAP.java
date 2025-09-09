@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getTravelSOAP complex type.
+ * <p>Java class for getTravelSOAP complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getTravelSOAP"&gt;
@@ -70,7 +70,7 @@ public class GetTravelSOAP {
     protected Object dateCreation;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -78,7 +78,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -86,7 +86,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad userId.
+     * Gets the value of the userId property.
      * 
      */
     public long getUserId() {
@@ -94,7 +94,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad userId.
+     * Sets the value of the userId property.
      * 
      */
     public void setUserId(long value) {
@@ -102,7 +102,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad date.
+     * Gets the value of the date property.
      * 
      * @return
      *     possible object is
@@ -114,7 +114,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad date.
+     * Sets the value of the date property.
      * 
      * @param value
      *     allowed object is
@@ -126,7 +126,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad returnDate.
+     * Gets the value of the returnDate property.
      * 
      * @return
      *     possible object is
@@ -138,7 +138,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad returnDate.
+     * Sets the value of the returnDate property.
      * 
      * @param value
      *     allowed object is
@@ -150,7 +150,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad passengerCounter.
+     * Gets the value of the passengerCounter property.
      * 
      */
     public int getPassengerCounter() {
@@ -158,7 +158,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad passengerCounter.
+     * Sets the value of the passengerCounter property.
      * 
      */
     public void setPassengerCounter(int value) {
@@ -166,7 +166,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad cost.
+     * Gets the value of the cost property.
      * 
      */
     public double getCost() {
@@ -174,7 +174,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad cost.
+     * Sets the value of the cost property.
      * 
      */
     public void setCost(double value) {
@@ -182,7 +182,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad status.
+     * Gets the value of the status property.
      * 
      * @return
      *     possible object is
@@ -194,7 +194,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad status.
+     * Sets the value of the status property.
      * 
      * @param value
      *     allowed object is
@@ -206,7 +206,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad flightReservationID.
+     * Gets the value of the flightReservationID property.
      * 
      */
     public long getFlightReservationID() {
@@ -214,7 +214,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad flightReservationID.
+     * Sets the value of the flightReservationID property.
      * 
      */
     public void setFlightReservationID(long value) {
@@ -222,7 +222,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad hotelReservationID.
+     * Gets the value of the hotelReservationID property.
      * 
      */
     public long getHotelReservationID() {
@@ -230,7 +230,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad hotelReservationID.
+     * Sets the value of the hotelReservationID property.
      * 
      */
     public void setHotelReservationID(long value) {
@@ -238,7 +238,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad flightCost.
+     * Gets the value of the flightCost property.
      * 
      */
     public double getFlightCost() {
@@ -246,7 +246,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad flightCost.
+     * Sets the value of the flightCost property.
      * 
      */
     public void setFlightCost(double value) {
@@ -254,7 +254,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad hotelCost.
+     * Gets the value of the hotelCost property.
      * 
      */
     public double getHotelCost() {
@@ -262,7 +262,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad hotelCost.
+     * Sets the value of the hotelCost property.
      * 
      */
     public void setHotelCost(double value) {
@@ -270,7 +270,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad active.
+     * Gets the value of the active property.
      * 
      */
     public boolean isActive() {
@@ -278,7 +278,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad active.
+     * Sets the value of the active property.
      * 
      */
     public void setActive(boolean value) {
@@ -286,7 +286,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad dateCreation.
+     * Gets the value of the dateCreation property.
      * 
      * @return
      *     possible object is
@@ -298,7 +298,7 @@ public class GetTravelSOAP {
     }
 
     /**
-     * Define el valor de la propiedad dateCreation.
+     * Sets the value of the dateCreation property.
      * 
      * @param value
      *     allowed object is

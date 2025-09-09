@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para getFlightHotelReservation complex type.
+ * <p>Java class for getFlightHotelReservation complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="getFlightHotelReservation"&gt;
@@ -37,7 +37,7 @@ public class GetFlightHotelReservation {
     protected long flightReservationId;
 
     /**
-     * Obtiene el valor de la propiedad hotelBookingId.
+     * Gets the value of the hotelBookingId property.
      * 
      */
     public long getHotelBookingId() {
@@ -45,7 +45,7 @@ public class GetFlightHotelReservation {
     }
 
     /**
-     * Define el valor de la propiedad hotelBookingId.
+     * Sets the value of the hotelBookingId property.
      * 
      */
     public void setHotelBookingId(long value) {
@@ -53,7 +53,7 @@ public class GetFlightHotelReservation {
     }
 
     /**
-     * Obtiene el valor de la propiedad flightReservationId.
+     * Gets the value of the flightReservationId property.
      * 
      */
     public long getFlightReservationId() {
@@ -61,7 +61,7 @@ public class GetFlightHotelReservation {
     }
 
     /**
-     * Define el valor de la propiedad flightReservationId.
+     * Sets the value of the flightReservationId property.
      * 
      */
     public void setFlightReservationId(long value) {

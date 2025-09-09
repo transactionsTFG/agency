@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para searchTravel complex type.
+ * <p>Java class for searchTravel complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="searchTravel"&gt;
@@ -34,7 +34,7 @@ public class SearchTravel {
     protected long paramSearchTravel;
 
     /**
-     * Obtiene el valor de la propiedad paramSearchTravel.
+     * Gets the value of the paramSearchTravel property.
      * 
      */
     public long getParamSearchTravel() {
@@ -42,7 +42,7 @@ public class SearchTravel {
     }
 
     /**
-     * Define el valor de la propiedad paramSearchTravel.
+     * Sets the value of the paramSearchTravel property.
      * 
      */
     public void setParamSearchTravel(long value) {

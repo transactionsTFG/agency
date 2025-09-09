@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para bookingDTO complex type.
+ * <p>Java class for bookingDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="bookingDTO"&gt;
@@ -49,7 +49,7 @@ public class BookingDTO {
     protected boolean withBreakfast;
 
     /**
-     * Obtiene el valor de la propiedad available.
+     * Gets the value of the available property.
      * 
      */
     public boolean isAvailable() {
@@ -57,7 +57,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad available.
+     * Sets the value of the available property.
      * 
      */
     public void setAvailable(boolean value) {
@@ -65,7 +65,7 @@ public class BookingDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad customerId.
+     * Gets the value of the customerId property.
      * 
      */
     public long getCustomerId() {
@@ -73,7 +73,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad customerId.
+     * Sets the value of the customerId property.
      * 
      */
     public void setCustomerId(long value) {
@@ -81,7 +81,7 @@ public class BookingDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -89,7 +89,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -97,7 +97,7 @@ public class BookingDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad peopleNumber.
+     * Gets the value of the peopleNumber property.
      * 
      */
     public int getPeopleNumber() {
@@ -105,7 +105,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad peopleNumber.
+     * Sets the value of the peopleNumber property.
      * 
      */
     public void setPeopleNumber(int value) {
@@ -113,7 +113,7 @@ public class BookingDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad totalPrice.
+     * Gets the value of the totalPrice property.
      * 
      */
     public double getTotalPrice() {
@@ -121,7 +121,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad totalPrice.
+     * Sets the value of the totalPrice property.
      * 
      */
     public void setTotalPrice(double value) {
@@ -129,7 +129,7 @@ public class BookingDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad withBreakfast.
+     * Gets the value of the withBreakfast property.
      * 
      */
     public boolean isWithBreakfast() {
@@ -137,7 +137,7 @@ public class BookingDTO {
     }
 
     /**
-     * Define el valor de la propiedad withBreakfast.
+     * Sets the value of the withBreakfast property.
      * 
      */
     public void setWithBreakfast(boolean value) {

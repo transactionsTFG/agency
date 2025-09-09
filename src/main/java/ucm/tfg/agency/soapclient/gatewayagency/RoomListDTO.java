@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para roomListDTO complex type.
+ * <p>Java class for roomListDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="roomListDTO"&gt;
@@ -58,7 +58,7 @@ public class RoomListDTO {
     protected boolean singleBed;
 
     /**
-     * Obtiene el valor de la propiedad active.
+     * Gets the value of the active property.
      * 
      */
     public boolean isActive() {
@@ -66,7 +66,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad active.
+     * Sets the value of the active property.
      * 
      */
     public void setActive(boolean value) {
@@ -74,7 +74,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad countryName.
+     * Gets the value of the countryName property.
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad countryName.
+     * Sets the value of the countryName property.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad dailyPrice.
+     * Gets the value of the dailyPrice property.
      * 
      */
     public double getDailyPrice() {
@@ -106,7 +106,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad dailyPrice.
+     * Sets the value of the dailyPrice property.
      * 
      */
     public void setDailyPrice(double value) {
@@ -114,7 +114,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad hotelName.
+     * Gets the value of the hotelName property.
      * 
      * @return
      *     possible object is
@@ -126,7 +126,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad hotelName.
+     * Sets the value of the hotelName property.
      * 
      * @param value
      *     allowed object is
@@ -138,7 +138,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -146,7 +146,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -154,7 +154,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad number.
+     * Gets the value of the number property.
      * 
      */
     public int getNumber() {
@@ -162,7 +162,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad number.
+     * Sets the value of the number property.
      * 
      */
     public void setNumber(int value) {
@@ -170,7 +170,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad occupied.
+     * Gets the value of the occupied property.
      * 
      */
     public boolean isOccupied() {
@@ -178,7 +178,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad occupied.
+     * Sets the value of the occupied property.
      * 
      */
     public void setOccupied(boolean value) {
@@ -186,7 +186,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad peopleNumber.
+     * Gets the value of the peopleNumber property.
      * 
      */
     public int getPeopleNumber() {
@@ -194,7 +194,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad peopleNumber.
+     * Sets the value of the peopleNumber property.
      * 
      */
     public void setPeopleNumber(int value) {
@@ -202,7 +202,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad singleBed.
+     * Gets the value of the singleBed property.
      * 
      */
     public boolean isSingleBed() {
@@ -210,7 +210,7 @@ public class RoomListDTO {
     }
 
     /**
-     * Define el valor de la propiedad singleBed.
+     * Sets the value of the singleBed property.
      * 
      */
     public void setSingleBed(boolean value) {

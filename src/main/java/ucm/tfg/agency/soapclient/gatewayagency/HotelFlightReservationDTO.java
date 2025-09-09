@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para hotelFlightReservationDTO complex type.
+ * <p>Java class for hotelFlightReservationDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="hotelFlightReservationDTO"&gt;
@@ -37,7 +37,7 @@ public class HotelFlightReservationDTO {
     protected ReservationDTO reservation;
 
     /**
-     * Obtiene el valor de la propiedad booking.
+     * Gets the value of the booking property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class HotelFlightReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad booking.
+     * Sets the value of the booking property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class HotelFlightReservationDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad reservation.
+     * Gets the value of the reservation property.
      * 
      * @return
      *     possible object is
@@ -73,7 +73,7 @@ public class HotelFlightReservationDTO {
     }
 
     /**
-     * Define el valor de la propiedad reservation.
+     * Sets the value of the reservation property.
      * 
      * @param value
      *     allowed object is

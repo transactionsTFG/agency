@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para flightListDTO complex type.
+ * <p>Java class for flightListDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="flightListDTO"&gt;
@@ -55,7 +55,7 @@ public class FlightListDTO {
     protected String weekDay;
 
     /**
-     * Obtiene el valor de la propiedad arrivalDate.
+     * Gets the value of the arrivalDate property.
      * 
      * @return
      *     possible object is
@@ -67,7 +67,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad arrivalDate.
+     * Sets the value of the arrivalDate property.
      * 
      * @param value
      *     allowed object is
@@ -79,7 +79,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad cityDestination.
+     * Gets the value of the cityDestination property.
      * 
      * @return
      *     possible object is
@@ -91,7 +91,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad cityDestination.
+     * Sets the value of the cityDestination property.
      * 
      * @param value
      *     allowed object is
@@ -103,7 +103,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad countryDestination.
+     * Gets the value of the countryDestination property.
      * 
      * @return
      *     possible object is
@@ -115,7 +115,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad countryDestination.
+     * Sets the value of the countryDestination property.
      * 
      * @param value
      *     allowed object is
@@ -127,7 +127,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad countryOrigin.
+     * Gets the value of the countryOrigin property.
      * 
      * @return
      *     possible object is
@@ -139,7 +139,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad countryOrigin.
+     * Sets the value of the countryOrigin property.
      * 
      * @param value
      *     allowed object is
@@ -151,7 +151,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad departureDate.
+     * Gets the value of the departureDate property.
      * 
      * @return
      *     possible object is
@@ -163,7 +163,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad departureDate.
+     * Sets the value of the departureDate property.
      * 
      * @param value
      *     allowed object is
@@ -175,7 +175,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Gets the value of the id property.
      * 
      */
     public long getId() {
@@ -183,7 +183,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Sets the value of the id property.
      * 
      */
     public void setId(long value) {
@@ -191,7 +191,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad price.
+     * Gets the value of the price property.
      * 
      */
     public double getPrice() {
@@ -199,7 +199,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad price.
+     * Sets the value of the price property.
      * 
      */
     public void setPrice(double value) {
@@ -207,7 +207,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad weekDay.
+     * Gets the value of the weekDay property.
      * 
      * @return
      *     possible object is
@@ -219,7 +219,7 @@ public class FlightListDTO {
     }
 
     /**
-     * Define el valor de la propiedad weekDay.
+     * Sets the value of the weekDay property.
      * 
      * @param value
      *     allowed object is

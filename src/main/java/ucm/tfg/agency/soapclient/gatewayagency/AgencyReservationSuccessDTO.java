@@ -10,9 +10,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para agencyReservationSuccessDTO complex type.
+ * <p>Java class for agencyReservationSuccessDTO complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="agencyReservationSuccessDTO"&gt;
@@ -50,7 +50,7 @@ public class AgencyReservationSuccessDTO {
     protected double totalReservation;
 
     /**
-     * Obtiene el valor de la propiedad dateReservation.
+     * Gets the value of the dateReservation property.
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Define el valor de la propiedad dateReservation.
+     * Sets the value of the dateReservation property.
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idBooking.
+     * Gets the value of the idBooking property.
      * 
      */
     public long getIdBooking() {
@@ -82,7 +82,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Define el valor de la propiedad idBooking.
+     * Sets the value of the idBooking property.
      * 
      */
     public void setIdBooking(long value) {
@@ -90,7 +90,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad idReservation.
+     * Gets the value of the idReservation property.
      * 
      */
     public long getIdReservation() {
@@ -98,7 +98,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Define el valor de la propiedad idReservation.
+     * Sets the value of the idReservation property.
      * 
      */
     public void setIdReservation(long value) {
@@ -135,7 +135,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Obtiene el valor de la propiedad totalReservation.
+     * Gets the value of the totalReservation property.
      * 
      */
     public double getTotalReservation() {
@@ -143,7 +143,7 @@ public class AgencyReservationSuccessDTO {
     }
 
     /**
-     * Define el valor de la propiedad totalReservation.
+     * Sets the value of the totalReservation property.
      * 
      */
     public void setTotalReservation(double value) {

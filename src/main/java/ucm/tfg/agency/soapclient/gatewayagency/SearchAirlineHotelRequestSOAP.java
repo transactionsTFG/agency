@@ -7,9 +7,9 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para searchAirlineHotelRequestSOAP complex type.
+ * <p>Java class for searchAirlineHotelRequestSOAP complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="searchAirlineHotelRequestSOAP"&gt;
@@ -49,7 +49,7 @@ public class SearchAirlineHotelRequestSOAP {
     protected String dateFrom;
 
     /**
-     * Obtiene el valor de la propiedad hotelName.
+     * Gets the value of the hotelName property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad hotelName.
+     * Sets the value of the hotelName property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad countryOrigin.
+     * Gets the value of the countryOrigin property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad countryOrigin.
+     * Sets the value of the countryOrigin property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad countryDestination.
+     * Gets the value of the countryDestination property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad countryDestination.
+     * Sets the value of the countryDestination property.
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad cityOrigin.
+     * Gets the value of the cityOrigin property.
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad cityOrigin.
+     * Sets the value of the cityOrigin property.
      * 
      * @param value
      *     allowed object is
@@ -145,7 +145,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad cityDestination.
+     * Gets the value of the cityDestination property.
      * 
      * @return
      *     possible object is
@@ -157,7 +157,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad cityDestination.
+     * Sets the value of the cityDestination property.
      * 
      * @param value
      *     allowed object is
@@ -169,7 +169,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Obtiene el valor de la propiedad dateFrom.
+     * Gets the value of the dateFrom property.
      * 
      * @return
      *     possible object is
@@ -181,7 +181,7 @@ public class SearchAirlineHotelRequestSOAP {
     }
 
     /**
-     * Define el valor de la propiedad dateFrom.
+     * Sets the value of the dateFrom property.
      * 
      * @param value
      *     allowed object is
