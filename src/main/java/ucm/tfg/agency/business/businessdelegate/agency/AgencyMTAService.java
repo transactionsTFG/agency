@@ -79,7 +79,7 @@ public class AgencyMTAService implements AgencyExternalService {
     }
 
     @Override
-    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
+    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(long idTravel, UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
         try {
             return Result.success(this.mapperAgency.updateReservationSOAPtoDTO(this.portAgencyWS.modFlightHotelReservation(
                 this.mapperAgency.modifyBookingReservationDTOtoSOAP(updateBookingReservationDTO), 
@@ -90,7 +90,7 @@ public class AgencyMTAService implements AgencyExternalService {
     }
 
     @Override
-    public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+    public Result<Double> cancelFlightAndHotelReservation(long idTravel, long flightReservationId, long hotelReservationId) {
         try {
             return Result.success(this.portAgencyWS.delFlightHotelReservation(hotelReservationId, flightReservationId));
         } catch (Exception e) {

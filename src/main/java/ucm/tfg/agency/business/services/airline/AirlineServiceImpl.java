@@ -40,14 +40,14 @@ public class AirlineServiceImpl implements AirlineService {
     }
 
     @Override
-    public Result<UpdateReservationDTO> modifyFlightReservation(long idReservation,
+    public Result<UpdateReservationDTO> modifyFlightReservation(long idTravel, long idReservation,
             List<IdFlightInstanceWithSeatsDTO> flights) {
-        return this.businessDelegate.modifyFlightReservation(idReservation, flights);
+        return this.businessDelegate.modifyFlightReservation(idTravel, idReservation, flights);
     }
 
     @Override
-    public Result<Double> cancelFlightReservation(long flightReservationId) {
-        return this.businessDelegate.cancelFlightReservation(flightReservationId);
+    public Result<Double> cancelFlightReservation(long idTravel, long flightReservationId) {
+        return this.businessDelegate.cancelFlightReservation(idTravel, flightReservationId);
     }
 
     @Override

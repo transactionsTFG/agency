@@ -63,7 +63,7 @@ public interface GatewayAgencyMapper {
 
     UpdateReservationDTO updateReservationSOAPtoDTO(final ucm.tfg.agency.soapclient.gatewayagency.UpdateReservationDTO updateSOAP);
 
-    
+    @Mapping(target = "type", source = "typeUser")
     ReponseUserDTO responseUserDTO(final UserDTO u);
     
     default Map<String, ListFlightHotelDTO> mapListFlightHotelDTO(final SearchFlightHotelResponse.Return mapFlightHotel) {
@@ -77,6 +77,7 @@ public interface GatewayAgencyMapper {
             List<ucm.tfg.agency.common.dto.agency.FlightListDTO> listFlight = flightListDTO.stream().map(flight -> {
                 return ucm.tfg.agency.common.dto.agency.FlightListDTO.builder()
                         .id(flight.getId())
+						.idFlightInstance(flight.getIdFlightInstance())
                         .arrivalDate(flight.getArrivalDate())
                         .departureDate(flight.getDepartureDate())
                         .cityDestination(flight.getCityDestination())

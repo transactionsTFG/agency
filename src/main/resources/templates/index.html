@@ -266,7 +266,7 @@
                                 </div>
                                 <div class="intro_center text-center">
                                     <h1 th:text="${flight.countryDestination}"></h1>
-                                    <div class="intro_price">From $1450</div>
+                                    <div class="intro_price" th:text="'From $' + ${flight.price}">From $1450</div>
                                     <div class="rating rating_4">
                                         <i class="fa fa-star"></i>
                                         <i class="fa fa-star"></i>
@@ -380,7 +380,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="offers_content">
-                                        <div class="offers_price">$70<span>per night</span></div>
+                                        <div class="offers_price" th:text="'$' + ${room.dailyPrice}"><span>per night</span></div>
                                         <div class="rating_r rating_r_4 offers_rating">
                                             <i></i>
                                             <i></i>

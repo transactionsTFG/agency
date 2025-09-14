@@ -10,8 +10,8 @@ public class DateParser {
     private DateParser() {
     }
 
-    private static final DateTimeFormatter ENTRADA_FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private static final DateTimeFormatter SALIDA_FORMATO = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter ENTRADA_FORMATO = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter SALIDA_FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static LocalDateTime elementToLocalDateTime(Object date) {
         if (date instanceof Element d) {
@@ -41,7 +41,7 @@ public class DateParser {
 
     public static String parserLocalDateClientToBackendFormat(String dateClientJS) {
         LocalDate date = LocalDate.parse(dateClientJS);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return date.format(formatter);
     }
 

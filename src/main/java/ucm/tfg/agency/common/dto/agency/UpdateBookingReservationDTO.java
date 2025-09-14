@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateBookingReservationDTO {    
     private long id;
+    private long idTravel;
     private String startDate;
     private String endDate;
     private int numberOfNights;

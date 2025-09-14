@@ -1,28 +1,14 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "ucm.tfg.agency.Main",
-            "projectName": "agency"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "ucm.tfg.agency.business.businessdelegate.user.Main",
-            "projectName": "agency"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-AgencyApplication<agency>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "ucm.tfg.agency.AgencyApplication",
-            "projectName": "agency",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        }
-    ]
+	"configurations": [
+		{
+			"type": "java",
+			"name": "Spring Boot-AgencyApplication<agency>",
+			"request": "launch",
+			"cwd": "${workspaceFolder}",
+			"mainClass": "ucm.tfg.agency.AgencyApplication",
+			"projectName": "agency",
+			"args": "",
+			"envFile": "${workspaceFolder}/.env"
+		}
+	]
 }

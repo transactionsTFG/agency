@@ -78,7 +78,7 @@ public class AirlineMTAService implements AirlineExternalService {
     }
 
     @Override
-    public Result<UpdateReservationDTO> modifyFlightReservation(long idReservation,
+    public Result<UpdateReservationDTO> modifyFlightReservation(long idTravel, long idReservation,
             List<IdFlightInstanceWithSeatsDTO> flights) {
         try {
             ModifyFlightReservationRequestionSOAP flightReservationDTO = new ModifyFlightReservationRequestionSOAP();
@@ -94,7 +94,7 @@ public class AirlineMTAService implements AirlineExternalService {
     }
 
     @Override
-    public Result<Double> cancelFlightReservation(long flightReservationId) {
+    public Result<Double> cancelFlightReservation(long idTravel, long flightReservationId) {
         try {
             return Result.success(this.agencyAirlineReservationWS.delFlightReservation(flightReservationId));
         } catch (Exception e) {

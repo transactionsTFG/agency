@@ -1,15 +1,18 @@
 package ucm.tfg.agency.business.businessdelegate.hotel;
 
-import java.util.List;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.Response;
+import ucm.tfg.agency.common.auth.AuthUser;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.CreateBookingReservationV2DTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
+import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationV2DTO;
 import ucm.tfg.agency.common.dto.hotel.BookingMSA;
-import ucm.tfg.agency.common.dto.hotel.RoomDTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.utils.ConnectionGateway;
@@ -20,118 +23,153 @@ public class HotelMSAService implements HotelExternalService {
 
     @Override
     public Result<ucm.tfg.agency.common.dto.hotel.RoomDTO> getRoomById(long roomId) {
-        Response response = this.webClient.get()
-                .uri("/room/" + roomId)
+        try {
+            ResponseEntity<ucm.tfg.agency.common.dto.hotel.RoomDTO> resp = this.webClient.get()
+                .uri("/room/{id}", roomId)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toEntity(ucm.tfg.agency.common.dto.hotel.RoomDTO.class)
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            RoomDTO room = response.readEntity(RoomDTO.class);
-            return Result.success(room);
-        } else 
-            return Result.failure("Error obteniendo la habitación");
-        
+            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null)
+                return Result.success(resp.getBody());
+
+            return Result.failure("Error obteniendo la habitación (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error obteniendo la habitación: " + e.getMessage());
+        }
     }
 
     @Override
-    public Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
-        Response response = this.webClient.get()
-                .uri("/room/params?nameHotel=" + hotelName + "&country=" + countryName)
+    public Result<java.util.List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName) {
+        try {
+            ResponseEntity<java.util.List<RoomInfoDTO>> resp = this.webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                    .path("/room/params")
+                    .queryParam("nameHotel", hotelName)
+                    .queryParam("country", countryName)
+                    .build())
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toEntity(new ParameterizedTypeReference<java.util.List<RoomInfoDTO>>() {})
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            List<RoomInfoDTO> rooms = response.readEntity(new GenericType<List<RoomInfoDTO>>() {});
-            return Result.success(rooms);
-        } else {
-            return Result.failure("Error obteniendo las habitaciones");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null)
+                return Result.success(resp.getBody());
+
+            return Result.failure("Error obteniendo las habitaciones (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error obteniendo las habitaciones: " + e.getMessage());
         }
     }
 
     @Override
     public Result<ucm.tfg.agency.common.dto.agency.BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking,
             long userId, String dni) {
-        Response response = this.webClient.post()
+        try {
+            AuthUser user = (AuthUser) SecurityContextHolder
+                    .getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            CreateBookingReservationV2DTO bookingV2 = new CreateBookingReservationV2DTO(booking, user);
+            ResponseEntity<Void> resp = this.webClient.post()
                 .uri("/agency/create/hotel")
-                .bodyValue(booking)
+                .bodyValue(bookingV2)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toBodilessEntity()
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            return Result.success(null); //Se ha iniciado la Transaccion SAGA
-        } else {
-            return Result.failure("Error creando la reserva");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful()) {
+                return Result.success(null); // Se ha iniciado la Transacción SAGA
+            }
+            return Result.failure("Error creando la reserva (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error creando la reserva: " + e.getMessage());
         }
     }
 
     @Override
     public Result<ucm.tfg.agency.common.dto.agency.BookingDTO> modifyHotelBooking(UpdateBookingReservationDTO booking) { //DONE✅
-        Response response = this.webClient.put()
+        try {
+            UpdateBookingReservationV2DTO bookingV2 = new UpdateBookingReservationV2DTO(booking.getIdTravel(), booking);
+            ResponseEntity<Void> resp = this.webClient.put()
                 .uri("/agency/update/hotel")
-                .bodyValue(booking)
+                .bodyValue(bookingV2)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toBodilessEntity()
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            return Result.success(null);
-        } else {
-            return Result.failure("Error modificando la reserva");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful()) {
+                return Result.success(null);
+            }
+            return Result.failure("Error modificando la reserva (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error modificando la reserva: " + e.getMessage());
         }
     }
 
     @Override
-    public Result<Double> cancelHotelBooking(long bookingId) {
-        Response response = this.webClient.delete()
-                .uri("/agency/delete/hotel/" + bookingId)
+    public Result<Double> cancelHotelBooking(long travelId, long bookingId) {
+        try {
+            ResponseEntity<Void> resp = this.webClient.delete()
+                .uri("/agency/delete/hotel/{travelId}/{id}", travelId, bookingId)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toBodilessEntity()
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            return Result.success(0.0); //Se ha iniciado la Transaccion SAGA
-        } else {
-            return Result.failure("Error cancelando la reserva");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful()) {
+                return Result.success(0.0); // Se ha iniciado la Transacción SAGA
+            }
+            return Result.failure("Error cancelando la reserva (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error cancelando la reserva: " + e.getMessage());
         }
     }
 
     @Override
     public Result<Double> cancelHotelBookingLine(long bookingId, long roomId) {
-        return Result.success(200.0); //Metodo no necesario en MSA
+        return Result.success(0.0); //Metodo no necesario en MSA
     }
 
     @Override
     public Result<ucm.tfg.agency.common.dto.agency.BookingDTO> getHotelBooking(long bookingId) {
-        Response response = this.webClient.get()
-                .uri("/booking/" + bookingId)
+        try {
+            ResponseEntity<BookingMSA> resp = this.webClient.get()
+                .uri("/booking/{id}", bookingId)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toEntity(BookingMSA.class)
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            BookingMSA booking = response.readEntity(BookingMSA.class);
-            return Result.success(booking.getBookingDTO());
-        } else {
-            return Result.failure("Error obteniendo la reserva");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null)
+                return Result.success(resp.getBody().getBookingDTO());
+
+            return Result.failure("Error obteniendo la reserva (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error obteniendo la reserva: " + e.getMessage());
         }
     }
 
+
     @Override
-    public Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
-        Response response = this.webClient.get()
-                .uri("/booking/" + bookingId)
+    public Result<java.util.List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
+        try {
+            ResponseEntity<BookingMSA> resp = this.webClient.get()
+                .uri("/booking/{id}", bookingId)
                 .retrieve()
-                .bodyToMono(Response.class)
+                .toEntity(BookingMSA.class)
                 .block();
 
-        if (response != null && response.getStatus() == 200) {
-            List<BookingLineDTO> rooms = response.readEntity(BookingMSA.class).getBookingLines();
-            return Result.success(rooms);
-        } else {
-            return Result.failure("Error obteniendo las habitaciones de la reserva");
+            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null)
+                return Result.success(resp.getBody().getBookingLines());
+
+            return Result.failure("Error obteniendo las habitaciones de la reserva (status " +
+                    (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
+        } catch (Exception e) {
+            return Result.failure("Error obteniendo las habitaciones de la reserva: " + e.getMessage());
         }
     }
 

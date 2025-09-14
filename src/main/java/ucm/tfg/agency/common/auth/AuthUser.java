@@ -29,4 +29,7 @@ public class AuthUser {
         return this.user.getSurname();
     }
 
+    public String getPhone() {
+        return this.user.getPhone();
+    }
 }

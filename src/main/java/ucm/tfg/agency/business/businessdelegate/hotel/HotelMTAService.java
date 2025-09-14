@@ -68,7 +68,7 @@ public class HotelMTAService implements HotelExternalService {
     }
 
     @Override
-    public Result<Double> cancelHotelBooking(long bookingId) {
+    public Result<Double> cancelHotelBooking(long travelId, long bookingId) {
         try {
             return Result.success(this.agencyHotelBookingWS.cancelHotelBooking(bookingId));
         } catch (Exception e) {

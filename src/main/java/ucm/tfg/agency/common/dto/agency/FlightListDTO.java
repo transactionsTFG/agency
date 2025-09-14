@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FlightListDTO {
     private long id;
+	private long idFlightInstance;
     private String arrivalDate;
     private String departureDate;
     private String cityDestination;

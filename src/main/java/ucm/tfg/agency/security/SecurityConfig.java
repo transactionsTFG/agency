@@ -29,7 +29,7 @@ public class SecurityConfig {
                         csfr -> csfr.csrfTokenRepository(new HttpSessionCsrfTokenRepository())
                 )
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/index", "/", "/search/hotel", "/search/flight", "/search/hotelAndFlight").permitAll()
+                                .requestMatchers("/index", "/", "/search/hotel", "/search/flight", "/search/hotelAndFlight", "/auth/register").permitAll()
                                 .requestMatchers("/about").permitAll()
                                 .requestMatchers("/offers/**").permitAll()
                                 .requestMatchers("css/**", "js/**", "img/**", "fonts/**", "plugins/**", "vendor/**").permitAll()

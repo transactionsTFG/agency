@@ -1,6 +1,7 @@
 <th:block th:fragment="modifyFlightForm">
     <form th:if="${flight != null}" th:action="@{/profile/modifyFlight}" th:method="post">
         <input type="hidden" name="idReservation" th:value="${flight.id}">
+        <input type="hidden" name="idTravel" th:value="${idTravel}"/>
         <div class="form-group">
             <p th:text="${'Fecha de reserva: ' + flight.date}"></p>
         </div>

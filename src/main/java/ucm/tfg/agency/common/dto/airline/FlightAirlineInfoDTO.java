@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class FlightAirlineInfoDTO {
     private long id;
+	private long idFlightInstance;
     private String arrivalDate;
     private String departureDate;
     private String cityDestination;

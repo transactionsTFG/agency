@@ -79,7 +79,7 @@ public class OfferController {
 
     @PostMapping("/hotel")
     public String getHotel(@RequestParam String hotel, @RequestParam String country, RedirectAttributes redirectAttributes) {
-        hotel = StringUtils.hasText(country) ? hotel : null;
+        hotel = StringUtils.hasText(hotel) ? hotel : null;
         country = StringUtils.hasText(country) ? country : null;
         redirectAttributes.addFlashAttribute("hotel", hotel);
         redirectAttributes.addFlashAttribute("country", country);

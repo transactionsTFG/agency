@@ -15,8 +15,8 @@ public interface AirlineExternalService {
     Result<FlightAirlineDTO> getFlightById(long flightId);
     Result<List<FlightAirlineInfoDTO>> getAllFlights(String countryOrigin, String countryDestination, String cityOrigin, String cityDestination, String dateOrigin);
     Result<SuccessReservationAgencyDTO> makeFlightReservation(String dni, long idCustomer, List<IdFlightInstanceWithSeatsDTO> flights);
-    Result<UpdateReservationDTO> modifyFlightReservation(long idReservation, List<IdFlightInstanceWithSeatsDTO> flights);
-    Result<Double> cancelFlightReservation(long flightReservationId);
+    Result<UpdateReservationDTO> modifyFlightReservation(long idTravel, long idReservation, List<IdFlightInstanceWithSeatsDTO> flights);
+    Result<Double> cancelFlightReservation(long idTravel, long flightReservationId);
     ReservationDTO getFlightReservation(long flightReservationId);
     Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> getFlightByReservation(long reservationId);
     FlightInstanceAirlineDTO getFlightInstance(long flightInstanceId);

@@ -2,6 +2,7 @@
     <form class="container" th:action="@{/profile/modifyHotel}" th:method="post">
 
         <div class="form-group">
+            <input type="hidden" name="idTravel" th:value="${idTravel}"/>
             <input type="hidden" name="bookingId" th:value="${booking.id}">
             <label for="withBreakfast" class="form-label">Con desayuno</label>
             <select class="form-control" name="withBreakfast" id="withBreakfast" required>

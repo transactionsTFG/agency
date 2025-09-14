@@ -19,7 +19,7 @@ public interface AgencyService {
     Result<TravelDTO> getTravelById(long travelId);
     Result<FlightHotelDTO> getFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
     Result<SuccessReservationAgencyDTO> makeFlightAndHotelReservation(CreateAirlineReservationDTO flightReservationDTO, CreateBookingReservationDTO hotelReservationDTO);
-    Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
-    Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId);
+    Result<UpdateReservationDTO> modifyFlightAndHotelReservation(long idTravel, UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO);
+    Result<Double> cancelFlightAndHotelReservation(long idTravel, long flightReservationId, long hotelReservationId);
     Result<List<TravelDTO>> getTravelsByUser(long userId);
 }

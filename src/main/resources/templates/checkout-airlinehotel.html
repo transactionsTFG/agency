@@ -107,22 +107,22 @@
                             <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
                                 class='credit-card-image' id='credit-card-image'></img>
                             <span th:text="#{app.checkout.card.dni}">DNI</span>
-                            <input class='input-field' id="dni" name="dni" required pattern="[0-9]{8}[A-Za-z]{1}" title="Formato: 8 dígitos y 1 letra"></input>
+                            <input value="12345678J" class='input-field' id="dni" name="dni" required pattern="[0-9]{8}[A-Za-z]{1}" title="Formato: 8 dígitos y 1 letra"></input>
                             
                             <span th:text="#{app.checkout.card.number}">Card Number</span>
-                            <input class='input-field' id="cardNumber" required></input>
+                            <input value="1234567812345678" class='input-field' id="cardNumber" required></input>
                             
                             <span th:text="#{app.checkout.card.holder}" required>Card Holder</span>
-                            <input class='input-field' id="cardHolder"></input>
+                            <input class='input-field' value="John Doe" id="cardHolder"></input>
                             <table class='half-input-table'>
                                 <tr>
                                     <td> 
                                         <span th:text="#{app.checkout.card.date}">Expires</span>
-                                        <input type="date" class='input-field' id="expiryDate"></input>
+                                        <input type="date" class='input-field' value="2030-10-13" id="expiryDate"></input>
                                     </td>
                                     <td>
                                         <span th:text="#{app.checkout.card.cvc}">CVC</span>
-                                        <input minlength="3" maxlength="3" id="cvc" accept="number" class='input-field'></input>
+                                        <input minlength="3" maxlength="3" value="123" id="cvc" accept="number" class='input-field'></input>
                                     </td>
                                 </tr>
                             </table>

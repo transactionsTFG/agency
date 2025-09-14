@@ -15,5 +15,6 @@ public class RegisterUserDTO {
     private String password;
     private String passport;
     private String born;
+    private String phone;
     private TypeUser typeUser;
 }

@@ -50,13 +50,13 @@ public class AgencyServiceImpl implements AgencyService {
     }
 
     @Override
-    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
-        return this.businessDelegate.modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
+    public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(long idTravel, UpdateBookingReservationDTO updateBookingReservationDTO, UpdateAirlineReservationDTO updateAirlineReservationDTO) {
+        return this.businessDelegate.modifyFlightAndHotelReservation(idTravel, updateBookingReservationDTO, updateAirlineReservationDTO);
     }
 
     @Override
-    public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
-        return this.businessDelegate.cancelFlightAndHotelReservation(flightReservationId, hotelReservationId);
+    public Result<Double> cancelFlightAndHotelReservation(long idTravel, long flightReservationId, long hotelReservationId) {
+        return this.businessDelegate.cancelFlightAndHotelReservation(idTravel, flightReservationId, hotelReservationId);
     }
 
     @Override

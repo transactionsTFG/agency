@@ -110,13 +110,13 @@
 
                                                 <p th:if="${travel.active == false}"
                                                     th:text="#{app.profile.reservation.anulation}"></p>
-                                                <a th:if="${travel.active == true}" th:href="@{/profile/modifyTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}"
+                                                <a th:if="${travel.active == true}" th:href="@{/profile/modifyTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID}, idTravel=${travel.id})}"
                                                     class="m-r-15 text-inverse-lighter cursor-pointer">
                                                     <i class="fa fa-edit fa-fw fa-lg m-r-3"></i>
                                                     <span th:text="#{app.profile.reservation.modify}"></span>
                                                 </a>
                                                 <form class="d-inline"
-                                                    th:action="@{/profile/removeTravel/{idFlight}/{idHotel}(idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}"
+                                                    th:action="@{/profile/removeTravel/{travelId}/{idFlight}/{idHotel}(travelId=${travel.id}, idFlight=${travel.flightReservationID}, idHotel=${travel.hotelReservationID})}"
                                                     method="post" th:if="${travel.active == true}">
                                                     <button type="submit"
                                                         class="btn-remove m-r-15 text-inverse-lighter cursor-pointer">

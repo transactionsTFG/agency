@@ -28,6 +28,7 @@ public class UserMTAService implements UserService {
         userRegisterSOAP.setIdTypeUser(registerUserDTO.getTypeUser().getIdType());
         userRegisterSOAP.setSurname(registerUserDTO.getSurname());
         userRegisterSOAP.setName(registerUserDTO.getName());
+        userRegisterSOAP.setPhone(registerUserDTO.getPhone());
         Result<Long> result = null;
         try {
             result = Result.success(this.portuUserWS.registerUser(userRegisterSOAP));   
@@ -50,6 +51,7 @@ public class UserMTAService implements UserService {
                 .born(userResponse.getBorn())
                 .email(userResponse.getEmail())
                 .id(userResponse.getId())
+                .phone(userResponse.getPhone())
                 .name(userResponse.getName())
                 .surname(userResponse.getSurname())
                 .type(userResponse.getType())

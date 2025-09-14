@@ -23,7 +23,7 @@
     <div class="limiter">
         <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
             <div class="wrap-login100 m-t-200 p-t-100 p-l-55 p-r-55 p-b-54">
-                <form class="login100-form validate-form" action="auth/register" method="post">
+                <form class="login100-form validate-form" th:action="@{/auth/register}" method="post">
                     <span class="login100-form-title p-b-49" th:text="#{app.register.title}">Registro</span>
     
                     <div class="wrap-input100 validate-input m-b-23">
@@ -45,8 +45,8 @@
                     </div>
     
                     <div class="wrap-input100 validate-input m-b-23">
-                        <span class="label-input100" th:text="#{app.register.passport}">Pasaporte</span>
-                        <input class="input100" type="text" name="passport" th:placeholder="#{app.register.passport_placeholder}" required>
+                        <span class="label-input100" th:text="Telefono">Telefono</span>
+                        <input class="input100" type="text" accept="number" name="phone" th:placeholder="Telefono" required>
                         <span class="focus-input100" data-symbol="&#xf206;"></span>
                     </div>
     

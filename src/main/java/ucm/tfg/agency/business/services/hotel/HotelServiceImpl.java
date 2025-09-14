@@ -41,8 +41,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public Result<Double> cancelHotelBooking(long bookingId) {
-       return this.businessDelegate.cancelHotelBooking(bookingId);
+    public Result<Double> cancelHotelBooking(long travelId, long bookingId) {
+       return this.businessDelegate.cancelHotelBooking(travelId, bookingId);
     }
 
     @Override

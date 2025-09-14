@@ -42,6 +42,21 @@ public interface AgencyAirlineFlightWS {
 
     /**
      * 
+     * @param paramSearchFlight
+     * @return
+     *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.FlightListDTO>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlight")
+    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightResponse")
+    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightResponse")
+    public List<FlightListDTO> searchFlight(
+        @WebParam(name = "paramSearchFlight", targetNamespace = "")
+        ParamSearchFlightSOAP paramSearchFlight);
+
+    /**
+     * 
      * @param reservationId
      * @return
      *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>
@@ -69,20 +84,5 @@ public interface AgencyAirlineFlightWS {
     public FlightInstanceDTO searchFlightInstance(
         @WebParam(name = "idFlightInstance", targetNamespace = "")
         long idFlightInstance);
-
-    /**
-     * 
-     * @param paramSearchFlight
-     * @return
-     *     returns java.util.List<ucm.tfg.agency.soapclient.airlineflight.FlightListDTO>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "searchFlight", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlight")
-    @ResponseWrapper(localName = "searchFlightResponse", targetNamespace = "http://soap/", className = "ucm.tfg.agency.soapclient.airlineflight.SearchFlightResponse")
-    @Action(input = "http://soap/AgencyAirlineFlightWS/searchFlightRequest", output = "http://soap/AgencyAirlineFlightWS/searchFlightResponse")
-    public List<FlightListDTO> searchFlight(
-        @WebParam(name = "paramSearchFlight", targetNamespace = "")
-        ParamSearchFlightSOAP paramSearchFlight);
 
 }

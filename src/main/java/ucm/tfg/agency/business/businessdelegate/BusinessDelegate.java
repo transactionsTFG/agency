@@ -58,16 +58,17 @@ public class BusinessDelegate {
                 hotelReservationDTO);
     }
 
-    public Result<Double> cancelFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {
+    public Result<Double> cancelFlightAndHotelReservation(long idTravel, long flightReservationId, long hotelReservationId) {
         return this.lookupService.getAgencyService(this.typeService)
-                .cancelFlightAndHotelReservation(flightReservationId, hotelReservationId);
+                .cancelFlightAndHotelReservation(idTravel, flightReservationId, hotelReservationId);
     }
 
     public Result<UpdateReservationDTO> modifyFlightAndHotelReservation(
+            long idTravel,
             UpdateBookingReservationDTO updateBookingReservationDTO,
             UpdateAirlineReservationDTO updateAirlineReservationDTO) {
         return this.lookupService.getAgencyService(this.typeService)
-                .modifyFlightAndHotelReservation(updateBookingReservationDTO, updateAirlineReservationDTO);
+                .modifyFlightAndHotelReservation(idTravel, updateBookingReservationDTO, updateAirlineReservationDTO);
     }
 
     public Result<FlightAirlineDTO> getFlight(long idFlight) {
@@ -90,13 +91,13 @@ public class BusinessDelegate {
         return this.lookupService.getAirlineService(typeService).makeFlightReservation(dni, idCustomer, flights);
     }
 
-    public Result<UpdateReservationDTO> modifyFlightReservation(long idReservation,
+    public Result<UpdateReservationDTO> modifyFlightReservation(long idTravel, long idReservation,
             List<IdFlightInstanceWithSeatsDTO> flights) {
-        return this.lookupService.getAirlineService(typeService).modifyFlightReservation(idReservation, flights);
+        return this.lookupService.getAirlineService(typeService).modifyFlightReservation(idTravel, idReservation, flights);
     }
 
-    public Result<Double> cancelFlightReservation(long flightReservationId) {
-        return this.lookupService.getAirlineService(typeService).cancelFlightReservation(flightReservationId);
+    public Result<Double> cancelFlightReservation(long idTravel, long flightReservationId) {
+        return this.lookupService.getAirlineService(typeService).cancelFlightReservation(idTravel, flightReservationId);
     }
 
     public ReservationDTO getFlightReservation(long flightReservationid) {
@@ -123,8 +124,8 @@ public class BusinessDelegate {
         return this.lookupService.getHotelService(typeService).modifyHotelBooking(booking);
     }
 
-    public Result<Double> cancelHotelBooking(long bookingId) {
-        return this.lookupService.getHotelService(typeService).cancelHotelBooking(bookingId);
+    public Result<Double> cancelHotelBooking(long travelId, long bookingId) {
+        return this.lookupService.getHotelService(typeService).cancelHotelBooking(travelId, bookingId);
     }
 
     public Result<Double> cancelHotelBookingLine(long bookingId, long roomId) {

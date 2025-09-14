@@ -15,6 +15,7 @@ public class ReponseUserDTO {
     private String email;
     private long id;
     private String name;
+    private String phone;
     private String passport;
     private String surname;
     private String type;

@@ -22,6 +22,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *         &lt;element name="countryOrigin" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="departureDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
+ *         &lt;element name="idFlightInstance" type="{http://www.w3.org/2001/XMLSchema}long"/&gt;
  *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
  *         &lt;element name="weekDay" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -40,6 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "countryOrigin",
     "departureDate",
     "id",
+    "idFlightInstance",
     "price",
     "weekDay"
 })
@@ -51,6 +53,7 @@ public class FlightListDTO {
     protected String countryOrigin;
     protected String departureDate;
     protected long id;
+    protected long idFlightInstance;
     protected double price;
     protected String weekDay;
 
@@ -188,6 +191,22 @@ public class FlightListDTO {
      */
     public void setId(long value) {
         this.id = value;
+    }
+
+    /**
+     * Gets the value of the idFlightInstance property.
+     * 
+     */
+    public long getIdFlightInstance() {
+        return idFlightInstance;
+    }
+
+    /**
+     * Sets the value of the idFlightInstance property.
+     * 
+     */
+    public void setIdFlightInstance(long value) {
+        this.idFlightInstance = value;
     }
 
     /**

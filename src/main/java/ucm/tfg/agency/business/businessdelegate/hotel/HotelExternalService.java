@@ -15,7 +15,7 @@ public interface HotelExternalService {
     Result<List<RoomInfoDTO>> getAllRooms(String hotelName, String countryName);
     Result<BookingDTO> makeHotelBooking(CreateBookingReservationDTO booking, long userId, String dni);
     Result<BookingDTO> modifyHotelBooking(UpdateBookingReservationDTO booking);
-    Result<Double> cancelHotelBooking(long bookingId);
+    Result<Double> cancelHotelBooking(long travelId, long bookingId);
     Result<Double> cancelHotelBookingLine(long bookingId, long roomId);
     Result<BookingDTO> getHotelBooking(long bookingId);
     Result<List<BookingLineDTO>> getRoomsByBooking(long bookingId);
