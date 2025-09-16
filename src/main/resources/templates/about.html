@@ -49,7 +49,7 @@
         </div>
 
         <!-- Add -->
-
+        <!-- 
         <div class="add">
             <div class="container">
                 <div class="row">
@@ -69,9 +69,94 @@
                 </div>
             </div>
         </div>
+        -->
+        <!-- Team -->
+		<div class="team">
+			<div class="container">
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_title" th:text="#{app.about.our_team}">our team</div>
+						<div class="section_subtitle" th:text="#{app.about.team_description}">meet the amazing people
+							behind our company</div>
+					</div>
+				</div>
+				<div class="row team_row my-5">
 
+					<!-- José -->
+					<div class="col-lg team_col">
+						<div class="card" style="height: 225px;">
+							<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+							<div class="card-body" >
+                                <div class="d-flex text-center justify-content-center mb-2">
+                                    <h5 class="card-title text-center font-weight-bold text-uppercase mr-2" th:text="#{app.about.jose}">John Doe</h5>
+                                    <img width="20" height="15" th:src="@{img/spain.png}" alt="Spain">
+                                </div>
+								<h6 class="card-subtitle font-italic" th:text="#{app.about.team_member_role}"></h6>
+								<p class="card-text" th:text="#{app.about.team_jose_bio}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="social_list">
+									<ul class="d-flex justify-content-center">
+										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/jose-villacres-1758b2201"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/josevillacres46"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="team_item">
+							<div class="team_body">
+								<div class="team_title text-center font-weight-bold text-uppercase" th:text="#{app.about.jose}">John Doe</div>
+								<div class="team_subtitle font-italic" th:text="#{app.about.team_member_role}">CEO</div>
+								<div class="team_text" th:text="#{app.about.team_jose_bio}">John is the visionary
+									behind our company, leading us to new heights with his innovative ideas and
+									strategic thinking.</div>
+								<div class="social_list">
+									<ul class="d-flex justify-content-center">
+										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/jose-villacres-1758b2201"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/josevillacres46"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+					</div>
+					
+					<!-- Daniel -->
+					<div class="col-lg team_col">
+						<div class="card" style="height: 225px;">
+							<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+							<div class="card-body">
+                                <div class="d-flex text-center justify-content-center mb-2">
+								    <h5 class="card-title text-center font-weight-bold text-uppercase mr-2" th:text="#{app.about.daniel}">John Doe</h5> 
+                                    <img width="20" height="15" th:src="@{img/spain.png}" alt="Spain">                               
+                                </div>
+								<h6 class="card-subtitle font-italic" th:text="#{app.about.team_member_role}"></h6>
+								<p class="card-text" th:text="#{app.about.team_daniel_bio}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+								<div class="social_list mt-5">
+									<ul class="d-flex justify-content-center">
+										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/daniel-fdez-ortiz"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/danielfdez17"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="team_item">
+							<div class="team_body">
+								<div class="team_title text-center font-weight-bold text-uppercase" th:text="#{app.about.daniel}">John Doe</div>
+								<div class="team_subtitle font-italic" th:text="#{app.about.team_member_role}">CEO</div>
+								<div class="team_text" th:text="#{app.about.team_daniel_bio}">John is the visionary
+									behind our company, leading us to new heights with his innovative ideas and
+									strategic thinking.</div>
+								<div class="social_list">
+									<ul class="d-flex justify-content-center">
+										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/daniel-fdez-ortiz"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/danielfdez17"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
         <!-- Milestones -->
-
         <div class="milestones">
             <div class="container">
                 <div class="row">
@@ -115,86 +200,7 @@
             </div>
         </div>
 
-		<!-- Team -->
-		<div class="team">
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_title" th:text="#{app.about.our_team}">our team</div>
-						<div class="section_subtitle" th:text="#{app.about.team_description}">meet the amazing people
-							behind our company</div>
-					</div>
-				</div>
-				<div class="row team_row my-5">
-
-					<!-- José -->
-					<div class="col-lg team_col">
-						<div class="card">
-							<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-							<div class="card-body">
-								<h5 class="card-title text-center font-weight-bold text-uppercase" th:text="#{app.about.jose}">John Doe</h5>
-								<h6 class="card-subtitle font-italic" th:text="#{app.about.team_member_role}"></h6>
-								<p class="card-text" th:text="#{app.about.team_jose_bio}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<div class="social_list">
-									<ul class="d-flex justify-content-center">
-										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/jose-villacres-1758b2201"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/josevillacres46"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- <div class="team_item">
-							<div class="team_body">
-								<div class="team_title text-center font-weight-bold text-uppercase" th:text="#{app.about.jose}">John Doe</div>
-								<div class="team_subtitle font-italic" th:text="#{app.about.team_member_role}">CEO</div>
-								<div class="team_text" th:text="#{app.about.team_jose_bio}">John is the visionary
-									behind our company, leading us to new heights with his innovative ideas and
-									strategic thinking.</div>
-								<div class="social_list">
-									<ul class="d-flex justify-content-center">
-										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/jose-villacres-1758b2201"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/josevillacres46"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-					</div>
-					
-					<!-- Daniel -->
-					<div class="col-lg team_col">
-						<div class="card">
-							<!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-							<div class="card-body">
-								<h5 class="card-title text-center font-weight-bold text-uppercase" th:text="#{app.about.daniel}">John Doe</h5>
-								<h6 class="card-subtitle font-italic" th:text="#{app.about.team_member_role}"></h6>
-								<p class="card-text" th:text="#{app.about.team_daniel_bio}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<div class="social_list">
-									<ul class="d-flex justify-content-center">
-										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/daniel-fdez-ortiz"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/danielfdez17"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- <div class="team_item">
-							<div class="team_body">
-								<div class="team_title text-center font-weight-bold text-uppercase" th:text="#{app.about.daniel}">John Doe</div>
-								<div class="team_subtitle font-italic" th:text="#{app.about.team_member_role}">CEO</div>
-								<div class="team_text" th:text="#{app.about.team_daniel_bio}">John is the visionary
-									behind our company, leading us to new heights with his innovative ideas and
-									strategic thinking.</div>
-								<div class="social_list">
-									<ul class="d-flex justify-content-center">
-										<li class="mx-5"><a style="font-size: large;" target="_blank" href="https://es.linkedin.com/in/daniel-fdez-ortiz"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a target="_blank" class="text-dark" style="font-size: large;" href="https://github.com/danielfdez17"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div> -->
-					</div>
-				</div>
-			</div>
-		</div>
+		
         <th:block th:insert="~{fragments/footer :: footer}"></th:block>
         <th:block th:insert="~{fragments/copyright :: copyright}"></th:block>
     </div>

@@ -16,6 +16,7 @@ import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
+import ucm.tfg.agency.common.dto.airline.ReservationMSADTO;
 import ucm.tfg.agency.common.utils.DateParser;
 import ucm.tfg.agency.soapclient.airlineflight.FlightInstanceDTO;
 import ucm.tfg.agency.soapclient.airlineflight.FlightListDTO;
@@ -48,5 +49,20 @@ public interface AirlineMapper {
     @Named("mapDateCreation")
     default LocalDate mapDateCreation(Object date) {
         return DateParser.elementToLocalDate(date);
+    }
+
+    default ReservationDTO reservationMSAtoDTO(ReservationMSADTO reservationMSADTO) {
+        if (reservationMSADTO == null) {
+            return null;
+        }
+        ucm.tfg.agency.common.dto.airline.ReservationMSADTO.ReservationDTO rMsa = reservationMSADTO.getReservation();
+
+        ReservationDTO reservationDTO = new ReservationDTO();
+        reservationDTO.setActive(rMsa.isActive());
+        reservationDTO.setDate(rMsa.getCreatedAt().toString());
+        reservationDTO.setIdCustomer(rMsa.getCustomerId());
+        reservationDTO.setId(rMsa.getId());
+        reservationDTO.setTotal(rMsa.getTotal());
+        return reservationDTO;
     }
 }

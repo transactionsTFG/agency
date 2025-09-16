@@ -1,5 +1,7 @@
 package ucm.tfg.agency.business.businessdelegate.agency;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import jakarta.ws.rs.core.Response;
 import reactor.core.publisher.Mono;
+import ucm.tfg.agency.business.businessdelegate.airline.AirlineMSAService;
+import ucm.tfg.agency.business.businessdelegate.hotel.HotelMSAService;
 import ucm.tfg.agency.common.auth.AuthUser;
 import ucm.tfg.agency.common.dto.agency.CreateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.CreateBookingReservationDTO;
@@ -24,10 +28,12 @@ import ucm.tfg.agency.common.dto.agency.TravelDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateAirlineReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateReservationDTO;
+import ucm.tfg.agency.common.dto.airline.TravelMSADTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.dto.reservation.CreateReservationDTO;
 import ucm.tfg.agency.common.dto.reservation.SuperReservationDTO;
 import ucm.tfg.agency.common.utils.ConnectionGateway;
+import ucm.tfg.agency.soapclient.hotelroom.BookingLineDTO;
 
 public class AgencyMSAService implements AgencyExternalService {
     private final WebClient webClient = ConnectionGateway.webClient();
@@ -106,14 +112,14 @@ public class AgencyMSAService implements AgencyExternalService {
     @Override
     public Result<FlightHotelDTO> getFlightAndHotelReservation(long flightReservationId, long hotelReservationId) {  //DONE✅
         try {
-            ResponseEntity<FlightHotelDTO> resp = webClient.get()
+            ResponseEntity<TravelMSADTO> resp = webClient.get()
                 .uri("/agency/hotel-airline/{hotel}/{flight}", hotelReservationId, flightReservationId)
                 .retrieve()
-                .toEntity(FlightHotelDTO.class)
+                .toEntity(TravelMSADTO.class)
                 .block();
 
             if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null) {
-                return Result.success(resp.getBody());
+                return Result.success(new FlightHotelDTO(new HotelMSAService(), new AirlineMSAService(), resp.getBody()));
             }
             return Result.failure("Viaje no encontrado (status " 
                     + (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
@@ -201,6 +207,34 @@ public class AgencyMSAService implements AgencyExternalService {
                 .block();
 
             if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null) {
+                resp.getBody().stream().forEach(r -> {
+                    if (r.getFlightReservationID() <= 0 && r.getHotelReservationID() >= 0) {
+                        Result<List<BookingLineDTO>> rooms = new HotelMSAService().getRoomsByBooking(r.getHotelReservationID());
+                        if (rooms.isSuccess()) {
+                            List<BookingLineDTO> bookingLines = rooms.getData();
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                            // Convertimos fechas de String → LocalDate
+                            LocalDate minStartDate = bookingLines.stream()
+                                    .map(b -> LocalDate.parse(b.getStartDate(), formatter))
+                                    .min(LocalDate::compareTo)
+                                    .orElse(null);
+
+                            LocalDate maxEndDate = bookingLines.stream()
+                                    .map(b -> LocalDate.parse(b.getEndDate(), formatter))
+                                    .max(LocalDate::compareTo)
+                                    .orElse(null);
+
+                            // Si quieres devolverlos como String otra vez:
+                            String minStartDateStr = (minStartDate != null) ? minStartDate.toString() : null;
+                            String maxEndDateStr   = (maxEndDate != null) ? maxEndDate.toString() : null;
+
+                            // Guardar en el TravelDTO
+                            r.setDate(minStartDateStr);
+                            r.setReturnDate(maxEndDateStr);
+                        }
+                    }
+                });
                 return Result.success(resp.getBody());
             }
             return Result.failure("Error obteniendo los viajes del usuario (status "

@@ -18,8 +18,10 @@ import ucm.tfg.agency.common.dto.airline.FlightAirlineInfoDTO;
 import ucm.tfg.agency.common.dto.airline.FlightInstanceAirlineDTO;
 import ucm.tfg.agency.common.dto.airline.FlightInstanceV2DTO;
 import ucm.tfg.agency.common.dto.airline.MakeReservationRequestDTO;
+import ucm.tfg.agency.common.dto.airline.ReservationMSADTO;
 import ucm.tfg.agency.common.dto.airline.UpdateReservationRequestDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
+import ucm.tfg.agency.common.mapper.AirlineMapper;
 import ucm.tfg.agency.common.utils.ConnectionGateway;
 
 
@@ -180,14 +182,20 @@ public class AirlineMSAService implements AirlineExternalService {
     public Result<java.util.List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>>
     getFlightByReservation(long reservationId) {
         try {
-            ResponseEntity<ucm.tfg.agency.common.dto.reservation.ReservationDTO> resp = webClient.get()
+            ResponseEntity<ReservationMSADTO> resp = webClient.get()
                 .uri("/reservation/{id}", reservationId)
                 .retrieve()
-                .toEntity(ucm.tfg.agency.common.dto.reservation.ReservationDTO.class)
+                .toEntity(ReservationMSADTO.class)
                 .block();
-
+            
             if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null) {
-                return Result.success(resp.getBody().getLines());
+                List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO> flights = resp.getBody().getLines().stream().map(l -> {
+                    ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO i = new ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO();
+                    i.setIdFlightInstance(l.getFlightInstanceId());
+                    i.setSeats(l.getPassengers());
+                    return i;
+                }).toList();
+                return Result.success(flights);
             }
             return Result.failure("Error retrieving flight by reservation (status " +
                     (resp != null ? resp.getStatusCode().value() : "no response") + ")");
@@ -199,14 +207,14 @@ public class AirlineMSAService implements AirlineExternalService {
     @Override
     public ReservationDTO getFlightReservation(long flightReservationId) {
         try {
-            ResponseEntity<ucm.tfg.agency.common.dto.reservation.ReservationDTO> resp = webClient.get()
+            ResponseEntity<ReservationMSADTO> resp = webClient.get()
                 .uri("/reservation/{id}", flightReservationId)
                 .retrieve()
-                .toEntity(ucm.tfg.agency.common.dto.reservation.ReservationDTO.class)
+                .toEntity(ReservationMSADTO.class)
                 .block();
 
             if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null) {
-                return resp.getBody().getReservation(); // igual que tu lógica original
+                return AirlineMapper.INSTANCE.reservationMSAtoDTO(resp.getBody());
             }
         } catch (Exception e) {
             // log si quieres

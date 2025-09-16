@@ -18,7 +18,7 @@ public class SuperReservationDTO {
     private boolean withBreakfast;
     private int peopleNumber;
     private List<Long> roomsInfo;
-    private List<IdFlightInstanceWithSeatsV2DTO> listIdFlightInstanceSeats;
+    private List<IdFlightInstanceWithSeatsV2DTO> flightInstanceSeats;
     public SuperReservationDTO(long idTravel, UpdateBookingReservationDTO dtoBokk, UpdateAirlineReservationDTO dtoAirline){
         this.idTravel = idTravel;
         this.idReservation = dtoAirline.getIdReservation();
@@ -29,7 +29,7 @@ public class SuperReservationDTO {
         this.withBreakfast = dtoBokk.isWithBreakfast();
         this.peopleNumber = dtoBokk.getPeopleNumber();
         this.roomsInfo = dtoBokk.getRoomId();
-        this.listIdFlightInstanceSeats = dtoAirline.getListIdFlightInstanceSeats().stream().map(
+        this.flightInstanceSeats = dtoAirline.getListIdFlightInstanceSeats().stream().map(
             f -> new IdFlightInstanceWithSeatsV2DTO(f.getIdFlightInstance(), f.getSeats())
         ).toList();
     }
