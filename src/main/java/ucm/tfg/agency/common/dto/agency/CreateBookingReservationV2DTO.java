@@ -13,7 +13,7 @@ public class CreateBookingReservationV2DTO {
     private int numberOfNights;
     private boolean withBreakfast;
     private int peopleNumber;
-    private List<Long> roomIds;
+    private List<Long> roomsIds;
     private CustomerDTO customer;
     private Long userId;
 
@@ -23,7 +23,7 @@ public class CreateBookingReservationV2DTO {
         this.numberOfNights = booking.getNumberOfNights();
         this.withBreakfast = booking.isWithBreakfast();
         this.peopleNumber = booking.getPeopleNumber();
-        this.roomIds = booking.getRoomId();
+        this.roomsIds = booking.getRoomId();
         this.userId = authUser.getId();
         this.customer = new CustomerDTO(authUser);
     }

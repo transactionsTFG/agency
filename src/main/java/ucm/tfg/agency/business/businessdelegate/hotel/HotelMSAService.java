@@ -13,6 +13,7 @@ import ucm.tfg.agency.common.dto.agency.CreateBookingReservationV2DTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationDTO;
 import ucm.tfg.agency.common.dto.agency.UpdateBookingReservationV2DTO;
 import ucm.tfg.agency.common.dto.hotel.BookingMSA;
+import ucm.tfg.agency.common.dto.hotel.BookingRequestMSADTO;
 import ucm.tfg.agency.common.dto.hotel.RoomInfoDTO;
 import ucm.tfg.agency.common.dto.patternresult.Result;
 import ucm.tfg.agency.common.utils.ConnectionGateway;
@@ -157,15 +158,15 @@ public class HotelMSAService implements HotelExternalService {
     @Override
     public Result<java.util.List<BookingLineDTO>> getRoomsByBooking(long bookingId) {
         try {
-            ResponseEntity<BookingMSA> resp = this.webClient.get()
+            ResponseEntity<BookingRequestMSADTO> resp = this.webClient.get()
                 .uri("/booking/{id}", bookingId)
                 .retrieve()
-                .toEntity(BookingMSA.class)
+                .toEntity(BookingRequestMSADTO.class)
                 .block();
 
-            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null)
-                return Result.success(resp.getBody().getBookingLines());
-
+            if (resp != null && resp.getStatusCode().is2xxSuccessful() && resp.getBody() != null){
+                return Result.success(resp.getBody().toBookingLines(this));
+            }
             return Result.failure("Error obteniendo las habitaciones de la reserva (status " +
                     (resp != null ? resp.getStatusCode().value() : "sin respuesta") + ")");
         } catch (Exception e) {

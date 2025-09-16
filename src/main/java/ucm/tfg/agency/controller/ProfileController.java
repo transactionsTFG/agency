@@ -80,7 +80,7 @@ public class ProfileController {
     @GetMapping("modifyTravel/{idFlight}/{idHotel}")
     public String modifyTravel(@PathVariable long idFlight, @PathVariable long idHotel,  @RequestParam(required = false) Long idTravel,
             RedirectAttributes redirectAttributes, Model model) {
-        if (idFlight != -1 && idHotel != -1) {
+        if (idFlight > 0 && idHotel > 0) {
             Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
                     idHotel);
             ReservationDTO flightResult = this.airlineService.getFlightReservation(idFlight);
@@ -102,10 +102,10 @@ public class ProfileController {
                 return "redirect:/profile";
             }
         }
-        if (idFlight != -1) {
+        if (idFlight > 0) {
             return "redirect:/profile/modifyFlight/" + idFlight + "?idTravel=" + idTravel;
         }
-        if (idHotel != -1) {
+        if (idHotel > 0) {
             return "redirect:/profile/modifyHotel/" + idHotel + "?idTravel=" + idTravel;
         }
         return "redirect:/profile";
