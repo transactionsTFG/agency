@@ -41,7 +41,7 @@ public class CheckoutController {
 
     @PostMapping("/hotel")
     public String reservationHotel(@RequestParam String startDate, @RequestParam String endDate, 
-                                    @RequestParam int numberOfNights, @RequestParam(required = false, value = "false") Boolean withBreakfast, 
+                                    @RequestParam int numberOfNights, @RequestParam(name = "withBreakfast", defaultValue = "false") boolean withBreakfast, 
                                     @RequestParam int peopleNumber, @RequestParam long roomId, @RequestParam String dni) {
         CreateBookingReservationDTO booking = new CreateBookingReservationDTO();
         booking.setStartDate(DateParser.parserLocalDateClientToBackendFormat(startDate));
@@ -85,7 +85,7 @@ public class CheckoutController {
 
     @PostMapping("/flighthotel")
     public String reservationHotelFlight(@RequestParam String startDate, @RequestParam String endDate, 
-                @RequestParam int numberOfNights, @RequestParam(required = false, value = "false") Boolean withBreakfast, 
+                @RequestParam int numberOfNights, @RequestParam(name = "withBreakfast", defaultValue = "false") boolean withBreakfast, 
                 @RequestParam int peopleNumber, @RequestParam long roomId, @RequestParam int numberOfSeats, @RequestParam long flightInstanceId, @RequestParam String dni) {
         CreateBookingReservationDTO booking = new CreateBookingReservationDTO();
         booking.setStartDate(DateParser.parserLocalDateClientToBackendFormat(startDate));
