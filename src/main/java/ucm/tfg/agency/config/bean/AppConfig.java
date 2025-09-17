@@ -11,7 +11,7 @@ public class AppConfig {
     
     @Bean
     public BusinessDelegate businessLookup() {
-        return new BusinessDelegate(TypeService.MSA);
+        return new BusinessDelegate(TypeService.MTA);
     }
 
 }

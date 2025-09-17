@@ -81,11 +81,10 @@ public class ProfileController {
     public String modifyTravel(@PathVariable long idFlight, @PathVariable long idHotel,  @RequestParam(required = false) Long idTravel,
             RedirectAttributes redirectAttributes, Model model) {
         if (idFlight > 0 && idHotel > 0) {
-            Result<FlightHotelDTO> flightHoteResult = this.agencyService.getFlightAndHotelReservation(idFlight,
-                    idHotel);
             ReservationDTO flightResult = this.airlineService.getFlightReservation(idFlight);
             Result<List<ucm.tfg.agency.soapclient.airlineflight.IdFlightInstanceWithSeatsDTO>> flightReservationsResult = this.airlineService
                     .getFlightsByReservation(flightResult.getId());
+			Result<BookingDTO> bookingDTO = this.hotelService.getHotelBooking(idHotel);
             Result<List<BookingLineDTO>> bookingLinesResult = this.hotelService.getRoomsByBooking(idHotel);
             List<BookingLineDTO> bookingLineDTOs = bookingLinesResult.getData();
             try {
@@ -95,7 +94,7 @@ public class ProfileController {
                     model.addAttribute("flightInstance", flightReservationsResult.getData().get(0));
                 else
                     model.addAttribute("errorVuelos", "Ha ocurrido un error al leer los vuelos");
-                model.addAttribute("booking", flightHoteResult.getData().getBooking());
+                model.addAttribute("booking", bookingDTO.getData());
                 model.addAttribute("roomList", bookingLineDTOs);
                 return "modifyTravel";
             } catch (Exception e) {
