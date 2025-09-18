@@ -11,7 +11,7 @@
         <div th:if="${flightInstance != null}" class="form-group">
             <label for="seats">Número de asientos</label>
             <input type="hidden" name="idFlightInstance" th:value="${flightInstance.idFlightInstance}">
-            <input type="number" name="seats" min="1" id="seats" th:value="${flightInstance.seats}">
+            <input type="number" name="seats" min="1" max="10" id="seats" th:value="${flightInstance.seats}">
         </div>
         <div th:if="${errorVuelos != null}" class="form-group">
             <p class="text-danger" th:text="${errorVuelos}"></p>

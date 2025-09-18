@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="numberOfNights" class="form-label">Número de noches</label>
                                         <input class="form-control" type="number" name="numberOfNights"
-                                            id="numberOfNights" th:value="${room.numberOfNights}" required min="1">
+                                            id="numberOfNights" th:value="${room.numberOfNights}" required min="1" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div th:if="${flightInstance != null}" class="form-group">
                         <label for="seats">Número de asientos</label>
-                        <input type="number" name="seats" min="1" id="seats" th:value="${flightInstance.seats}">
+                        <input type="number" name="seats" min="1" max="10" id="seats" th:value="${flightInstance.seats}">
                     </div>
                 </div>
                 <div class="form-group col">
@@ -89,6 +89,29 @@
         </form>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            const numberOfNightsInput = document.getElementById('numberOfNights');
+
+            function calculateNights() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (startDate && endDate && endDate > startDate) {
+                    const timeDiff = endDate - startDate;
+                    const nights = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                    numberOfNightsInput.value = nights;
+                } else {
+                    numberOfNightsInput.value = '';
+                }
+            }
+
+            startDateInput.addEventListener('change', calculateNights);
+            endDateInput.addEventListener('change', calculateNights);
+        });
+    </script>
     <th:block th:insert="~{fragments/footer :: footer}"></th:block>
     <th:block th:insert="~{fragments/copyright:: copyright}"></th:block>
     <th:block th:insert="~{fragments/scripts :: scripts}"></th:block>

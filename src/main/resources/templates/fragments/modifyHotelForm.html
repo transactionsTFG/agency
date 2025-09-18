@@ -28,19 +28,16 @@
                             <label for="startDate" class="form-label">Fecha de entrada</label>
                             <input class="form-control" type="date" name="startDate" id="startDate"
                                 th:value="${room.startDate}" required>
-                            startdate
                         </div>
                         <div class="form-group">
                             <label for="endDate" class="form-label">Fecha de salida</label>
                             <input class="form-control" type="date" name="endDate" id="endDate"
                                 th:value="${room.endDate}" required>
-                            enddate
                         </div>
                         <div class="form-group">
                             <label for="numberOfNights" class="form-label">Número de noches</label>
                             <input class="form-control" type="number" name="numberOfNights" id="numberOfNights"
-                                th:value="${room.numberOfNights}" required min="1">
-                            numberofnights
+                                th:value="${room.numberOfNights}" required min="1" readonly>
                         </div>
                     </div>
                 </div>
@@ -50,4 +47,28 @@
             <button class="btn btn-success" type="submit">Modificar</button>
         </div>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            const numberOfNightsInput = document.getElementById('numberOfNights');
+
+            function calculateNights() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+
+                if (startDate && endDate && endDate > startDate) {
+                    const timeDiff = endDate - startDate;
+                    const nights = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                    numberOfNightsInput.value = nights;
+                } else {
+                    numberOfNightsInput.value = '';
+                }
+            }
+
+            startDateInput.addEventListener('change', calculateNights);
+            endDateInput.addEventListener('change', calculateNights);
+        });
+    </script>
 </th:block>
