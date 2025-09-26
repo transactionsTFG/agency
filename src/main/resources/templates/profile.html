@@ -88,7 +88,7 @@
                                                     th:if="${travel.flightReservationID > 0 and travel.hotelReservationID > 0}"
                                                     th:text="#{app.profile.reservation.hotelflight}"></span>
                                                 <span class="username pull-right text-muted"
-                                                    th:text="${travel.cost} + ' €'"></span>
+                                                    th:text="${travel.hotelCost + travel.flightCost} + ' €'"></span>
                                             </div>
                                             <div class="timeline-content">
                                                 <i class="fa fa-map-marker text-danger fa-fw"></i><span
